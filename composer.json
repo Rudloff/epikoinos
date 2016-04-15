@@ -1,0 +1,16 @@
+{
+	"name": "rudloff/epikoinos",
+	"description": "Convert French words to their epicene form",
+	"license": "GPL-3.0",
+	"require": {
+		"danielstjules/stringy": "~2.3.1"
+	},
+	"require-dev": {
+		"symfony/var-dumper": "~3.0.0"
+	},
+	"autoload": {
+		"psr-4": {
+			"Epíkoinos\\": "classes/"
+		}
+	}
+}
