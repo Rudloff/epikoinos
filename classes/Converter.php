@@ -9,7 +9,7 @@ class Converter
 
     private $separator;
     private $suffixes = array(
-        'teur'=>'rice',
+        'teur'=>'trice',
         'if'=>'ive',
     );
 
