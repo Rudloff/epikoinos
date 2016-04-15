@@ -16,8 +16,6 @@ class Converter
     public function __construct($separator = '.')
     {
         $this->separator = $separator;
-        mb_internal_encoding('UTF-8');
-        mb_regex_encoding('UTF-8');
     }
 
     private function convertWordObject(S $w)
