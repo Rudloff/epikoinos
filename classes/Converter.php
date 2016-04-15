@@ -42,7 +42,7 @@ class Converter
             $newW = $this->convertWordObject($w);
             if ($newW != $w) {
                 $s = $s->regexReplace(
-                    $w.'(?!'.$newW->removeLeft($w).')',
+                    '\b'.$w.'\b(?!'.$newW->removeLeft($w).')',
                     $newW
                 );
             }

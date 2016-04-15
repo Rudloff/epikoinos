@@ -5,12 +5,37 @@ use Epíkoinos\Converter;
 
 class ConverterTest extends \PHPUnit_Framework_TestCase
 {
-    public function testConvert()
+    /**
+     * @dataProvider sentenceProvider
+     */
+    public function testConvert($sentence, $result)
     {
         $converter = new Converter();
         $this->assertEquals(
-            "Devenez formateur.rice, c'est bien d'être formateur.rice",
-            $converter->convert("Devenez formateur, c'est bien d'être formateur")
+            $result,
+            $converter->convert($sentence)
+        );
+    }
+
+    public function sentenceProvider()
+    {
+        return array(
+            array(
+                "Devenez formateur, c'est bien d'être formateur",
+                "Devenez formateur.rice, c'est bien d'être formateur.rice"
+            ),
+            array(
+                "Devenez formateur, c'est bien d'être formateur.rice",
+                "Devenez formateur.rice, c'est bien d'être formateur.rice"
+            ),
+            array(
+                "Devenez formateur, c'est bien d'être formateur/tuteur",
+                "Devenez formateur.rice, c'est bien d'être formateur.rice/tuteur.rice"
+            ),
+            array(
+                "Vous connaissez la teurgoule ? Et le tuteurat ?",
+                "Vous connaissez la teurgoule ? Et le tuteurat ?"
+            )
         );
     }
 
