@@ -10,11 +10,21 @@ class ConverterTest extends \PHPUnit_Framework_TestCase
      */
     public function testConvert($sentence, $result)
     {
-        $converter = new Converter();
+        $converter = new Converter('.', false);
         $this->assertEquals(
             $result,
             $converter->convert($sentence)
         );
+    }
+
+    /**
+     * @dataProvider sentenceProvider
+     */
+    public function testCache($sentence, $result)
+    {
+        $converter = new Converter();
+        $this->assertEquals('foobar', 'foobar');
+        $this->assertEquals('foobar', 'foobar');
     }
 
     public function sentenceProvider()
@@ -35,6 +45,10 @@ class ConverterTest extends \PHPUnit_Framework_TestCase
             array(
                 "Vous connaissez la teurgoule ? Et le tuteurat ?",
                 "Vous connaissez la teurgoule ? Et le tuteurat ?"
+            ),
+            array(
+                'Étudiants et professeurs',
+                'Étudiant.e.s et professeur.e.s'
             )
         );
     }
@@ -44,7 +58,7 @@ class ConverterTest extends \PHPUnit_Framework_TestCase
      */
     public function testConvertWord($word, $result)
     {
-        $converter = new Converter();
+        $converter = new Converter('.', false);
         $this->assertEquals(
             $result,
             $converter->convertWord($word)

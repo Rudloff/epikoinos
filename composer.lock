@@ -168,7 +168,7 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Rudloff/php-dicollecte-lexicon.git",
-                "reference": "3d0d39697034c74aebd3c39db1c8eb46f87726fc"
+                "reference": "59e4414a866518eb715880ab68f25576ff54e6b0"
             },
             "require": {
                 "league/csv": "~8.0.0",
@@ -187,7 +187,7 @@
                 "GPL-3.0"
             ],
             "description": "Extract data from Dicollecte French lexicon",
-            "time": "2016-04-16 10:49:40"
+            "time": "2016-04-16 14:16:32"
         },
         {
             "name": "symfony/polyfill-mbstring",
