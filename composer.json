@@ -30,7 +30,7 @@
 		}
 	},
 	"scripts": {
-		"update-lexicon": "grep vendor/dicollecte/lexique/lexique-dicollecte-fr-v5.6.txt -e 'nom' > lexique-dicollecte-names.txt"
+		"update-lexicon": "grep vendor/dicollecte/lexique/lexique-dicollecte-fr-v5.6.txt -e 'nom\\|adj' > lexique-dicollecte-names.txt"
 	},
 	"config": {
 		"secure-http": false

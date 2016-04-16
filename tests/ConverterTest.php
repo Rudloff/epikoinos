@@ -82,7 +82,14 @@ class ConverterTest extends \PHPUnit_Framework_TestCase
             array('médiateurs', 'médiateur.rice.s'),
             array('modérateurs', 'modérateur.rice.s'),
             array('sénateurs', 'sénateur.rice.s'),
-            array('recteurs', 'recteur.rice.s')
+            array('recteurs', 'recteur.rice.s'),
+            array('auteur', 'auteur.e'),
+            array('administratif', 'administratif.ve'),
+            array('créatif', 'créatif.ve'),
+            array('sportif', 'sportif.ve'),
+            array('administratifs', 'administratif.ve.s'),
+            array('créatifs', 'créatif.ve.s'),
+            array('sportifs', 'sportif.ve.s'),
         );
     }
 }

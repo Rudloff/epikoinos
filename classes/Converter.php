@@ -20,7 +20,6 @@ class Converter
     {
         foreach ($this->lexicon->getByInflection($w) as $inflection) {
             if ($inflection->inflection == $w
-                && $inflection->hasTag('nom')
                 && $inflection->hasTag('mas')
             ) {
                 $mascInflection = $inflection;
@@ -31,8 +30,7 @@ class Converter
             return $w;
         }
         foreach ($this->lexicon->getByLemma($mascInflection->lemma) as $inflection) {
-            if ($inflection->hasTag('nom')
-                && ($mascInflection->hasTag('pl') && $inflection->hasTag('pl')
+            if (($mascInflection->hasTag('pl') && $inflection->hasTag('pl')
                     || $mascInflection->hasTag('sg') && $inflection->hasTag('sg'))
                 && $inflection->hasTag('fem')
             ) {
