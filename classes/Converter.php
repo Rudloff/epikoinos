@@ -18,22 +18,22 @@ class Converter
 
     private function convertWordObject(S $w)
     {
-        $inflections = $this->lexicon->getByLemma($w);
-        foreach ($inflections as $inflection) {
+        foreach ($this->lexicon->getByInflection($w) as $inflection) {
             if ($inflection->inflection == $w
                 && $inflection->hasTag('nom')
                 && $inflection->hasTag('mas')
             ) {
-                $isPlural = $inflection->hasTag('pl');
+                $mascInflection = $inflection;
                 break;
             }
         }
-        if (!isset($isPlural)) {
+        if (!isset($mascInflection)) {
             return $w;
         }
-        foreach ($inflections as $inflection) {
+        foreach ($this->lexicon->getByLemma($mascInflection->lemma) as $inflection) {
             if ($inflection->hasTag('nom')
-                && ($isPlural && $inflection->hasTag('pl') || !$isPlural && $inflection->hasTag('sg'))
+                && ($mascInflection->hasTag('pl') && $inflection->hasTag('pl')
+                    || $mascInflection->hasTag('sg') && $inflection->hasTag('sg'))
                 && $inflection->hasTag('fem')
             ) {
                 $femInflection = $inflection;
@@ -43,6 +43,11 @@ class Converter
         if (isset($femInflection)) {
             $prefix = $w->longestCommonPrefix($femInflection->inflection);
             $suffix = S::create($femInflection->inflection)->removeLeft($prefix);
+            if ($mascInflection->hasTag('pl')) {
+                $plural = $w->longestCommonSuffix($femInflection->inflection);
+                $w = $w->removeRight($plural);
+                $suffix = $suffix->removeRight($plural)->ensureRight($this->separator.$plural);
+            }
             $w = $w->ensureRight($this->separator.$suffix);
         }
         return $w;

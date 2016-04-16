@@ -54,6 +54,7 @@ class ConverterTest extends \PHPUnit_Framework_TestCase
     public function wordProvider()
     {
         return array(
+            array('foobar', 'foobar'),
             array('acteur', 'acteur.rice'),
             array('administrateur', 'administrateur.rice'),
             array('animateur', 'animateur.rice'),
@@ -68,6 +69,20 @@ class ConverterTest extends \PHPUnit_Framework_TestCase
             array('modérateur', 'modérateur.rice'),
             array('sénateur', 'sénateur.rice'),
             array('recteur', 'recteur.rice'),
+            array('acteurs', 'acteur.rice.s'),
+            array('administrateurs', 'administrateur.rice.s'),
+            array('animateurs', 'animateur.rice.s'),
+            array('agriculteurs', 'agriculteur.rice.s'),
+            array('consommateurs', 'consommateur.rice.s'),
+            array('directeurs', 'directeur.rice.s'),
+            array('éducateurs', 'éducateur.rice.s'),
+            array('électeurs', 'électeur.rice.s'),
+            array('instituteurs', 'instituteur.rice.s'),
+            array('inspecteurs', 'inspecteur.rice.s'),
+            array('médiateurs', 'médiateur.rice.s'),
+            array('modérateurs', 'modérateur.rice.s'),
+            array('sénateurs', 'sénateur.rice.s'),
+            array('recteurs', 'recteur.rice.s')
         );
     }
 }
