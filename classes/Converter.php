@@ -28,6 +28,17 @@ class Converter
             case 'le':
                 return S::create('la.le');
             break;
+            case 'ce':
+                return S::create('ce.tte');
+            case 'ceux':
+                return S::create('ceux.elles');
+            break;
+            case 'tout':
+                return S::create('tout.e');
+            break;
+            case 'tous':
+                return S::create('tou.te.s');
+            break;
         }
         $origW = $w;
         if ($this->enableCache && $this->cache->is_cached($w)) {
@@ -58,8 +69,13 @@ class Converter
                 $baseW = $origW;
                 if ($mascInflection->hasTag('pl')) {
                     $plural = $w->longestCommonSuffix($femInflection->inflection);
-                    $baseW = $origW->removeRight($plural);
-                    $suffix = $suffix->removeRight($plural)->ensureRight($this->separator.$plural);
+                    if ($plural->length() > 0) {
+                        $baseW = $baseW->removeRight($plural);
+                        $suffix = $suffix->removeRight($plural)->ensureRight($this->separator.$plural);
+                    }
+                    if ($suffix == 'les') {
+                        $suffix = 'ales';
+                    }
                 }
                 $w = $baseW->ensureRight($this->separator.$suffix);
             }
