@@ -17,14 +17,21 @@ class ConverterTest extends \PHPUnit_Framework_TestCase
         );
     }
 
-    /**
-     * @dataProvider sentenceProvider
-     */
-    public function testCache($sentence, $result)
+    public function testCache()
     {
         $converter = new Converter();
         $this->assertEquals('foobar', 'foobar');
         $this->assertEquals('foobar', 'foobar');
+    }
+
+    public function testDelimiter()
+    {
+        $converter = new Converter('-', false);
+        $this->assertEquals('formateur-rice', $converter->convertWord('formateur'));
+        $this->assertEquals(
+            "Devenez formateur-rice, c'est bien d'être formateur-rice",
+            $converter->convert("Devenez formateur, c'est bien d'être formateur")
+        );
     }
 
     public function sentenceProvider()
