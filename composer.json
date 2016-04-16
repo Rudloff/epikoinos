@@ -3,11 +3,27 @@
 	"description": "Convert French words to their epicene form",
 	"license": "GPL-3.0",
 	"require": {
-		"danielstjules/stringy": "~2.3.1"
+		"danielstjules/stringy": "~2.3.1",
+		"dicollecte/lexique": "~5.6",
+		"rudloff/dicollecte-lexicon": "dev-develop"
 	},
 	"require-dev": {
 		"symfony/var-dumper": "~3.0.0"
 	},
+	"repositories": [{
+		"type": "git",
+		"url": "https://github.com/Rudloff/php-dicollecte-lexicon.git"
+	}, {
+		"type": "package",
+		"package": {
+			"name": "dicollecte/lexique",
+			"version": "5.6",
+			"dist": {
+				"url": "http://www.dicollecte.org/download/fr/lexique-dicollecte-fr-v5.6.zip",
+				"type": "zip"
+			}
+		}
+	}],
 	"autoload": {
 		"psr-4": {
 			"Epíkoinos\\": "classes/"
