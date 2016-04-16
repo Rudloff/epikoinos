@@ -4,7 +4,8 @@
 	"license": "GPL-3.0",
 	"require": {
 		"danielstjules/stringy": "~2.3.1",
-		"rudloff/dicollecte-lexicon": "dev-develop"
+		"rudloff/dicollecte-lexicon": "dev-develop",
+		"gilbitron/php-simplecache": "~1.4.1"
 	},
 	"require-dev": {
 		"symfony/var-dumper": "~3.0.0",

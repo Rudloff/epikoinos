@@ -9,15 +9,21 @@ class Converter
 {
 
     private $separator;
+    private $lexicon;
+    private $cache;
 
     public function __construct($separator = '.')
     {
         $this->separator = $separator;
         $this->lexicon = new Lexicon(__DIR__.'/../lexique-dicollecte-names.txt');
+        $this->cache = new \Gilbitron\Util\SimpleCache();
     }
 
     private function convertWordObject(S $w)
     {
+        if ($this->cache->is_cached($w)) {
+            return S::create($this->cache->get_cache($w));
+        }
         foreach ($this->lexicon->getByInflection($w) as $inflection) {
             if ($inflection->inflection == $w
                 && $inflection->hasTag('mas')
@@ -47,6 +53,7 @@ class Converter
                 $suffix = $suffix->removeRight($plural)->ensureRight($this->separator.$plural);
             }
             $w = $w->ensureRight($this->separator.$suffix);
+            $this->cache->set_cache($mascInflection->inflection, $w);
         }
         return $w;
     }

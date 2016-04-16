@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "132c1525fd321a85040fa678442a0172",
-    "content-hash": "58b7919082dae05642a79654b997fc86",
+    "hash": "b0105238529e8b499c44db0b87ad296e",
+    "content-hash": "d328d268a759449de420114effbe1cfc",
     "packages": [
         {
             "name": "danielstjules/stringy",
@@ -62,6 +62,48 @@
                 "utils"
             ],
             "time": "2016-03-21 20:26:21"
+        },
+        {
+            "name": "gilbitron/php-simplecache",
+            "version": "1.4.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/gilbitron/PHP-SimpleCache.git",
+                "reference": "eb43b12945955428ced0b55d711d57afc6c4c9b3"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/gilbitron/PHP-SimpleCache/zipball/eb43b12945955428ced0b55d711d57afc6c4c9b3",
+                "reference": "eb43b12945955428ced0b55d711d57afc6c4c9b3",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Gilbitron\\Util\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Gilbert Pellegrom",
+                    "email": "gilbert@pellegrom.me",
+                    "homepage": "http://gilbert.pellegrom.me"
+                }
+            ],
+            "description": "A simple script for caching 3rd party API calls in PHP.",
+            "homepage": "https://github.com/gilbitron/PHP-SimpleCache",
+            "keywords": [
+                "cache",
+                "simplecache"
+            ],
+            "time": "2014-07-15 09:37:49"
         },
         {
             "name": "league/csv",
