@@ -12,14 +12,16 @@ class Converter
     private $lexicon;
     private $cache;
     private $enableCache = true;
+    private $overwriteCache = false;
     private $diacritics = 'ÀàÂâÆæÇçÈèÉéÊêËëÎîÏïÔôŒœÙùÛûÜü';
 
-    public function __construct($separator = '.', $enableCache = true)
+    public function __construct($separator = '.', $enableCache = true, $overwriteCache = false)
     {
         $this->separator = $separator;
         $this->lexicon = new Lexicon(__DIR__.'/../lexique-dicollecte-names.txt');
         $this->cache = new \Gilbitron\Util\SimpleCache();
         $this->enableCache = $enableCache;
+        $this->overwriteCache = $overwriteCache;
     }
 
     private function convertWordObject(S $w)
@@ -41,8 +43,8 @@ class Converter
             break;
         }
         $origW = $w;
-        if ($this->enableCache && $this->cache->is_cached($w)) {
-            return S::create($this->cache->get_cache($w));
+        if ($this->enableCache && !$this->overwriteCache && $this->cache->is_cached($w.$this->separator)) {
+            return S::create($this->cache->get_cache($w.$this->separator));
         }
         $w = $w->removeLeft("l'")->removeLeft("L'");
         foreach ($this->lexicon->getByInflection($w) as $inflection) {
@@ -94,7 +96,7 @@ class Converter
             }
         }
         if ($this->enableCache) {
-            $this->cache->set_cache($origW, $w);
+            $this->cache->set_cache($origW.$this->separator, $w);
         }
         return $w;
     }

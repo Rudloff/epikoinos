@@ -19,9 +19,14 @@ class ConverterTest extends \PHPUnit_Framework_TestCase
 
     public function testCache()
     {
-        $converter = new Converter();
-        $this->assertEquals('foobar', $converter->convert('foobar'));
-        $this->assertEquals('foobar', $converter->convert('foobar'));
+        $converter = new Converter('foo', true, true);
+        $this->assertEquals('formateurfoorice', $converter->convert('formateur'));
+        $converter = new Converter('foo', true, false);
+        $this->assertEquals('formateurfoorice', $converter->convert('formateur'));
+        $converter = new Converter('bar', true, true);
+        $this->assertEquals('formateurbarrice', $converter->convert('formateur'));
+        $converter = new Converter('bar', true, false);
+        $this->assertEquals('formateurbarrice', $converter->convert('formateur'));
     }
 
     public function testDelimiter()
