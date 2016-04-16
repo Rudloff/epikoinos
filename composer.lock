@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "960f209aca993d65d1af766f1e3ff4a6",
-    "content-hash": "dcc4c05431b18371db9756225164c0db",
+    "hash": "132c1525fd321a85040fa678442a0172",
+    "content-hash": "58b7919082dae05642a79654b997fc86",
     "packages": [
         {
             "name": "danielstjules/stringy",
@@ -62,17 +62,6 @@
                 "utils"
             ],
             "time": "2016-03-21 20:26:21"
-        },
-        {
-            "name": "dicollecte/lexique",
-            "version": "5.6",
-            "dist": {
-                "type": "zip",
-                "url": "http://www.dicollecte.org/download/fr/lexique-dicollecte-fr-v5.6.zip",
-                "reference": null,
-                "shasum": null
-            },
-            "type": "library"
         },
         {
             "name": "league/csv",
@@ -268,6 +257,17 @@
         }
     ],
     "packages-dev": [
+        {
+            "name": "dicollecte/lexique",
+            "version": "5.6",
+            "dist": {
+                "type": "zip",
+                "url": "http://www.dicollecte.org/download/fr/lexique-dicollecte-fr-v5.6.zip",
+                "reference": null,
+                "shasum": null
+            },
+            "type": "library"
+        },
         {
             "name": "symfony/var-dumper",
             "version": "v3.0.4",

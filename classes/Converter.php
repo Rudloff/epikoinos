@@ -13,7 +13,7 @@ class Converter
     public function __construct($separator = '.')
     {
         $this->separator = $separator;
-        $this->lexicon = new Lexicon(__DIR__.'/../vendor/dicollecte/lexique/lexique-dicollecte-fr-v5.6.txt');
+        $this->lexicon = new Lexicon(__DIR__.'/../lexique-dicollecte-names.txt');
     }
 
     private function convertWordObject(S $w)

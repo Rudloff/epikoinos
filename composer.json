@@ -4,11 +4,11 @@
 	"license": "GPL-3.0",
 	"require": {
 		"danielstjules/stringy": "~2.3.1",
-		"dicollecte/lexique": "~5.6",
 		"rudloff/dicollecte-lexicon": "dev-develop"
 	},
 	"require-dev": {
-		"symfony/var-dumper": "~3.0.0"
+		"symfony/var-dumper": "~3.0.0",
+		"dicollecte/lexique": "~5.6"
 	},
 	"repositories": [{
 		"type": "git",
@@ -28,5 +28,11 @@
 		"psr-4": {
 			"Epíkoinos\\": "classes/"
 		}
+	},
+	"scripts": {
+		"update-lexicon": "grep vendor/dicollecte/lexique/lexique-dicollecte-fr-v5.6.txt -e 'nom' > lexique-dicollecte-names.txt"
+	},
+	"config": {
+		"secure-http": false
 	}
 }
