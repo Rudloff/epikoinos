@@ -55,8 +55,11 @@ class Converter
         }
         if (isset($mascInflection)) {
             foreach ($this->lexicon->getByLemma($mascInflection->lemma) as $inflection) {
-                if (($mascInflection->hasTag('pl') && $inflection->hasTag('pl')
+                if (($mascInflection->hasTag('inv') ||
+                        $mascInflection->hasTag('pl') && $inflection->hasTag('pl')
                         || $mascInflection->hasTag('sg') && $inflection->hasTag('sg'))
+                    && ($mascInflection->hasTag('adj') && $inflection->hasTag('adj')
+                        || $mascInflection->hasTag('nom') && $inflection->hasTag('nom'))
                     && $inflection->hasTag('fem')
                 ) {
                     $femInflection = $inflection;
@@ -67,14 +70,24 @@ class Converter
                 $prefix = $w->toLowerCase()->longestCommonPrefix($femInflection->inflection);
                 $suffix = S::create($femInflection->inflection)->removeLeft($prefix);
                 $baseW = $origW;
+                switch ($suffix) {
+                    case 'se':
+                        $suffix = 'euse';
+                        break;
+                }
                 if ($mascInflection->hasTag('pl')) {
                     $plural = $w->longestCommonSuffix($femInflection->inflection);
                     if ($plural->length() > 0) {
                         $baseW = $baseW->removeRight($plural);
                         $suffix = $suffix->removeRight($plural)->ensureRight($this->separator.$plural);
                     }
-                    if ($suffix == 'les') {
-                        $suffix = 'ales';
+                    switch ($suffix) {
+                        case 'les':
+                            $suffix = 'ales';
+                            break;
+                        case 'se.s':
+                            $suffix = 'euse.s';
+                            break;
                     }
                 }
                 $w = $baseW->ensureRight($this->separator.$suffix);
