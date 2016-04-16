@@ -14,6 +14,7 @@ class Converter
     private $enableCache = true;
     private $overwriteCache = false;
     private $diacritics = 'ÀàÂâÆæÇçÈèÉéÊêËëÎîÏïÔôŒœÙùÛûÜü';
+    private $articles = array('un', 'le', 'ce', 'cet', 'tout', 'tous');
 
     public function __construct($separator = '.', $enableCache = true, $overwriteCache = false)
     {
@@ -33,6 +34,8 @@ class Converter
             break;
             case 'ce':
                 return S::create('ce.tte');
+            case 'cet':
+                return S::create('cet.te');
             case 'ceux':
                 return S::create('ceux.elles');
             break;
@@ -111,14 +114,36 @@ class Converter
     {
         $s = S::create($string);
         foreach (str_word_count($s, 2, $this->separator.$this->diacritics) as $i => $word) {
-            $w = S::create($word, 'UTF-8');
-            $w->trim($this->separator);
-            $newW = $this->convertWordObject($w);
-            if ($newW != $w) {
-                $s = $s->regexReplace(
-                    '\b'.preg_quote($w).'\b(?!'.preg_quote($newW->removeLeft($w)).')',
-                    $newW
-                );
+            $words[] = array(
+                'word'=>$word,
+                'pos'=>$i
+            );
+        }
+        foreach ($words as $i => &$word) {
+            $w = S::create($word['word'], 'UTF-8');
+            if (!in_array($w, $this->articles)) {
+                $w->trim($this->separator);
+                $newW = $this->convertWordObject($w);
+                if ($newW != $w) {
+                    $s = S::create(substr_replace($s, $newW, $word['pos'], strlen($w)));
+                    foreach ($words as $j => $word) {
+                        if ($j > $i) {
+                            $words[$j]['pos'] += strlen($newW) - strlen($w);
+                        }
+                    }
+                    if (isset($words[$i - 1]) && in_array($words[$i - 1]['word'], $this->articles)) {
+                        $w = S::create($words[$i - 1]['word'], 'UTF-8');
+                        $newW = $this->convertWordObject($w);
+                        if ($newW != $w) {
+                            $s = S::create(substr_replace($s, $newW, $words[$i - 1]['pos'], strlen($w)));
+                            foreach ($words as $j => $word) {
+                                if ($j > $i) {
+                                    $words[$j]['pos'] += strlen($newW) - strlen($w);
+                                }
+                            }
+                        }
+                    }
+                }
             }
         }
         return (string)$s;

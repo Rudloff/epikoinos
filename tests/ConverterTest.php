@@ -76,6 +76,14 @@ class ConverterTest extends \PHPUnit_Framework_TestCase
             array(
                 "L'étudiant et le professeur",
                 "L'étudiant.e et la.le professeur.e"
+            ),
+            array(
+                "un étudiant et un meuble",
+                "un.e étudiant.e et un meuble"
+            ),
+            array(
+                "cet étudiant",
+                "cet.te étudiant.e"
             )
         );
     }
