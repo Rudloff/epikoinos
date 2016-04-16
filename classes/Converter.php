@@ -26,6 +26,7 @@ class Converter
 
     private function convertWordObject(S $w)
     {
+        $safeSeparator = rawurlencode($this->separator);
         switch ($w) {
             case 'le':
                 return S::create('la.le');
@@ -43,8 +44,8 @@ class Converter
             break;
         }
         $origW = $w;
-        if ($this->enableCache && !$this->overwriteCache && $this->cache->is_cached($w.$this->separator)) {
-            return S::create($this->cache->get_cache($w.$this->separator));
+        if ($this->enableCache && !$this->overwriteCache && $this->cache->is_cached($w.$safeSeparator)) {
+            return S::create($this->cache->get_cache($w.$safeSeparator));
         }
         $w = $w->removeLeft("l'")->removeLeft("L'");
         foreach ($this->lexicon->getByInflection($w) as $inflection) {
@@ -96,7 +97,7 @@ class Converter
             }
         }
         if ($this->enableCache) {
-            $this->cache->set_cache($origW.$this->separator, $w);
+            $this->cache->set_cache($origW.$safeSeparator, $w);
         }
         return $w;
     }

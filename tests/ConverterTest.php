@@ -27,6 +27,13 @@ class ConverterTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals('formateurbarrice', $converter->convert('formateur'));
         $converter = new Converter('bar', true, false);
         $this->assertEquals('formateurbarrice', $converter->convert('formateur'));
+
+        $converter = new Converter('éà');
+        $this->assertEquals('formateuréàrice', $converter->convert('formateur'));
+        $converter = new Converter('·');
+        $this->assertEquals('formateur·rice', $converter->convert('formateur'));
+        $converter = new Converter(' ');
+        $this->assertEquals('formateur rice', $converter->convert('formateur'));
     }
 
     public function testDelimiter()
