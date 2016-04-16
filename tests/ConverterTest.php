@@ -50,12 +50,20 @@ class ConverterTest extends \PHPUnit_Framework_TestCase
                 "Devenez formateur.rice, c'est bien d'être formateur.rice/tuteur.rice"
             ),
             array(
-                "Vous connaissez la teurgoule ? Et le tuteurat ?",
-                "Vous connaissez la teurgoule ? Et le tuteurat ?"
+                "teurgoule et tuteurat",
+                "teurgoule et tuteurat"
             ),
             array(
                 'Étudiants et professeurs',
                 'Étudiant.e.s et professeur.e.s'
+            ),
+            array(
+                "l'étudiant et le professeur",
+                "l'étudiant.e et la.le professeur.e"
+            ),
+            array(
+                "L'étudiant et le professeur",
+                "L'étudiant.e et la.le professeur.e"
             )
         );
     }

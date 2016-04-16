@@ -24,11 +24,16 @@ class Converter
 
     private function convertWordObject(S $w)
     {
+        switch ($w) {
+            case 'le':
+                return S::create('la.le');
+            break;
+        }
         $origW = $w;
         if ($this->enableCache && $this->cache->is_cached($w)) {
             return S::create($this->cache->get_cache($w));
         }
-        $w = $w->removeLeft("l'");
+        $w = $w->removeLeft("l'")->removeLeft("L'");
         foreach ($this->lexicon->getByInflection($w) as $inflection) {
             if ($inflection->inflection == $w->toLowerCase()
                 && $inflection->hasTag('mas')
@@ -79,7 +84,7 @@ class Converter
             $newW = $this->convertWordObject($w);
             if ($newW != $w) {
                 $s = $s->regexReplace(
-                    '\b'.$w.'\b(?!'.$newW->removeLeft($w).')',
+                    '\b'.preg_quote($w).'\b(?!'.preg_quote($newW->removeLeft($w)).')',
                     $newW
                 );
             }
