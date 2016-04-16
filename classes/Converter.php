@@ -72,14 +72,14 @@ class Converter
 
     public function convertWord($word)
     {
-        return (string)$this->convertWordObject(S::create($word));
+        return (string)$this->convertWordObject(S::create($word, 'UTF-8'));
     }
 
     public function convert($string)
     {
         $s = S::create($string);
         foreach (str_word_count($s, 2, $this->separator.$this->diacritics) as $i => $word) {
-            $w = S::create($word);
+            $w = S::create($word, 'UTF-8');
             $w->trim($this->separator);
             $newW = $this->convertWordObject($w);
             if ($newW != $w) {
