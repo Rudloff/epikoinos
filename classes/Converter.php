@@ -28,6 +28,7 @@ class Converter
         if ($this->enableCache && $this->cache->is_cached($w)) {
             return S::create($this->cache->get_cache($w));
         }
+        $w = $w->removeLeft("l'");
         foreach ($this->lexicon->getByInflection($w) as $inflection) {
             if ($inflection->inflection == $w->toLowerCase()
                 && $inflection->hasTag('mas')
@@ -49,12 +50,13 @@ class Converter
             if (isset($femInflection)) {
                 $prefix = $w->toLowerCase()->longestCommonPrefix($femInflection->inflection);
                 $suffix = S::create($femInflection->inflection)->removeLeft($prefix);
+                $baseW = $origW;
                 if ($mascInflection->hasTag('pl')) {
                     $plural = $w->longestCommonSuffix($femInflection->inflection);
-                    $w = $w->removeRight($plural);
+                    $baseW = $origW->removeRight($plural);
                     $suffix = $suffix->removeRight($plural)->ensureRight($this->separator.$plural);
                 }
-                $w = $w->ensureRight($this->separator.$suffix);
+                $w = $baseW->ensureRight($this->separator.$suffix);
             }
         }
         if ($this->enableCache) {
