@@ -19,7 +19,7 @@ class Converter
     public function __construct($separator = '.', $enableCache = true, $overwriteCache = false)
     {
         $this->separator = $separator;
-        $this->lexicon = new Lexicon(__DIR__.'/../lexique-dicollecte-names.txt');
+        $this->lexicon = new Lexicon(__DIR__.'/../lexique-dicollecte-names.csv');
         $this->cache = new \Gilbitron\Util\SimpleCache();
         $this->enableCache = $enableCache;
         $this->overwriteCache = $overwriteCache;
