@@ -15,7 +15,8 @@ $converter = new Converter();
     <body class="p1 bg--white measure">
         <h1 class="txt--center"><a href="?">Epíkoinos</a></h1>
         <p>
-            Ce site vous permet de convertir un mot masculin en <a target="_blank" href="https://fr.wikipedia.org/wiki/Langage_non_sexiste">écriture épicène</a>.
+            Ce site vous permet de convertir un mot masculin en
+            <a target="_blank" href="https://fr.wikipedia.org/wiki/Langage_non_sexiste">écriture épicène</a>.
             Cela peut être utile si vous avez un doute concernant la forme correcte d'un mot.
             <br/>
             Il se base sur les <a target="_blank" href="http://www.haut-conseil-egalite.gouv.fr/IMG/pdf/hcefh__guide_pratique_com_sans_stereo-_vf-_2015_11_05.pdf">
