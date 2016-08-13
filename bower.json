@@ -1,0 +1,6 @@
+{
+	"name": "epikoinos",
+	"dependencies": {
+		"furtive": "~2.2.4"
+	}
+}
