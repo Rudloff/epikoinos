@@ -4,6 +4,7 @@
 	"devDependencies": {
 		"grunt": "~1.0.1",
         "grunt-jslint": "~1.1.14",
-		"grunt-phpunit": "~0.3.6"
+		"grunt-phpunit": "~0.3.6",
+        "grunt-phpcs": "~0.4.0"
 	}
 }

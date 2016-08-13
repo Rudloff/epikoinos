@@ -4,6 +4,7 @@ module.exports = function (grunt) {
 
     grunt.loadNpmTasks('grunt-jslint');
     grunt.loadNpmTasks('grunt-phpunit');
+    grunt.loadNpmTasks('grunt-phpcs');
 
     grunt.initConfig({
         jslint: {
@@ -21,9 +22,21 @@ module.exports = function (grunt) {
             classes: {
                 dir: 'tests/'
             }
+        },
+        phpcs: {
+            options: {
+                standard: 'PSR2',
+                bin: 'vendor/bin/phpcs'
+            },
+            php: {
+                src: ['classes/*.php', '*.php']
+            },
+            tests: {
+                src: 'tests/*.php'
+            }
         }
     });
 
-    grunt.registerTask('lint', ['jslint']);
+    grunt.registerTask('lint', ['jslint', 'phpcs']);
     grunt.registerTask('test', ['phpunit']);
 };
