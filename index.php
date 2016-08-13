@@ -13,7 +13,7 @@ $converter = new Converter();
         <link rel="stylesheet" href="bower_components/furtive/css/furtive.min.css" />
     </head>
     <body class="p1 bg--white measure">
-        <h1><a href="?">Epíkoinos</a></h1>
+        <h1 class="txt--center"><a href="?">Epíkoinos</a></h1>
         <p>
             Ce site vous permet de convertir un mot masculin en <a target="_blank" href="https://fr.wikipedia.org/wiki/Langage_non_sexiste">écriture épicène</a>.
             Cela peut être utile si vous avez un doute concernant la forme correcte d'un mot.
