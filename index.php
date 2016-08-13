@@ -21,7 +21,7 @@ $converter = new Converter('.', false);
             recommandations du Haut Conseil à l'égalité entre les femmes et les hommes</a>.
         </p>
         <form class="py1" itemprop="potentialAction" action="">
-            <label for="query">Mot à convertir</label>
+            <label for="query">Mot(s) à convertir</label>
             <input type="text" name="query" id="query"
             <?php
             if (isset($_GET['query'])) {
