@@ -11,6 +11,7 @@ $converter = new Converter();
         <meta charset="UTF-8" />
         <title>Epíkoinos</title>
         <link rel="stylesheet" href="bower_components/furtive/css/furtive.min.css" />
+        <!-- Tu veux contribuer ? Ça se passe ici : https://github.com/Rudloff/epikoinos -->
     </head>
     <body class="p1 bg--white measure">
         <h1 class="txt--center"><a href="?">Epíkoinos</a></h1>
@@ -22,7 +23,7 @@ $converter = new Converter();
             Il se base sur les <a target="_blank" href="http://www.haut-conseil-egalite.gouv.fr/IMG/pdf/hcefh__guide_pratique_com_sans_stereo-_vf-_2015_11_05.pdf">
             recommandations du Haut Conseil à l'égalité entre les femmes et les hommes</a>.
         </p>
-        <form class="py1" itemprop="potentialAction" action="">
+        <form class="py1">
             <label for="query">Mot(s) à convertir</label>
             <input type="text" name="query" id="query"
             <?php
