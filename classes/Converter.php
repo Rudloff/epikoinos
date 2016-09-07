@@ -2,19 +2,18 @@
 
 namespace Epíkoinos;
 
-use Stringy\Stringy as S;
 use Dicollecte\Lexicon;
+use Stringy\Stringy as S;
 
 class Converter
 {
-
     private $separator;
     private $lexicon;
     private $cache;
     private $enableCache = true;
     private $overwriteCache = false;
     private $diacritics = 'ÀàÂâÆæÇçÈèÉéÊêËëÎîÏïÔôŒœÙùÛûÜü';
-    private $articles = array('un', 'le', 'ce', 'cet', 'tout', 'tous');
+    private $articles = ['un', 'le', 'ce', 'cet', 'tout', 'tous'];
 
     public function __construct($separator = '.', $enableCache = true, $overwriteCache = false)
     {
@@ -102,22 +101,23 @@ class Converter
         if ($this->enableCache) {
             $this->cache->set_cache($origW.$safeSeparator, $w);
         }
+
         return $w;
     }
 
     public function convertWord($word)
     {
-        return (string)$this->convertWordObject(S::create($word, 'UTF-8'));
+        return (string) $this->convertWordObject(S::create($word, 'UTF-8'));
     }
 
     public function convert($string)
     {
         $s = S::create($string);
         foreach (str_word_count($s, 2, $this->separator.$this->diacritics) as $i => $word) {
-            $words[] = array(
-                'word'=>$word,
-                'pos'=>$i
-            );
+            $words[] = [
+                'word' => $word,
+                'pos'  => $i,
+            ];
         }
         foreach ($words as $i => &$word) {
             $w = S::create($word['word'], 'UTF-8');
@@ -146,6 +146,7 @@ class Converter
                 }
             }
         }
-        return (string)$s;
+
+        return (string) $s;
     }
 }

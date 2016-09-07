@@ -39,10 +39,10 @@ $converter = new Converter();
             ?>
             <div class="brdr--light-gray p1">
             <?php
-            echo $converter->convert($_GET['query']);
-            ?>
+            echo $converter->convert($_GET['query']); ?>
             </div>
             <?php
+
         }
         ?>
     </body>
