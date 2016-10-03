@@ -9,6 +9,7 @@ $converter = new Converter();
 <html lang="fr">
     <head>
         <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
         <title>Epíkoinos</title>
         <link rel="stylesheet" href="bower_components/furtive/css/furtive.min.css" />
         <!-- Tu veux contribuer ? Ça se passe ici : https://github.com/Rudloff/epikoinos -->
@@ -39,10 +40,14 @@ $converter = new Converter();
             ?>
             <div class="brdr--light-gray p1">
             <?php
-            echo $converter->convert($_GET['query']);
-            ?>
+            try {
+                echo $converter->convertWord($_GET['query']);
+            } catch (\Exception $e) {
+                echo '<span class="fnt--red">Mot inconnu&nbsp;: '.$_GET['query'].'</span>';
+            } ?>
             </div>
             <?php
+
         }
         ?>
     </body>

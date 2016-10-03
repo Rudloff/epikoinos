@@ -1,4 +1,5 @@
 <?php
+
 namespace Epíkoinos\Tests;
 
 use Epíkoinos\Converter;
@@ -48,44 +49,44 @@ class ConverterTest extends \PHPUnit_Framework_TestCase
 
     public function sentenceProvider()
     {
-        return array(
-            array(
+        return [
+            [
                 "Devenez formateur, c'est bien d'être formateur",
-                "Devenez formateur.rice, c'est bien d'être formateur.rice"
-            ),
-            array(
+                "Devenez formateur.rice, c'est bien d'être formateur.rice",
+            ],
+            [
                 "Devenez formateur, c'est bien d'être formateur.rice",
-                "Devenez formateur.rice, c'est bien d'être formateur.rice"
-            ),
-            array(
+                "Devenez formateur.rice, c'est bien d'être formateur.rice",
+            ],
+            [
                 "Devenez formateur, c'est bien d'être formateur/tuteur",
-                "Devenez formateur.rice, c'est bien d'être formateur.rice/tuteur.rice"
-            ),
-            array(
-                "teurgoule et tuteurat",
-                "teurgoule et tuteurat"
-            ),
-            array(
+                "Devenez formateur.rice, c'est bien d'être formateur.rice/tuteur.rice",
+            ],
+            [
+                'teurgoule et tuteurat',
+                'teurgoule et tuteurat',
+            ],
+            [
                 'Étudiants et professeurs',
-                'Étudiant.e.s et professeur.e.s'
-            ),
-            array(
+                'Étudiant.e.s et professeur.e.s',
+            ],
+            [
                 "l'étudiant et le professeur",
-                "l'étudiant.e et la.le professeur.e"
-            ),
-            array(
+                "l'étudiant.e et la.le professeur.e",
+            ],
+            [
                 "L'étudiant et le professeur",
-                "L'étudiant.e et la.le professeur.e"
-            ),
-            array(
-                "un étudiant et un meuble",
-                "un.e étudiant.e et un meuble"
-            ),
-            array(
-                "cet étudiant",
-                "cet.te étudiant.e"
-            )
-        );
+                "L'étudiant.e et la.le professeur.e",
+            ],
+            [
+                'un étudiant et un meuble',
+                'un.e étudiant.e et un meuble',
+            ],
+            [
+                'cet étudiant',
+                'cet.te étudiant.e',
+            ],
+        ];
     }
 
     /**
@@ -100,244 +101,259 @@ class ConverterTest extends \PHPUnit_Framework_TestCase
         );
     }
 
+    /**
+     * @expectedException Exception
+     * @dataProvider wordProviderError
+     */
+    public function testConvertWordError($word)
+    {
+        $converter = new Converter('.', false);
+        $converter->convertWord($word);
+    }
+
+    public function wordProviderError()
+    {
+        return [
+            ['foobar', 'foobar'],
+            ['celui.elle', 'celui.elle'],
+        ];
+    }
+
     public function wordProvider()
     {
-        return array(
-            array('foobar', 'foobar'),
-
-            array('le', 'la.le'),
-            array('un', 'un.e'),
-            array('ce', 'ce.tte'),
-            array('celui.elle', 'celui.elle'),
+        return [
+            ['le', 'la.le'],
+            ['un', 'un.e'],
+            ['ce', 'ce.tte'],
             //
-            array('les', 'les'),
-            array('des', 'des'),
-            array('ces', 'ces'),
-            array('ceux', 'ceux.elles'),
+            ['les', 'les'],
+            ['des', 'des'],
+            ['ces', 'ces'],
+            ['ceux', 'ceux.elles'],
 
-            array('tout', 'tout.e'),
+            ['tout', 'tout.e'],
             //
-            array('tous', 'tou.te.s'),
+            ['tous', 'tou.te.s'],
 
-            array('artiste', 'artiste'),
-            array('bénévole', 'bénévole'),
-            array('cadre', 'cadre'),
-            array('capitaine', 'capitaine'),
-            array('diplomate', 'diplomate'),
-            array('fonctionnaire', 'fonctionnaire'),
-            array('gendarme', 'gendarme'),
-            array('guide', 'guide'),
-            array('interprète', 'interprète'),
-            array('juriste', 'juriste'),
-            array('maire', 'maire'),
-            array('membre', 'membre'),
-            array('propriétaire', 'propriétaire'),
-            array('secrétaire', 'secrétaire'),
+            ['artiste', 'artiste'],
+            ['bénévole', 'bénévole'],
+            ['cadre', 'cadre'],
+            ['capitaine', 'capitaine'],
+            ['diplomate', 'diplomate'],
+            ['fonctionnaire', 'fonctionnaire'],
+            ['gendarme', 'gendarme'],
+            ['guide', 'guide'],
+            ['interprète', 'interprète'],
+            ['juriste', 'juriste'],
+            ['maire', 'maire'],
+            ['membre', 'membre'],
+            ['propriétaire', 'propriétaire'],
+            ['secrétaire', 'secrétaire'],
             //
-            array('artistes', 'artistes'),
-            array('bénévoles', 'bénévoles'),
-            array('cadres', 'cadres'),
-            array('capitaines', 'capitaines'),
-            array('diplomates', 'diplomates'),
-            array('fonctionnaires', 'fonctionnaires'),
-            array('gendarmes', 'gendarmes'),
-            array('guides', 'guides'),
-            array('interprètes', 'interprètes'),
-            array('juristes', 'juristes'),
-            array('maires', 'maires'),
-            array('membres', 'membres'),
-            array('propriétaires', 'propriétaires'),
-            array('secrétaires', 'secrétaires'),
+            ['artistes', 'artistes'],
+            ['bénévoles', 'bénévoles'],
+            ['cadres', 'cadres'],
+            ['capitaines', 'capitaines'],
+            ['diplomates', 'diplomates'],
+            ['fonctionnaires', 'fonctionnaires'],
+            ['gendarmes', 'gendarmes'],
+            ['guides', 'guides'],
+            ['interprètes', 'interprètes'],
+            ['juristes', 'juristes'],
+            ['maires', 'maires'],
+            ['membres', 'membres'],
+            ['propriétaires', 'propriétaires'],
+            ['secrétaires', 'secrétaires'],
 
-            array('administré', 'administré.e'),
-            array('apprenti', 'apprenti.e'),
-            array('attaché', 'attaché.e'),
-            array('chargé', 'chargé.e'),
-            array('délégué', 'délégué.e'),
-            array('député', 'député.e'),
+            ['administré', 'administré.e'],
+            ['apprenti', 'apprenti.e'],
+            ['attaché', 'attaché.e'],
+            ['chargé', 'chargé.e'],
+            ['délégué', 'délégué.e'],
+            ['député', 'député.e'],
             //array('diplomé', 'diplomé.e'),
-            array('retraité', 'retraité.e'),
+            ['retraité', 'retraité.e'],
             //
-            array('administrés', 'administré.e.s'),
-            array('apprentis', 'apprenti.e.s'),
-            array('attachés', 'attaché.e.s'),
-            array('chargés', 'chargé.e.s'),
-            array('délégués', 'délégué.e.s'),
-            array('députés', 'député.e.s'),
+            ['administrés', 'administré.e.s'],
+            ['apprentis', 'apprenti.e.s'],
+            ['attachés', 'attaché.e.s'],
+            ['chargés', 'chargé.e.s'],
+            ['délégués', 'délégué.e.s'],
+            ['députés', 'député.e.s'],
             //array('diplomés', 'diplomé.e.s'),
-            array('retraités', 'retraité.e.s'),
+            ['retraités', 'retraité.e.s'],
 
-            array('élu', 'élu.e'),
+            ['élu', 'élu.e'],
             //
-            array('élus', 'élu.e.s'),
+            ['élus', 'élu.e.s'],
 
-            array('départemental', 'départemental.e'),
+            ['départemental', 'départemental.e'],
             //array('local', 'local.e'),
-            array('médical', 'médical.e'),
-            array('municipal', 'municipal.e'),
-            array('préfectoral', 'préfectoral.e'),
-            array('régional', 'régional.e'),
-            array('social', 'social.e'),
-            array('syndical', 'syndical.e'),
-            array('territorial', 'territorial.e'),
+            ['médical', 'médical.e'],
+            ['municipal', 'municipal.e'],
+            ['préfectoral', 'préfectoral.e'],
+            ['régional', 'régional.e'],
+            ['social', 'social.e'],
+            ['syndical', 'syndical.e'],
+            ['territorial', 'territorial.e'],
             //
-            array('départementaux', 'départementaux.ales'),
+            ['départementaux', 'départementaux.ales'],
             //array('locaux', 'locaux.ales'),
-            array('médicaux', 'médicaux.ales'),
-            array('municipaux', 'municipaux.ales'),
-            array('préfectoraux', 'préfectoraux.ales'),
-            array('régionaux', 'régionaux.ales'),
-            array('sociaux', 'sociaux.ales'),
-            array('syndicaux', 'syndicaux.ales'),
-            array('territoriaux', 'territoriaux.ales'),
+            ['médicaux', 'médicaux.ales'],
+            ['municipaux', 'municipaux.ales'],
+            ['préfectoraux', 'préfectoraux.ales'],
+            ['régionaux', 'régionaux.ales'],
+            ['sociaux', 'sociaux.ales'],
+            ['syndicaux', 'syndicaux.ales'],
+            ['territoriaux', 'territoriaux.ales'],
 
             //array('chef', 'chef.fe'),
             //
             //array('chefs', 'chef.fe.s'),
 
-            array('intellectuel', 'intellectuel.le'),
-            array('maternel', 'maternel.le'),
-            array('professionnel', 'professionnel.le'),
+            ['intellectuel', 'intellectuel.le'],
+            ['maternel', 'maternel.le'],
+            ['professionnel', 'professionnel.le'],
             //
-            array('intellectuels', 'intellectuel.le.s'),
-            array('maternels', 'maternel.le.s'),
-            array('professionnels', 'professionnel.le.s'),
+            ['intellectuels', 'intellectuel.le.s'],
+            ['maternels', 'maternel.le.s'],
+            ['professionnels', 'professionnel.le.s'],
 
-            array('citoyen', 'citoyen.ne'),
-            array('gardien', 'gardien.ne'),
-            array('lycéen', 'lycéen.ne'),
-            array('technicien', 'technicien.ne'),
+            ['citoyen', 'citoyen.ne'],
+            ['gardien', 'gardien.ne'],
+            ['lycéen', 'lycéen.ne'],
+            ['technicien', 'technicien.ne'],
             //
-            array('citoyens', 'citoyen.ne.s'),
-            array('gardiens', 'gardien.ne.s'),
-            array('lycéens', 'lycéen.ne.s'),
-            array('techniciens', 'technicien.ne.s'),
+            ['citoyens', 'citoyen.ne.s'],
+            ['gardiens', 'gardien.ne.s'],
+            ['lycéens', 'lycéen.ne.s'],
+            ['techniciens', 'technicien.ne.s'],
 
-            array('banquier', 'banquier.ère'),
-            array('conseiller', 'conseiller.ère'),
-            array('écolier', 'écolier.ère'),
-            array('hospitalier', 'hospitalier.ère'),
-            array('officier', 'officier.ère'),
-            array('premier', 'premier.ère'),
-            array('policier', 'policier.ère'),
-            array('usager', 'usager.ère'),
+            ['banquier', 'banquier.ère'],
+            ['conseiller', 'conseiller.ère'],
+            ['écolier', 'écolier.ère'],
+            ['hospitalier', 'hospitalier.ère'],
+            ['officier', 'officier.ère'],
+            ['premier', 'premier.ère'],
+            ['policier', 'policier.ère'],
+            ['usager', 'usager.ère'],
             //
-            array('banquiers', 'banquier.ère.s'),
-            array('conseillers', 'conseiller.ère.s'),
-            array('écoliers', 'écolier.ère.s'),
-            array('hospitaliers', 'hospitalier.ère.s'),
-            array('officiers', 'officier.ère.s'),
-            array('premiers', 'premier.ère.s'),
-            array('policiers', 'policier.ère.s'),
-            array('usagers', 'usager.ère.s'),
+            ['banquiers', 'banquier.ère.s'],
+            ['conseillers', 'conseiller.ère.s'],
+            ['écoliers', 'écolier.ère.s'],
+            ['hospitaliers', 'hospitalier.ère.s'],
+            ['officiers', 'officier.ère.s'],
+            ['premiers', 'premier.ère.s'],
+            ['policiers', 'policier.ère.s'],
+            ['usagers', 'usager.ère.s'],
 
-            array('chroniqueur', 'chroniqueur.euse'),
-            array('entraineur', 'entraineur.euse'),
-            array('footballeur', 'footballeur.euse'),
-            array('programmeur', 'programmeur.euse'),
-            array('travailleur', 'travailleur.euse'),
+            ['chroniqueur', 'chroniqueur.euse'],
+            ['entraineur', 'entraineur.euse'],
+            ['footballeur', 'footballeur.euse'],
+            ['programmeur', 'programmeur.euse'],
+            ['travailleur', 'travailleur.euse'],
             //
-            array('chroniqueurs', 'chroniqueur.euse.s'),
-            array('entraineurs', 'entraineur.euse.s'),
-            array('footballeurs', 'footballeur.euse.s'),
-            array('programmeurs', 'programmeur.euse.s'),
-            array('travailleurs', 'travailleur.euse.s'),
+            ['chroniqueurs', 'chroniqueur.euse.s'],
+            ['entraineurs', 'entraineur.euse.s'],
+            ['footballeurs', 'footballeur.euse.s'],
+            ['programmeurs', 'programmeur.euse.s'],
+            ['travailleurs', 'travailleur.euse.s'],
 
             //array('chercheur', 'chercheur.e'),
-            array('gouverneur', 'gouverneur.e'),
+            ['gouverneur', 'gouverneur.e'],
             //array('ingénieur', 'ingénieur.e'),
             //array('entrepreneur', 'entrepreneur.e'),
-            array('professeur', 'professeur.e'),
+            ['professeur', 'professeur.e'],
             //
             //array('chercheurs', 'chercheur.e.s'),
-            array('gouverneurs', 'gouverneur.e.s'),
+            ['gouverneurs', 'gouverneur.e.s'],
             //array('ingénieurs', 'ingénieur.e.s'),
             //array('entrepreneurs', 'entrepreneur.e.s'),
-            array('professeurs', 'professeur.e.s'),
+            ['professeurs', 'professeur.e.s'],
 
-            array('ambassadeur', 'ambassadeur.rice'),
+            ['ambassadeur', 'ambassadeur.rice'],
             //
-            array('ambassadeurs', 'ambassadeur.rice.s'),
+            ['ambassadeurs', 'ambassadeur.rice.s'],
 
-            array('acheteur', 'acheteur.euse'),
-            array('transporteur', 'transporteur.euse'),
+            ['acheteur', 'acheteur.euse'],
+            ['transporteur', 'transporteur.euse'],
             //
-            array('acheteurs', 'acheteur.euse.s'),
-            array('transporteurs', 'transporteur.euse.s'),
+            ['acheteurs', 'acheteur.euse.s'],
+            ['transporteurs', 'transporteur.euse.s'],
 
-            array('acteur', 'acteur.rice'),
-            array('administrateur', 'administrateur.rice'),
-            array('animateur', 'animateur.rice'),
-            array('agriculteur', 'agriculteur.rice'),
-            array('consommateur', 'consommateur.rice'),
-            array('directeur', 'directeur.rice'),
-            array('éducateur', 'éducateur.rice'),
-            array('électeur', 'électeur.rice'),
-            array('instituteur', 'instituteur.rice'),
-            array('inspecteur', 'inspecteur.rice'),
-            array('médiateur', 'médiateur.rice'),
-            array('modérateur', 'modérateur.rice'),
-            array('sénateur', 'sénateur.rice'),
-            array('recteur', 'recteur.rice'),
+            ['acteur', 'acteur.rice'],
+            ['administrateur', 'administrateur.rice'],
+            ['animateur', 'animateur.rice'],
+            ['agriculteur', 'agriculteur.rice'],
+            ['consommateur', 'consommateur.rice'],
+            ['directeur', 'directeur.rice'],
+            ['éducateur', 'éducateur.rice'],
+            ['électeur', 'électeur.rice'],
+            ['instituteur', 'instituteur.rice'],
+            ['inspecteur', 'inspecteur.rice'],
+            ['médiateur', 'médiateur.rice'],
+            ['modérateur', 'modérateur.rice'],
+            ['sénateur', 'sénateur.rice'],
+            ['recteur', 'recteur.rice'],
             //
-            array('acteurs', 'acteur.rice.s'),
-            array('administrateurs', 'administrateur.rice.s'),
-            array('animateurs', 'animateur.rice.s'),
-            array('agriculteurs', 'agriculteur.rice.s'),
-            array('consommateurs', 'consommateur.rice.s'),
-            array('directeurs', 'directeur.rice.s'),
-            array('éducateurs', 'éducateur.rice.s'),
-            array('électeurs', 'électeur.rice.s'),
-            array('instituteurs', 'instituteur.rice.s'),
-            array('inspecteurs', 'inspecteur.rice.s'),
-            array('médiateurs', 'médiateur.rice.s'),
-            array('modérateurs', 'modérateur.rice.s'),
-            array('sénateurs', 'sénateur.rice.s'),
-            array('recteurs', 'recteur.rice.s'),
+            ['acteurs', 'acteur.rice.s'],
+            ['administrateurs', 'administrateur.rice.s'],
+            ['animateurs', 'animateur.rice.s'],
+            ['agriculteurs', 'agriculteur.rice.s'],
+            ['consommateurs', 'consommateur.rice.s'],
+            ['directeurs', 'directeur.rice.s'],
+            ['éducateurs', 'éducateur.rice.s'],
+            ['électeurs', 'électeur.rice.s'],
+            ['instituteurs', 'instituteur.rice.s'],
+            ['inspecteurs', 'inspecteur.rice.s'],
+            ['médiateurs', 'médiateur.rice.s'],
+            ['modérateurs', 'modérateur.rice.s'],
+            ['sénateurs', 'sénateur.rice.s'],
+            ['recteurs', 'recteur.rice.s'],
 
-            array('auteur', 'auteur.e'),
-            array('auteurs', 'auteur.e.s'),
+            ['auteur', 'auteur.e'],
+            ['auteurs', 'auteur.e.s'],
 
-            array('administratif', 'administratif.ve'),
-            array('créatif', 'créatif.ve'),
-            array('sportif', 'sportif.ve'),
+            ['administratif', 'administratif.ve'],
+            ['créatif', 'créatif.ve'],
+            ['sportif', 'sportif.ve'],
             //
-            array('administratifs', 'administratif.ve.s'),
-            array('créatifs', 'créatif.ve.s'),
-            array('sportifs', 'sportif.ve.s'),
+            ['administratifs', 'administratif.ve.s'],
+            ['créatifs', 'créatif.ve.s'],
+            ['sportifs', 'sportif.ve.s'],
 
-            array('adhérent', 'adhérent.e'),
-            array('adjoint', 'adjoint.e'),
-            array('agent', 'agent.e'),
-            array('avocat', 'avocat.e'),
-            array('assistant', 'assistant.e'),
-            array('consultant', 'consultant.e'),
-            array('étudiant', 'étudiant.e'),
-            array('habitant', 'habitant.e'),
-            array('président', 'président.e'),
-            array('remplaçant', 'remplaçant.e'),
-            array('suppléant', 'suppléant.e'),
+            ['adhérent', 'adhérent.e'],
+            ['adjoint', 'adjoint.e'],
+            ['agent', 'agent.e'],
+            ['avocat', 'avocat.e'],
+            ['assistant', 'assistant.e'],
+            ['consultant', 'consultant.e'],
+            ['étudiant', 'étudiant.e'],
+            ['habitant', 'habitant.e'],
+            ['président', 'président.e'],
+            ['remplaçant', 'remplaçant.e'],
+            ['suppléant', 'suppléant.e'],
             //
-            array('adhérents', 'adhérent.e.s'),
-            array('adjoints', 'adjoint.e.s'),
-            array('agents', 'agent.e.s'),
-            array('avocats', 'avocat.e.s'),
-            array('assistants', 'assistant.e.s'),
-            array('consultants', 'consultant.e.s'),
-            array('étudiants', 'étudiant.e.s'),
-            array('habitants', 'habitant.e.s'),
-            array('présidents', 'président.e.s'),
-            array('remplaçants', 'remplaçant.e.s'),
-            array('suppléants', 'suppléant.e.s'),
+            ['adhérents', 'adhérent.e.s'],
+            ['adjoints', 'adjoint.e.s'],
+            ['agents', 'agent.e.s'],
+            ['avocats', 'avocat.e.s'],
+            ['assistants', 'assistant.e.s'],
+            ['consultants', 'consultant.e.s'],
+            ['étudiants', 'étudiant.e.s'],
+            ['habitants', 'habitant.e.s'],
+            ['présidents', 'président.e.s'],
+            ['remplaçants', 'remplaçant.e.s'],
+            ['suppléants', 'suppléant.e.s'],
 
-            array('artisan', 'artisan.e'),
+            ['artisan', 'artisan.e'],
             //array('commis', 'commis.e'),
             //array('sénior', 'sénior.e'),
             //
-            array('artisans', 'artisan.e.s'),
+            ['artisans', 'artisan.e.s'],
             //array('commis', 'commis.e.s'),
             //array('séniors', 'sénior.e.s'),
-            array('nombreux', 'nombreux.ses')
-        );
+            ['nombreux', 'nombreux.ses'],
+        ];
     }
 }
