@@ -101,15 +101,30 @@ class ConverterTest extends \PHPUnit_Framework_TestCase
         );
     }
 
-    public function wordProvider()
+    /**
+     * @expectedException Exception
+     * @dataProvider wordProviderError
+     */
+    public function testConvertWordError($word)
+    {
+        $converter = new Converter('.', false);
+        $converter->convertWord($word);
+    }
+
+    public function wordProviderError()
     {
         return [
             ['foobar', 'foobar'],
+            ['celui.elle', 'celui.elle'],
+        ];
+    }
 
+    public function wordProvider()
+    {
+        return [
             ['le', 'la.le'],
             ['un', 'un.e'],
             ['ce', 'ce.tte'],
-            ['celui.elle', 'celui.elle'],
             //
             ['les', 'les'],
             ['des', 'des'],

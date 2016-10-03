@@ -31,10 +31,17 @@ class Converter
             case 'le':
                 return S::create('la.le');
             break;
+            case 'les':
+            case 'des':
+            case 'ces':
+                return $w;
+            break;
             case 'ce':
                 return S::create('ce.tte');
+            break;
             case 'cet':
                 return S::create('cet.te');
+            break;
             case 'ceux':
                 return S::create('ceux.elles');
             break;
@@ -50,7 +57,11 @@ class Converter
             return S::create($this->cache->get_cache($w.$safeSeparator));
         }
         $w = $w->removeLeft("l'")->removeLeft("L'");
-        foreach ($this->lexicon->getByInflection($w) as $inflection) {
+        $inflections = $this->lexicon->getByInflection($w);
+        if (empty($inflections)) {
+            throw new \Exception("Can't find this inflection");
+        }
+        foreach ($inflections as $inflection) {
             if ($inflection->inflection == $w->toLowerCase()
                 && $inflection->hasTag('mas')
             ) {
@@ -123,7 +134,11 @@ class Converter
             $w = S::create($word['word'], 'UTF-8');
             if (!in_array($w, $this->articles)) {
                 $w->trim($this->separator);
-                $newW = $this->convertWordObject($w);
+                try {
+                    $newW = $this->convertWordObject($w);
+                } catch (\Exception $e) {
+                    $newW = $w;
+                }
                 if ($newW != $w) {
                     $s = S::create(substr_replace($s, $newW, $word['pos'], strlen($w)));
                     foreach ($words as $j => $word) {

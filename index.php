@@ -40,7 +40,12 @@ $converter = new Converter();
             ?>
             <div class="brdr--light-gray p1">
             <?php
-            echo $converter->convert($_GET['query']); ?>
+            try {
+                echo $converter->convertWord($_GET['query']);
+            } catch (\Exception $e) {
+                echo '<span class="fnt--red">Mot inconnu&nbsp;: '.$_GET['query'].'</span>';
+            }
+            ?>
             </div>
             <?php
 
