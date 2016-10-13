@@ -54,7 +54,7 @@ module.exports = function (grunt) {
         phpdocumentor: {
             doc: {
                 options: {
-                    directory: 'classes/,controllers/,tests/'
+                    directory: 'classes/,tests/'
                 }
             }
         }
