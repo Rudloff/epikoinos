@@ -114,6 +114,16 @@ class Converter
         return (string) $this->convertWordObject(S::create($word, 'UTF-8'));
     }
 
+    private function getWordsPos($words, $i, $newW, $w)
+    {
+        foreach ($words as $j => $word) {
+            if ($j > $i) {
+                $words[$j]['pos'] += strlen($newW) - strlen($w);
+            }
+        }
+        return $words;
+    }
+
     public function convert($string)
     {
         $s = S::create($string);
@@ -135,21 +145,13 @@ class Converter
                 }
                 if ($newW != $w) {
                     $s = S::create(substr_replace($s, $newW, $word['pos'], strlen($w)));
-                    foreach ($words as $j => $word) {
-                        if ($j > $i) {
-                            $words[$j]['pos'] += strlen($newW) - strlen($w);
-                        }
-                    }
+                    $words = $this->getWordsPos($words, $i, $newW, $w);
                     if (isset($words[$i - 1]) && in_array($words[$i - 1]['word'], $this->articles)) {
                         $w = S::create($words[$i - 1]['word'], 'UTF-8');
                         $newW = $this->convertWordObject($w);
                         if ($newW != $w) {
                             $s = S::create(substr_replace($s, $newW, $words[$i - 1]['pos'], strlen($w)));
-                            foreach ($words as $j => $word) {
-                                if ($j > $i) {
-                                    $words[$j]['pos'] += strlen($newW) - strlen($w);
-                                }
-                            }
+                            $words = $this->getWordsPos($words, $i, $newW, $w);
                         }
                     }
                 }
