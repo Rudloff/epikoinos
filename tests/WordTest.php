@@ -8,9 +8,8 @@ use Stringy\Stringy as S;
 
 class WordTest extends BaseTest
 {
-
     protected static $skip = [
-        'le', 'les', 'des', 'ces', 'ce', 'cet', 'ceux', 'tout', 'tous'
+        'le', 'les', 'des', 'ces', 'ce', 'cet', 'ceux', 'tout', 'tous',
     ];
 
     protected function setUp()

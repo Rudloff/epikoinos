@@ -7,7 +7,6 @@ use Stringy\Stringy as S;
 
 class Word
 {
-
     public $string;
     private $lexicon;
     private $mascInflection;
@@ -105,6 +104,7 @@ class Word
                         break;
                 }
             }
+
             return $suffix;
         }
     }
@@ -116,6 +116,7 @@ class Word
             if ($this->plural->length() > 0) {
                 $return = $return->removeRight((string) $this->plural);
             }
+
             return $return->ensureRight($this->separator.$this->suffix);
         } else {
             return $this->string;
