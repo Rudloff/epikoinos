@@ -59,7 +59,7 @@ class Converter
 
     public function convertWord($word)
     {
-        return $this->convertWordObject(S::create($word));
+        return (string) $this->convertWordObject(S::create($word));
     }
 
     private function updateWordsPosition($words, $i, $newWord, $oldWord)

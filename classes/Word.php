@@ -94,7 +94,7 @@ class Word
             }
             if ($this->mascInflection->hasTag('pl')) {
                 if ($this->plural->length() > 0) {
-                    $suffix = $suffix->removeRight($this->plural)->ensureRight($this->separator.$this->plural);
+                    $suffix = $suffix->removeRight((string) $this->plural)->ensureRight($this->separator.$this->plural);
                 }
                 switch ($suffix) {
                     case 'les':
@@ -114,7 +114,7 @@ class Word
         if (isset($this->mascInflection) && isset($this->femInflection)) {
             $return = $this->string;
             if ($this->plural->length() > 0) {
-                $return = $return->removeRight($this->plural);
+                $return = $return->removeRight((string) $this->plural);
             }
             return $return->ensureRight($this->separator.$this->suffix);
         } else {
