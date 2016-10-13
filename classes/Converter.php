@@ -117,6 +117,7 @@ class Converter
     public function convert($string)
     {
         $s = S::create($string);
+        $words = [];
         foreach (str_word_count($s, 2, $this->separator.$this->diacritics) as $i => $word) {
             $words[] = [
                 'word' => $word,
