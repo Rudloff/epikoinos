@@ -1,10 +1,23 @@
 {
-	"repository": "https://github.com/Rudloff/epikoinos.git",
-	"license": "GPL-3.0",
-	"devDependencies": {
-		"grunt": "~1.0.1",
-		"grunt-jslint": "~1.1.14",
-		"grunt-phpunit": "~0.3.6",
-		"grunt-phpcs": "~0.4.0"
-	}
+  "name": "epikoinos",
+  "description": "Convert French words to their epicene form",
+  "version": "0.2.1",
+  "author": "Pierre Rudloff",
+  "bugs": "https://github.com/Rudloff/epikoinos/issues",
+  "devDependencies": {
+    "grunt": "~1.0.1",
+    "grunt-fixpack": "~0.1.0",
+    "grunt-jslint": "~1.1.14",
+    "grunt-jsonlint": "~1.1.0",
+    "grunt-phpcs": "~0.4.0",
+    "grunt-phpunit": "~0.3.6"
+  },
+  "homepage": "https://epikoinos.netlib.re/",
+  "keywords": [
+    "French",
+    "PHP"
+  ],
+  "license": "GPL-3.0",
+  "main": "index.php",
+  "repository": "https://github.com/Rudloff/epikoinos.git"
 }

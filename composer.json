@@ -1,44 +1,46 @@
 {
-	"name": "rudloff/epikoinos",
-	"description": "Convert French words to their epicene form",
-	"license": "GPL-3.0",
-	"require": {
-		"danielstjules/stringy": "~2.3.1",
-		"rudloff/dicollecte-lexicon": "dev-develop",
-		"gilbitron/php-simplecache": "~1.4.1"
-	},
-	"require-dev": {
-		"symfony/var-dumper": "~3.0.0",
-		"dicollecte/lexique": "~5.6",
-		"phpunit/phpunit": "~5.4.8",
-		"squizlabs/php_codesniffer": "~2.6.2"
-	},
-	"repositories": [{
-		"type": "package",
-		"package": {
-			"name": "dicollecte/lexique",
-			"version": "5.6",
-			"dist": {
-				"url": "http://www.dicollecte.org/download/fr/lexique-dicollecte-fr-v5.6.zip",
-				"type": "zip"
-			}
-		}
-	}],
-	"autoload": {
-		"psr-4": {
-			"Epíkoinos\\": "classes/"
-		}
-	},
-	"autoload-dev": {
-		"psr-4": {
-			"Epíkoinos\\Tests\\": "tests/"
-		}
-	},
-	"scripts": {
-		"update-lexicon": "grep vendor/dicollecte/lexique/lexique-dicollecte-fr-v5.6.txt -e 'nom\\|adj' | cut -f1-4 > lexique-dicollecte-names.csv",
-		"empty-cache": "rm cache/*"
-	},
-	"config": {
-		"secure-http": false
-	}
+  "name": "rudloff/epikoinos",
+  "description": "Convert French words to their epicene form",
+  "license": "GPL-3.0",
+  "require": {
+    "danielstjules/stringy": "~2.3.1",
+    "rudloff/dicollecte-lexicon": "dev-develop",
+    "gilbitron/php-simplecache": "~1.4.1"
+  },
+  "require-dev": {
+    "symfony/var-dumper": "~3.0.0",
+    "dicollecte/lexique": "~5.6",
+    "phpunit/phpunit": "~5.4.8",
+    "squizlabs/php_codesniffer": "~2.6.2"
+  },
+  "repositories": [
+    {
+      "type": "package",
+      "package": {
+        "name": "dicollecte/lexique",
+        "version": "5.6",
+        "dist": {
+          "url": "http://www.dicollecte.org/download/fr/lexique-dicollecte-fr-v5.6.zip",
+          "type": "zip"
+        }
+      }
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "Epíkoinos\\": "classes/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Epíkoinos\\Tests\\": "tests/"
+    }
+  },
+  "scripts": {
+    "update-lexicon": "grep vendor/dicollecte/lexique/lexique-dicollecte-fr-v5.6.txt -e 'nom\\|adj' | cut -f1-4 > lexique-dicollecte-names.csv",
+    "empty-cache": "rm cache/*"
+  },
+  "config": {
+    "secure-http": false
+  }
 }
