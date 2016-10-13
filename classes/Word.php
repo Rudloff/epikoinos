@@ -17,9 +17,9 @@ class Word
     private $separator;
     private $plural;
 
-    public function __construct($string, Lexicon $lexicon, S $separator)
+    public function __construct(S $string, Lexicon $lexicon, S $separator)
     {
-        $this->string = S::create($string);
+        $this->string = $string;
         $this->separator = $separator;
         $this->lexicon = $lexicon;
         $this->mascInflection = $this->getMascInflection();
