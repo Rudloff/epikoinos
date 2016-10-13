@@ -29,6 +29,11 @@
 			"Epíkoinos\\": "classes/"
 		}
 	},
+	"autoload-dev": {
+		"psr-4": {
+			"Epíkoinos\\Tests\\": "tests/"
+		}
+	},
 	"scripts": {
 		"update-lexicon": "grep vendor/dicollecte/lexique/lexique-dicollecte-fr-v5.6.txt -e 'nom\\|adj' | cut -f1-4 > lexique-dicollecte-names.csv",
 		"empty-cache": "rm cache/*"
