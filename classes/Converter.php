@@ -30,27 +30,20 @@ class Converter
         switch ($w) {
             case 'le':
                 return S::create('la.le');
-            break;
             case 'les':
             case 'des':
             case 'ces':
                 return $w;
-            break;
             case 'ce':
                 return S::create('ce.tte');
-            break;
             case 'cet':
                 return S::create('cet.te');
-            break;
             case 'ceux':
                 return S::create('ceux.elles');
-            break;
             case 'tout':
                 return S::create('tout.e');
-            break;
             case 'tous':
                 return S::create('tou.te.s');
-            break;
         }
         $origW = $w;
         if ($this->enableCache && !$this->overwriteCache && $this->cache->is_cached($w.$safeSeparator)) {
