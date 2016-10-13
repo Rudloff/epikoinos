@@ -1,6 +1,6 @@
 <?php
 /**
- * Converter class
+ * Converter class.
  */
 namespace Epíkoinos;
 
@@ -9,43 +9,49 @@ use Gilbitron\Util\SimpleCache;
 use Stringy\Stringy as S;
 
 /**
- * Class used to convert words
+ * Class used to convert words.
  */
 class Converter
 {
     /**
-     * Separator character to use in epicene forms
+     * Separator character to use in epicene forms.
+     *
      * @var string
      */
     private $separator = '.';
 
     /**
-     * Lexicon used to find word inflections
+     * Lexicon used to find word inflections.
+     *
      * @var Lexicon
      */
     private $lexicon;
 
     /**
-     * Cache
+     * Cache.
+     *
      * @var SimpleCache
      */
     private $cache;
 
     /**
      * Enable cache?
-     * @var boolean
+     *
+     * @var bool
      */
     private $enableCache = true;
 
     /**
      * Force refreshing of cache?
-     * @var boolean
+     *
+     * @var bool
      */
     private $overwriteCache = false;
 
     /**
      * String containing all the letters that are considred diacritics.
      * This is used in order to make str_word_count() work correctly with French words.
+     *
      * @var string
      */
     private $diacritics = 'ÀàÂâÆæÇçÈèÉéÊêËëÎîÏïÔôŒœÙùÛûÜü';
@@ -53,15 +59,17 @@ class Converter
     /**
      * List of French articles.
      * This is used in order to convert each word along with its article.
+     *
      * @var string[]
      */
     private $articles = ['un', 'le', 'ce', 'cet', 'tout', 'tous'];
 
     /**
-     * Converter constructor
-     * @param string  $separator      Separator character to use in epicene forms
-     * @param boolean $enableCache    Enable cache?
-     * @param boolean $overwriteCache Force refreshing of cache?
+     * Converter constructor.
+     *
+     * @param string $separator      Separator character to use in epicene forms
+     * @param bool   $enableCache    Enable cache?
+     * @param bool   $overwriteCache Force refreshing of cache?
      */
     public function __construct($separator = '.', $enableCache = true, $overwriteCache = false)
     {
@@ -73,9 +81,11 @@ class Converter
     }
 
     /**
-     * Convert a Stringy object to its epicene form
-     * @param  S $word Word to convert
-     * @return S       Converted word
+     * Convert a Stringy object to its epicene form.
+     *
+     * @param S $word Word to convert
+     *
+     * @return S Converted word
      */
     private function convertWordObject(S $word)
     {
@@ -112,9 +122,11 @@ class Converter
     }
 
     /**
-     * Convert a word to its epicene form
-     * @param  string $word Word to convert
-     * @return string       Converted word
+     * Convert a word to its epicene form.
+     *
+     * @param string $word Word to convert
+     *
+     * @return string Converted word
      */
     public function convertWord($word)
     {
@@ -122,12 +134,14 @@ class Converter
     }
 
     /**
-     * Update words position in string after a word has been replaced
-     * @param  array $words   Words in string
-     * @param  int $i       Index of the word we're currently processing
-     * @param  string $newWord Converted word
-     * @param  string $oldWord Word to be replace
-     * @return array          Words in string with updated position
+     * Update words position in string after a word has been replaced.
+     *
+     * @param array  $words   Words in string
+     * @param int    $i       Index of the word we're currently processing
+     * @param string $newWord Converted word
+     * @param string $oldWord Word to be replace
+     *
+     * @return array Words in string with updated position
      */
     private function updateWordsPosition($words, $i, $newWord, $oldWord)
     {
@@ -141,9 +155,11 @@ class Converter
     }
 
     /**
-     * Convert words in a string to their epicene form
-     * @param  string $string String to parse
-     * @return string         String with converted words
+     * Convert words in a string to their epicene form.
+     *
+     * @param string $string String to parse
+     *
+     * @return string String with converted words
      */
     public function convert($string)
     {

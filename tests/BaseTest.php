@@ -1,16 +1,17 @@
 <?php
 /**
- * BaseTest class
+ * BaseTest class.
  */
 namespace Epíkoinos\Tests;
 
 /**
- * Abstract class used to handle providers used by several tests
+ * Abstract class used to handle providers used by several tests.
  */
 abstract class BaseTest extends \PHPUnit_Framework_TestCase
 {
     /**
-     * List of words to skip because we know they don't work yet
+     * List of words to skip because we know they don't work yet.
+     *
      * @var string[]
      */
     protected static $skip = [
@@ -20,7 +21,8 @@ abstract class BaseTest extends \PHPUnit_Framework_TestCase
     ];
 
     /**
-     * Return a list of sentences to use for tests
+     * Return a list of sentences to use for tests.
+     *
      * @return array[]
      */
     public function sentenceProvider()
@@ -70,7 +72,8 @@ abstract class BaseTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * Return a list of words to use for tests
+     * Return a list of words to use for tests.
+     *
      * @return array[]
      */
     public function wordProvider()
@@ -312,7 +315,8 @@ abstract class BaseTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * Return a list of unknown word to use for tests
+     * Return a list of unknown word to use for tests.
+     *
      * @return array[]
      */
     public function wordProviderError()

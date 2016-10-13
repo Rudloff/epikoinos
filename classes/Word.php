@@ -1,6 +1,6 @@
 <?php
 /**
- * Word class
+ * Word class.
  */
 namespace Epíkoinos;
 
@@ -8,60 +8,69 @@ use Dicollecte\Lexicon;
 use Stringy\Stringy as S;
 
 /**
- * Class used to handle words and their inflections
+ * Class used to handle words and their inflections.
  */
 class Word
 {
     /**
-     * Base word string
+     * Base word string.
+     *
      * @var string
      */
     public $string;
 
     /**
-     * Lexicon used to look for inflections
+     * Lexicon used to look for inflections.
+     *
      * @var Lexicon
      */
     private $lexicon;
 
     /**
-     * Masculine inflection
+     * Masculine inflection.
+     *
      * @var \Dicollecte\Inflection
      */
     private $mascInflection;
 
     /**
-     * Feminine inflection
+     * Feminine inflection.
+     *
      * @var \Dicollecte\Inflection
      */
     private $femInflection;
 
     /**
-     * Word prefix (common to masculine and feminine forms)
+     * Word prefix (common to masculine and feminine forms).
+     *
      * @var S
      */
     private $prefix;
 
     /**
-     * Word suffix (added by conversion)
+     * Word suffix (added by conversion).
+     *
      * @var S
      */
     private $suffix;
 
     /**
-     * Separator used in epicene form
+     * Separator used in epicene form.
+     *
      * @var S
      */
     private $separator;
 
     /**
-     * Plural suffix (generally "s")
+     * Plural suffix (generally "s").
+     *
      * @var S
      */
     private $plural;
 
     /**
-     * Word constructor
+     * Word constructor.
+     *
      * @param S       $string    Base word string
      * @param Lexicon $lexicon   Lexicon used to look for inflections
      * @param S       $separator Separator used in epicene form
@@ -79,7 +88,8 @@ class Word
     }
 
     /**
-     * Get masculine inflection
+     * Get masculine inflection.
+     *
      * @return \Dicollecte\Inflection Masculine inflection
      */
     private function getMascInflection()
@@ -102,7 +112,8 @@ class Word
     }
 
     /**
-     * Get feminine inflection
+     * Get feminine inflection.
+     *
      * @return \Dicollecte\Inflection Feminine inflection
      */
     private function getFemInflection()
@@ -127,7 +138,8 @@ class Word
     }
 
     /**
-     * Get prefix
+     * Get prefix.
+     *
      * @return S Prefix
      */
     private function getPrefix()
@@ -138,7 +150,8 @@ class Word
     }
 
     /**
-     * Get plural suffix
+     * Get plural suffix.
+     *
      * @return S Plural suffix
      */
     private function getPlural()
@@ -149,7 +162,8 @@ class Word
     }
 
     /**
-     * Get suffix
+     * Get suffix.
+     *
      * @return S Suffix
      */
     private function getSuffix()
@@ -180,7 +194,8 @@ class Word
     }
 
     /**
-     * Convert word to its epicene form
+     * Convert word to its epicene form.
+     *
      * @return S Epicene form
      */
     public function convert()
