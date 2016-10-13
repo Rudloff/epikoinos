@@ -75,6 +75,10 @@ class ConverterTest extends \PHPUnit_Framework_TestCase
                 "l'étudiant.e et la.le professeur.e",
             ],
             [
+                "le professeur, le professeur et le professeur",
+                "la.le professeur.e, la.le professeur.e et la.le professeur.e",
+            ],
+            [
                 "L'étudiant et le professeur",
                 "L'étudiant.e et la.le professeur.e",
             ],
