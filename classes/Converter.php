@@ -54,6 +54,7 @@ class Converter
         if ($this->enableCache) {
             $this->cache->set_cache($word.$separator, $return);
         }
+
         return $return;
     }
 
@@ -85,7 +86,7 @@ class Converter
             }
             if ($word->startsWith("l'") || $word->startsWith("L'")) {
                 $word = $word->removeLeft("l'")->removeLeft("L'");
-                $pos =+ 2;
+                $pos = +2;
             }
             $words[] = [
                 'word' => $word,

@@ -4,11 +4,10 @@ namespace Epíkoinos\Tests;
 
 abstract class BaseTest extends \PHPUnit_Framework_TestCase
 {
-
     protected static $skip = [
         'diplomé', 'diplomés', 'local', 'locaux', 'chef', 'chefs', 'chercheur',
         'ingénieur', 'entrepreneur', 'chercheurs', 'ingénieurs', 'entrepreneurs',
-        'commis', 'sénior', 'séniors'
+        'commis', 'sénior', 'séniors',
     ];
 
     public function sentenceProvider()
@@ -109,7 +108,7 @@ abstract class BaseTest extends \PHPUnit_Framework_TestCase
             ['chargé', 'chargé.e'],
             ['délégué', 'délégué.e'],
             ['député', 'député.e'],
-            array('diplomé', 'diplomé.e'),
+            ['diplomé', 'diplomé.e'],
             ['retraité', 'retraité.e'],
             //
             ['administrés', 'administré.e.s'],
@@ -118,7 +117,7 @@ abstract class BaseTest extends \PHPUnit_Framework_TestCase
             ['chargés', 'chargé.e.s'],
             ['délégués', 'délégué.e.s'],
             ['députés', 'député.e.s'],
-            array('diplomés', 'diplomé.e.s'),
+            ['diplomés', 'diplomé.e.s'],
             ['retraités', 'retraité.e.s'],
 
             ['élu', 'élu.e'],
@@ -126,7 +125,7 @@ abstract class BaseTest extends \PHPUnit_Framework_TestCase
             ['élus', 'élu.e.s'],
 
             ['départemental', 'départemental.e'],
-            array('local', 'local.e'),
+            ['local', 'local.e'],
             ['médical', 'médical.e'],
             ['municipal', 'municipal.e'],
             ['préfectoral', 'préfectoral.e'],
@@ -136,7 +135,7 @@ abstract class BaseTest extends \PHPUnit_Framework_TestCase
             ['territorial', 'territorial.e'],
             //
             ['départementaux', 'départementaux.ales'],
-            array('locaux', 'locaux.ales'),
+            ['locaux', 'locaux.ales'],
             ['médicaux', 'médicaux.ales'],
             ['municipaux', 'municipaux.ales'],
             ['préfectoraux', 'préfectoraux.ales'],
@@ -145,9 +144,9 @@ abstract class BaseTest extends \PHPUnit_Framework_TestCase
             ['syndicaux', 'syndicaux.ales'],
             ['territoriaux', 'territoriaux.ales'],
 
-            array('chef', 'chef.fe'),
+            ['chef', 'chef.fe'],
             //
-            array('chefs', 'chef.fe.s'),
+            ['chefs', 'chef.fe.s'],
 
             ['intellectuel', 'intellectuel.le'],
             ['maternel', 'maternel.le'],
@@ -197,16 +196,16 @@ abstract class BaseTest extends \PHPUnit_Framework_TestCase
             ['programmeurs', 'programmeur.euse.s'],
             ['travailleurs', 'travailleur.euse.s'],
 
-            array('chercheur', 'chercheur.e'),
+            ['chercheur', 'chercheur.e'],
             ['gouverneur', 'gouverneur.e'],
-            array('ingénieur', 'ingénieur.e'),
-            array('entrepreneur', 'entrepreneur.e'),
+            ['ingénieur', 'ingénieur.e'],
+            ['entrepreneur', 'entrepreneur.e'],
             ['professeur', 'professeur.e'],
             //
-            array('chercheurs', 'chercheur.e.s'),
+            ['chercheurs', 'chercheur.e.s'],
             ['gouverneurs', 'gouverneur.e.s'],
-            array('ingénieurs', 'ingénieur.e.s'),
-            array('entrepreneurs', 'entrepreneur.e.s'),
+            ['ingénieurs', 'ingénieur.e.s'],
+            ['entrepreneurs', 'entrepreneur.e.s'],
             ['professeurs', 'professeur.e.s'],
 
             ['ambassadeur', 'ambassadeur.rice'],
@@ -285,12 +284,12 @@ abstract class BaseTest extends \PHPUnit_Framework_TestCase
             ['suppléants', 'suppléant.e.s'],
 
             ['artisan', 'artisan.e'],
-            array('commis', 'commis.e'),
-            array('sénior', 'sénior.e'),
+            ['commis', 'commis.e'],
+            ['sénior', 'sénior.e'],
             //
             ['artisans', 'artisan.e.s'],
-            array('commis', 'commis.e.s'),
-            array('séniors', 'sénior.e.s'),
+            ['commis', 'commis.e.s'],
+            ['séniors', 'sénior.e.s'],
             ['nombreux', 'nombreux.ses'],
         ];
     }
