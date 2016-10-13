@@ -1,6 +1,6 @@
 <?php
 /**
- * WordTest class
+ * WordTest class.
  */
 namespace Epíkoinos\Tests;
 
@@ -9,12 +9,13 @@ use Epíkoinos\Word;
 use Stringy\Stringy as S;
 
 /**
- * Class used to test the Word class
+ * Class used to test the Word class.
  */
 class WordTest extends BaseTest
 {
     /**
-     * List of words to skip because we know they're not relevant here
+     * List of words to skip because we know they're not relevant here.
+     *
      * @var string[]
      */
     protected static $skip = [
@@ -22,7 +23,7 @@ class WordTest extends BaseTest
     ];
 
     /**
-     * Initialize objects needed for tests
+     * Initialize objects needed for tests.
      */
     protected function setUp()
     {
@@ -31,9 +32,11 @@ class WordTest extends BaseTest
     }
 
     /**
-     * Test the convert() function
-     * @param  string $word   Word to convert
-     * @param  string $result Expected result
+     * Test the convert() function.
+     *
+     * @param string $word   Word to convert
+     * @param string $result Expected result
+     *
      * @return void
      * @dataProvider wordProvider
      */
