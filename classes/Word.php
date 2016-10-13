@@ -1,21 +1,71 @@
 <?php
-
+/**
+ * Word class
+ */
 namespace Epíkoinos;
 
 use Dicollecte\Lexicon;
 use Stringy\Stringy as S;
 
+/**
+ * Class used to handle words and their inflections
+ */
 class Word
 {
+    /**
+     * Base word string
+     * @var string
+     */
     public $string;
+
+    /**
+     * Lexicon used to look for inflections
+     * @var Lexicon
+     */
     private $lexicon;
+
+    /**
+     * Masculine inflection
+     * @var \Dicollecte\Inflection
+     */
     private $mascInflection;
+
+    /**
+     * Feminine inflection
+     * @var \Dicollecte\Inflection
+     */
     private $femInflection;
+
+    /**
+     * Word prefix (common to masculine and feminine forms)
+     * @var S
+     */
     private $prefix;
+
+    /**
+     * Word suffix (added by conversion)
+     * @var S
+     */
     private $suffix;
+
+    /**
+     * Separator used in epicene form
+     * @var S
+     */
     private $separator;
+
+    /**
+     * Plural suffix (generally "s")
+     * @var S
+     */
     private $plural;
 
+    /**
+     * Word constructor
+     * @param S       $string    Base word string
+     * @param Lexicon $lexicon   Lexicon used to look for inflections
+     * @param S       $separator Separator used in epicene form
+     */
     public function __construct(S $string, Lexicon $lexicon, S $separator)
     {
         $this->string = $string;
@@ -28,6 +78,10 @@ class Word
         $this->suffix = $this->getSuffix();
     }
 
+    /**
+     * Get masculine inflection
+     * @return \Dicollecte\Inflection Masculine inflection
+     */
     private function getMascInflection()
     {
         $inflections = $this->lexicon->getByInflection($this->string);
@@ -47,6 +101,10 @@ class Word
         }
     }
 
+    /**
+     * Get feminine inflection
+     * @return \Dicollecte\Inflection Feminine inflection
+     */
     private function getFemInflection()
     {
         if (isset($this->mascInflection)) {
@@ -68,6 +126,10 @@ class Word
         }
     }
 
+    /**
+     * Get prefix
+     * @return S Prefix
+     */
     private function getPrefix()
     {
         if (isset($this->femInflection)) {
@@ -75,6 +137,10 @@ class Word
         }
     }
 
+    /**
+     * Get plural suffix
+     * @return S Plural suffix
+     */
     private function getPlural()
     {
         if (isset($this->femInflection)) {
@@ -82,6 +148,10 @@ class Word
         }
     }
 
+    /**
+     * Get suffix
+     * @return S Suffix
+     */
     private function getSuffix()
     {
         if (isset($this->femInflection)) {
@@ -109,6 +179,10 @@ class Word
         }
     }
 
+    /**
+     * Convert word to its epicene form
+     * @return S Epicene form
+     */
     public function convert()
     {
         if (isset($this->mascInflection) && isset($this->femInflection)) {

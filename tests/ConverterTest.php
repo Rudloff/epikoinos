@@ -1,12 +1,21 @@
 <?php
-
+/**
+ * ConverterTest class
+ */
 namespace Epíkoinos\Tests;
 
 use Epíkoinos\Converter;
 
+/**
+ * Class used to test the Converter class
+ */
 class ConverterTest extends BaseTest
 {
     /**
+     * Test convert() function
+     * @param  string $sentence Sentence to convert
+     * @param  string $result   Expected result
+     * @return void
      * @dataProvider sentenceProvider
      */
     public function testConvert($sentence, $result)
@@ -18,6 +27,10 @@ class ConverterTest extends BaseTest
         );
     }
 
+    /**
+     * Test the cache system
+     * @return void
+     */
     public function testCache()
     {
         $converter = new Converter('foo', true, true);
@@ -37,7 +50,11 @@ class ConverterTest extends BaseTest
         $this->assertEquals('formateur rice', $converter->convert('formateur'));
     }
 
-    public function testDelimiter()
+    /**
+     * Test separator handling
+     * @return void
+     */
+    public function testSeparator()
     {
         $converter = new Converter('-', false);
         $this->assertEquals('formateur-rice', $converter->convertWord('formateur'));
@@ -48,6 +65,10 @@ class ConverterTest extends BaseTest
     }
 
     /**
+     * Test the convertWord() function
+     * @param  string $word   Word to convert
+     * @param  string $result Expected result
+     * @return void
      * @dataProvider wordProvider
      */
     public function testConvertWord($word, $result)
@@ -63,6 +84,9 @@ class ConverterTest extends BaseTest
     }
 
     /**
+     * Test the convertWord() function with an unknown word
+     * @param  string $word Word to convert
+     * @return void
      * @expectedException Exception
      * @dataProvider wordProviderError
      */
