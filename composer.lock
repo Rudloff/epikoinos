@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "71112d092d2e0181c83821948a2ae9dc",
-    "content-hash": "768ba7fc5a9506af6e264901295943b6",
+    "hash": "c354c9859b9ce6d15a4f112666627c75",
+    "content-hash": "0766c92d32a64f3448867279d152ccdb",
     "packages": [
         {
             "name": "danielstjules/stringy",
@@ -168,7 +168,13 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Rudloff/php-dicollecte-lexicon.git",
-                "reference": "e603d934e80c88be469467dc6b864f7a965298fa"
+                "reference": "0fa2a642478a0388f2af6d561e7d5723299b78c0"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Rudloff/php-dicollecte-lexicon/zipball/0fa2a642478a0388f2af6d561e7d5723299b78c0",
+                "reference": "0fa2a642478a0388f2af6d561e7d5723299b78c0",
+                "shasum": ""
             },
             "require": {
                 "league/csv": "~8.1.1",
@@ -183,11 +189,12 @@
                     "Dicollecte\\": "classes/"
                 }
             },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "GPL-3.0"
             ],
             "description": "Extract data from Dicollecte French lexicon",
-            "time": "2016-10-13 14:29:04"
+            "time": "2016-10-13 14:44:39"
         },
         {
             "name": "symfony/polyfill-mbstring",
