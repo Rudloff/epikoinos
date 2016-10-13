@@ -16,7 +16,7 @@ class Converter
     /**
      * Separator character to use in epicene forms.
      *
-     * @var string
+     * @var S
      */
     private $separator = '.';
 
@@ -111,7 +111,7 @@ class Converter
         $w = new Word($word, $this->lexicon, $this->separator);
         $separator = rawurlencode($this->separator);
         if ($this->enableCache && !$this->overwriteCache && $this->cache->is_cached($word.$separator)) {
-            return $this->cache->get_cache($word.$separator);
+            return S::create($this->cache->get_cache($word.$separator));
         }
         $return = $w->convert();
         if ($this->enableCache) {

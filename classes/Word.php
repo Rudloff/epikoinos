@@ -15,7 +15,7 @@ class Word
     /**
      * Base word string.
      *
-     * @var string
+     * @var S
      */
     public $string;
 
