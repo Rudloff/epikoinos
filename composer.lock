@@ -107,16 +107,16 @@
         },
         {
             "name": "league/csv",
-            "version": "8.0.0",
+            "version": "8.1.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/thephpleague/csv.git",
-                "reference": "0a1b535df48507f58ed3c7ab44e72272b11163ac"
+                "reference": "3b22a40804aa0bc5224ffb2f5e8248edf0a9a38c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/thephpleague/csv/zipball/0a1b535df48507f58ed3c7ab44e72272b11163ac",
-                "reference": "0a1b535df48507f58ed3c7ab44e72272b11163ac",
+                "url": "https://api.github.com/repos/thephpleague/csv/zipball/3b22a40804aa0bc5224ffb2f5e8248edf0a9a38c",
+                "reference": "3b22a40804aa0bc5224ffb2f5e8248edf0a9a38c",
                 "shasum": ""
             },
             "require": {
@@ -124,7 +124,7 @@
                 "php": ">=5.5.0"
             },
             "require-dev": {
-                "fabpot/php-cs-fixer": "^1.9",
+                "friendsofphp/php-cs-fixer": "^1.9",
                 "phpunit/phpunit": "^4.0"
             },
             "type": "library",
@@ -160,7 +160,7 @@
                 "read",
                 "write"
             ],
-            "time": "2015-12-11 09:28:14"
+            "time": "2016-09-05 08:16:07"
         },
         {
             "name": "rudloff/dicollecte-lexicon",
@@ -168,14 +168,14 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Rudloff/php-dicollecte-lexicon.git",
-                "reference": "8109e39feec8ae069231260c661d7359d1f74880"
+                "reference": "e603d934e80c88be469467dc6b864f7a965298fa"
             },
             "require": {
-                "league/csv": "~8.0.0",
-                "symfony/process": "~3.0.0"
+                "league/csv": "~8.1.1",
+                "symfony/process": "~3.1.5"
             },
             "require-dev": {
-                "symfony/var-dumper": "~3.0.0"
+                "symfony/var-dumper": "~3.1.5"
             },
             "type": "library",
             "autoload": {
@@ -187,7 +187,7 @@
                 "GPL-3.0"
             ],
             "description": "Extract data from Dicollecte French lexicon",
-            "time": "2016-09-07 22:50:07"
+            "time": "2016-10-13 14:29:04"
         },
         {
             "name": "symfony/polyfill-mbstring",
@@ -250,16 +250,16 @@
         },
         {
             "name": "symfony/process",
-            "version": "v3.0.9",
+            "version": "v3.1.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/process.git",
-                "reference": "768debc5996f599c4372b322d9061dba2a4bf505"
+                "reference": "66de154ae86b1a07001da9fbffd620206e4faf94"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/process/zipball/768debc5996f599c4372b322d9061dba2a4bf505",
-                "reference": "768debc5996f599c4372b322d9061dba2a4bf505",
+                "url": "https://api.github.com/repos/symfony/process/zipball/66de154ae86b1a07001da9fbffd620206e4faf94",
+                "reference": "66de154ae86b1a07001da9fbffd620206e4faf94",
                 "shasum": ""
             },
             "require": {
@@ -268,7 +268,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "3.0-dev"
+                    "dev-master": "3.1-dev"
                 }
             },
             "autoload": {
@@ -295,7 +295,7 @@
             ],
             "description": "Symfony Process Component",
             "homepage": "https://symfony.com",
-            "time": "2016-07-28 11:13:34"
+            "time": "2016-09-29 14:13:09"
         }
     ],
     "packages-dev": [
