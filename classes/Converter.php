@@ -121,6 +121,7 @@ class Converter
                 $words[$j]['pos'] += strlen($newW) - strlen($w);
             }
         }
+
         return $words;
     }
 
