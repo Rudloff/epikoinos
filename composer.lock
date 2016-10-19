@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "981deef5832029af212af9161829e49a",
-    "content-hash": "0766c92d32a64f3448867279d152ccdb",
+    "hash": "427a70f7c41a3f3446dd434b9d4b8c30",
+    "content-hash": "57be1947431e4e922c84a4c88bda4971",
     "packages": [
         {
             "name": "danielstjules/stringy",
@@ -310,10 +310,10 @@
     "packages-dev": [
         {
             "name": "dicollecte/lexique",
-            "version": "5.6",
+            "version": "5.7",
             "dist": {
                 "type": "zip",
-                "url": "http://www.dicollecte.org/download/fr/lexique-dicollecte-fr-v5.6.zip",
+                "url": "http://www.dicollecte.org/download/fr/lexique-dicollecte-fr-v5.7.zip",
                 "reference": null,
                 "shasum": null
             },

@@ -9,7 +9,7 @@
   },
   "require-dev": {
     "symfony/var-dumper": "~3.0.0",
-    "dicollecte/lexique": "~5.6",
+    "dicollecte/lexique": "~5.7.0",
     "phpunit/phpunit": "~5.4.8",
     "squizlabs/php_codesniffer": "~2.6.2"
   },
@@ -18,9 +18,9 @@
       "type": "package",
       "package": {
         "name": "dicollecte/lexique",
-        "version": "5.6",
+        "version": "5.7",
         "dist": {
-          "url": "http://www.dicollecte.org/download/fr/lexique-dicollecte-fr-v5.6.zip",
+          "url": "http://www.dicollecte.org/download/fr/lexique-dicollecte-fr-v5.7.zip",
           "type": "zip"
         }
       }
@@ -37,7 +37,7 @@
     }
   },
   "scripts": {
-    "update-lexicon": "grep vendor/dicollecte/lexique/lexique-dicollecte-fr-v5.6.txt -e 'nom\\|adj' | cut -f1-4 > lexique-dicollecte-names.csv",
+    "update-lexicon": "grep vendor/dicollecte/lexique/lexique-dicollecte-fr-*.txt -e 'nom\\|adj' | cut -f1-4 > lexique-dicollecte-names.csv",
     "empty-cache": "rm cache/*"
   },
   "config": {
