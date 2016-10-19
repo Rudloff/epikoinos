@@ -31,6 +31,10 @@ $converter = new Converter('-');
 $converter->convertWord('étudiante'); //étudiant-e
 ```
 
+#### Documentation
+
+The complete library documentation is available at [epikoinos.surge.sh](https://epikoinos.surge.sh/namespaces/Ep%C3%ADkoinos.html).
+
 ### As a web app
 
 Epíkoinos can also be used as a web app.
