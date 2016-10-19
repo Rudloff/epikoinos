@@ -4,7 +4,7 @@
   "license": "GPL-3.0",
   "require": {
     "danielstjules/stringy": "~2.3.1",
-    "rudloff/dicollecte-lexicon": "dev-develop",
+    "rudloff/dicollecte-lexicon": "~0.1.1",
     "gilbitron/php-simplecache": "~1.4.1"
   },
   "require-dev": {

@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "427a70f7c41a3f3446dd434b9d4b8c30",
-    "content-hash": "57be1947431e4e922c84a4c88bda4971",
+    "hash": "bfce3d52b13b86ad35e5df9084ccc478",
+    "content-hash": "de9d645a3b23745270680de45e4d4bac",
     "packages": [
         {
             "name": "danielstjules/stringy",
@@ -164,16 +164,16 @@
         },
         {
             "name": "rudloff/dicollecte-lexicon",
-            "version": "dev-develop",
+            "version": "0.1.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Rudloff/php-dicollecte-lexicon.git",
-                "reference": "b9921a3e09194a872d0c7cce77d331d7186eca34"
+                "reference": "d868c1ef8d844edfdd012a7ef051cf9a2ca69f9e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Rudloff/php-dicollecte-lexicon/zipball/b9921a3e09194a872d0c7cce77d331d7186eca34",
-                "reference": "b9921a3e09194a872d0c7cce77d331d7186eca34",
+                "url": "https://api.github.com/repos/Rudloff/php-dicollecte-lexicon/zipball/d868c1ef8d844edfdd012a7ef051cf9a2ca69f9e",
+                "reference": "d868c1ef8d844edfdd012a7ef051cf9a2ca69f9e",
                 "shasum": ""
             },
             "require": {
@@ -196,7 +196,7 @@
                 "GPL-3.0"
             ],
             "description": "Extract data from Dicollecte French lexicon",
-            "time": "2016-10-14 00:22:09"
+            "time": "2016-10-19 17:06:42"
         },
         {
             "name": "symfony/polyfill-mbstring",
@@ -1760,9 +1760,7 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": {
-        "rudloff/dicollecte-lexicon": 20
-    },
+    "stability-flags": [],
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": [],
