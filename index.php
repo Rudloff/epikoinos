@@ -17,7 +17,7 @@ $converter = new Converter('.', false);
         <!-- Tu veux contribuer ? Ça se passe ici : https://github.com/Rudloff/epikoinos -->
     </head>
     <body class="p1 bg--white measure">
-        <h1 class="txt--center"><a href="?">Epíkoinos - convertisseur d'écriture épicène</a></h1>
+        <h1 class="txt--center"><a href="?">Epíkoinos</a><br/><span class="small">Convertisseur d'écriture épicène</span></h1>
         <p>
             Ce site vous permet de convertir un mot masculin en
             <a target="_blank" href="https://fr.wikipedia.org/wiki/Langage_non_sexiste">écriture épicène</a>.
