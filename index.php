@@ -3,19 +3,21 @@ require_once __DIR__.'/vendor/autoload.php';
 use Epíkoinos\Converter;
 
 setlocale(LC_CTYPE, 'fr_FR.utf8');
-$converter = new Converter();
+$converter = new Converter('.', false);
 ?>
 <!DOCTYPE HTML>
 <html lang="fr">
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <title>Epíkoinos</title>
+        <title>Epíkoinos, convertisseur et générateur d'écriture épicène</title>
+        <meta name="description" content="Ce convertisseur d'écriture épicène permet de convertir un mot masculin en écriture épicène" />
+
         <link rel="stylesheet" href="bower_components/furtive/css/furtive.min.css" />
         <!-- Tu veux contribuer ? Ça se passe ici : https://github.com/Rudloff/epikoinos -->
     </head>
     <body class="p1 bg--white measure">
-        <h1 class="txt--center"><a href="?">Epíkoinos</a></h1>
+        <h1 class="txt--center"><a href="?">Epíkoinos</a><br/><span class="small">Convertisseur d'écriture épicène</span></h1>
         <p>
             Ce site vous permet de convertir un mot masculin en
             <a target="_blank" href="https://fr.wikipedia.org/wiki/Langage_non_sexiste">écriture épicène</a>.
