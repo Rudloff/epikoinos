@@ -168,12 +168,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Rudloff/php-dicollecte-lexicon.git",
-                "reference": "0fa2a642478a0388f2af6d561e7d5723299b78c0"
+                "reference": "b9921a3e09194a872d0c7cce77d331d7186eca34"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Rudloff/php-dicollecte-lexicon/zipball/0fa2a642478a0388f2af6d561e7d5723299b78c0",
-                "reference": "0fa2a642478a0388f2af6d561e7d5723299b78c0",
+                "url": "https://api.github.com/repos/Rudloff/php-dicollecte-lexicon/zipball/b9921a3e09194a872d0c7cce77d331d7186eca34",
+                "reference": "b9921a3e09194a872d0c7cce77d331d7186eca34",
                 "shasum": ""
             },
             "require": {
@@ -181,6 +181,8 @@
                 "symfony/process": "~3.1.5"
             },
             "require-dev": {
+                "phpunit/phpunit": "~5.6.1",
+                "squizlabs/php_codesniffer": "~2.7.0",
                 "symfony/var-dumper": "~3.1.5"
             },
             "type": "library",
@@ -194,7 +196,7 @@
                 "GPL-3.0"
             ],
             "description": "Extract data from Dicollecte French lexicon",
-            "time": "2016-10-13 14:44:39"
+            "time": "2016-10-14 00:22:09"
         },
         {
             "name": "symfony/polyfill-mbstring",
