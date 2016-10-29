@@ -9,6 +9,7 @@ use Stringy\Stringy as S;
 
 /**
  * Class used to manage feminine inflections.
+ * This class extends the Inflection class in order to add some useful functions.
  */
 class FemInflection extends Inflection
 {
@@ -19,6 +20,11 @@ class FemInflection extends Inflection
      */
     public $mascInflection;
 
+    /**
+     * FemInflection constructor
+     * @param Inflection $inflection     Feminine inflection to extend
+     * @param Inflection $mascInflection Corrresponding masculine inflection
+     */
     public function __construct(Inflection $inflection, Inflection $mascInflection)
     {
         $this->inflection = $inflection->inflection;
