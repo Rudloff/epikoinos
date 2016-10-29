@@ -13,9 +13,9 @@ use Stringy\Stringy as S;
  */
 class FemInflection extends Inflection
 {
-
     /**
      * Masculine inflection.
+     *
      * @var Inflection
      */
     public $mascInflection;
@@ -40,7 +40,8 @@ class FemInflection extends Inflection
      */
     private function getPrefix()
     {
-        $string =  new S($this->mascInflection->inflection);
+        $string = new S($this->mascInflection->inflection);
+
         return $string->toLowerCase()->longestCommonPrefix($this->inflection);
     }
 
@@ -51,7 +52,8 @@ class FemInflection extends Inflection
      */
     public function getPlural()
     {
-        $string =  new S($this->mascInflection->inflection);
+        $string = new S($this->mascInflection->inflection);
+
         return $string->longestCommonSuffix($this->inflection);
     }
 
