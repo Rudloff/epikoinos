@@ -93,24 +93,22 @@ class Word
      */
     private function getFemInflections()
     {
-        if (!empty($this->mascInflections)) {
-            $femInflections = [];
-            foreach ($this->mascInflections as $mascInflection) {
-                foreach ($this->lexicon->getByLemma($mascInflection->lemma) as $inflection) {
-                    if (($mascInflection->hasTag('inv') ||
-                            $mascInflection->hasTag('pl') && $inflection->hasTag('pl')
-                            || $mascInflection->hasTag('sg') && $inflection->hasTag('sg'))
-                        && ($mascInflection->hasTag('adj') && $inflection->hasTag('adj')
-                            || $mascInflection->hasTag('nom') && $inflection->hasTag('nom'))
-                        && $inflection->hasTag('fem')
-                    ) {
-                        $femInflections[] = new FemInflection($inflection, $mascInflection);
-                    }
+        $femInflections = [];
+        foreach ($this->mascInflections as $mascInflection) {
+            foreach ($this->lexicon->getByLemma($mascInflection->lemma) as $inflection) {
+                if (($mascInflection->hasTag('inv') ||
+                        $mascInflection->hasTag('pl') && $inflection->hasTag('pl')
+                        || $mascInflection->hasTag('sg') && $inflection->hasTag('sg'))
+                    && ($mascInflection->hasTag('adj') && $inflection->hasTag('adj')
+                        || $mascInflection->hasTag('nom') && $inflection->hasTag('nom'))
+                    && $inflection->hasTag('fem')
+                ) {
+                    $femInflections[] = new FemInflection($inflection, $mascInflection);
                 }
             }
-
-            return $femInflections;
         }
+
+        return $femInflections;
     }
 
     /**
