@@ -41,20 +41,6 @@ class Word
     private $femInflections;
 
     /**
-     * Word prefix (common to masculine and feminine forms).
-     *
-     * @var S
-     */
-    private $prefix;
-
-    /**
-     * Word suffix (added by conversion).
-     *
-     * @var S
-     */
-    private $suffix;
-
-    /**
      * Separator used in epicene form.
      *
      * @var S

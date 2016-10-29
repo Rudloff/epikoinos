@@ -49,22 +49,6 @@ class Converter
     private $overwriteCache = false;
 
     /**
-     * String containing all the letters that are considred diacritics.
-     * This is used in order to make str_word_count() work correctly with French words.
-     *
-     * @var string
-     */
-    private $diacritics = 'ÀàÂâÆæÇçÈèÉéÊêËëÎîÏïÔôŒœÙùÛûÜü';
-
-    /**
-     * List of French articles.
-     * This is used in order to convert each word along with its article.
-     *
-     * @var string[]
-     */
-    private $articles = ['un', 'le', 'ce', 'cet', 'tout', 'tous'];
-
-    /**
      * Converter constructor.
      *
      * @param string $separator      Separator character to use in epicene forms
