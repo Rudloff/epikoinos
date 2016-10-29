@@ -96,6 +96,7 @@ class Word
                 $mascInflections[] = $inflection;
             }
         }
+
         return $mascInflections;
     }
 
@@ -121,12 +122,10 @@ class Word
                     }
                 }
             }
+
             return $femInflections;
         }
     }
-
-
-
 
     /**
      * Convert word to its epicene form.
@@ -156,9 +155,10 @@ class Word
                                 break;
                         }
                     }
-                    $return[] =  $word->ensureRight($this->separator.$suffix);
+                    $return[] = $word->ensureRight($this->separator.$suffix);
                 }
             }
+
             return array_unique($return);
         } else {
             return [$this->string];
