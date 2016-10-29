@@ -127,7 +127,9 @@ class Word
                     $suffix = $femInflection->getSuffix();
                     if ($plural->length() > 0) {
                         $suffix = $suffix->removeRight((string) $plural)->ensureRight($this->separator.$plural);
-                        $word = $word->removeRight((string) $plural);
+                        if ($femInflection->mascInflection->hasTag('pl')) {
+                            $word = $word->removeRight((string) $plural);
+                        }
                     }
                     if ($femInflection->mascInflection->hasTag('pl')) {
                         switch ($suffix) {
