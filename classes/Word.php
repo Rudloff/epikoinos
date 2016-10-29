@@ -123,7 +123,7 @@ class Word
             foreach ($this->femInflections as $femInflection) {
                 if (isset($femInflection->mascInflection)) {
                     $word = $this->string;
-                    $plural = $femInflection->getPlural($femInflection);
+                    $plural = $femInflection->getPlural();
                     $suffix = $femInflection->getSuffix();
                     if ($plural->length() > 0) {
                         $suffix = $suffix->removeRight((string) $plural)->ensureRight($this->separator.$plural);
