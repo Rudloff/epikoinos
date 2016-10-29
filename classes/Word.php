@@ -36,7 +36,7 @@ class Word
     /**
      * Feminine inflections.
      *
-     * @var \Dicollecte\Inflection[]
+     * @var FemInflection[]
      */
     private $femInflections;
 
@@ -89,7 +89,7 @@ class Word
     /**
      * Get feminine inflection.
      *
-     * @return \Dicollecte\Inflection Feminine inflection
+     * @return FemInflection Feminine inflection
      */
     private function getFemInflections()
     {
