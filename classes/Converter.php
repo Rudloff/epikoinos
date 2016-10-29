@@ -85,27 +85,27 @@ class Converter
      *
      * @param S $word Word to convert
      *
-     * @return S Converted word
+     * @return S[] Array of converted word possibilities
      */
     private function convertWordObject(S $word)
     {
         switch ($word) {
             case 'le':
-                return S::create('la.le');
+                return [S::create('la.le')];
             case 'les':
             case 'des':
             case 'ces':
-                return $word;
+                return [$word];
             case 'ce':
-                return S::create('ce.tte');
+                return [S::create('ce.tte')];
             case 'cet':
-                return S::create('cet.te');
+                return [S::create('cet.te')];
             case 'ceux':
-                return S::create('ceux.elles');
+                return [S::create('ceux.elles')];
             case 'tout':
-                return S::create('tout.e');
+                return [S::create('tout.e')];
             case 'tous':
-                return S::create('tou.te.s');
+                return [S::create('tou.te.s')];
         }
 
         $w = new Word($word, $this->lexicon, $this->separator);
@@ -126,11 +126,15 @@ class Converter
      *
      * @param string $word Word to convert
      *
-     * @return string Converted word
+     * @return string[] Array of converted word possibilities
      */
     public function convertWord($word)
     {
-        return (string) $this->convertWordObject(S::create($word));
+        $return = [];
+        foreach ($this->convertWordObject(S::create($word)) as $word) {
+            $return[] = (string) $word;
+        }
+        return $return;
     }
 
     /**
@@ -183,7 +187,7 @@ class Converter
         foreach ($words as $i => &$word) {
             if (!in_array($word['word'], $this->articles)) {
                 try {
-                    $newWord = $this->convertWordObject($word['word']);
+                    $newWord = $this->convertWordObject($word['word'])[0];
                 } catch (\Exception $e) {
                     $newWord = S::create($word['word']);
                 }

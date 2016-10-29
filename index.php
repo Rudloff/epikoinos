@@ -43,7 +43,7 @@ $converter = new Converter('.', false);
             <div class="brdr--light-gray p1">
             <?php
             try {
-                echo $converter->convertWord($_GET['query']);
+                echo implode(' ou ', $converter->convertWord($_GET['query']));
             } catch (\Exception $e) {
                 echo '<span class="fnt--red">Mot inconnu&nbsp;: '.$_GET['query'].'</span>';
             } ?>
