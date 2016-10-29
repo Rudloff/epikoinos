@@ -12,23 +12,19 @@ use Epíkoinos\Converter;
 $converter = new Converter();
 ```
 
-#### Convert a single word
+#### Convert a word
 
 ```php
-$converter->convertWord('étudiante'); //étudiant.e
+$converter->convertWord('étudiante'); //["étudiant.e"]
 ```
 
-#### Convert a text
-
-```php
-$converter->convert('Étudiants et professeurs'); //Étudiant.e.s et professeur.e.s
-```
+Note that it will always return an array (as there might be several possible conversions).
 
 #### Use a custom delimiter
 
 ```php
 $converter = new Converter('-');
-$converter->convertWord('étudiante'); //étudiant-e
+$converter->convertWord('étudiante'); //["étudiant-e"]
 ```
 
 #### Documentation

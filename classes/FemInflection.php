@@ -62,16 +62,6 @@ class FemInflection extends Inflection
                 $suffix = S::create('euse');
                 break;
         }
-        if ($this->mascInflection->hasTag('pl')) {
-            switch ($suffix) {
-                case 'les':
-                    $suffix = S::create('ales');
-                    break;
-                case 'se.s':
-                    $suffix = S::create('euse.s');
-                    break;
-            }
-        }
 
         return $suffix;
     }

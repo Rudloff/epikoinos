@@ -96,9 +96,7 @@ class Word
                 $mascInflections[] = $inflection;
             }
         }
-        if (!empty($mascInflections)) {
-            return $mascInflections;
-        }
+        return $mascInflections;
     }
 
     /**
@@ -123,9 +121,7 @@ class Word
                     }
                 }
             }
-            if (!empty($femInflections)) {
-                return $femInflections;
-            }
+            return $femInflections;
         }
     }
 
@@ -149,6 +145,16 @@ class Word
                     if ($plural->length() > 0) {
                         $suffix = $suffix->removeRight((string) $plural)->ensureRight($this->separator.$plural);
                         $word = $word->removeRight((string) $plural);
+                    }
+                    if ($femInflection->mascInflection->hasTag('pl')) {
+                        switch ($suffix) {
+                            case 'les':
+                                $suffix = S::create('ales');
+                                break;
+                            case 'se.s':
+                                $suffix = S::create('euse.s');
+                                break;
+                        }
                     }
                     $return[] =  $word->ensureRight($this->separator.$suffix);
                 }

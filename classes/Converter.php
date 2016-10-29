@@ -81,47 +81,6 @@ class Converter
     }
 
     /**
-     * Convert a Stringy object to its epicene form.
-     *
-     * @param S $word Word to convert
-     *
-     * @return S[] Array of converted word possibilities
-     */
-    private function convertWordObject(S $word)
-    {
-        switch ($word) {
-            case 'le':
-                return [S::create('la.le')];
-            case 'les':
-            case 'des':
-            case 'ces':
-                return [$word];
-            case 'ce':
-                return [S::create('ce.tte')];
-            case 'cet':
-                return [S::create('cet.te')];
-            case 'ceux':
-                return [S::create('ceux.elles')];
-            case 'tout':
-                return [S::create('tout.e')];
-            case 'tous':
-                return [S::create('tou.te.s')];
-        }
-
-        $w = new Word($word, $this->lexicon, $this->separator);
-        $separator = rawurlencode($this->separator);
-        if ($this->enableCache && !$this->overwriteCache && $this->cache->is_cached($word.$separator)) {
-            return S::create($this->cache->get_cache($word.$separator));
-        }
-        $return = $w->convert();
-        if ($this->enableCache) {
-            $this->cache->set_cache($word.$separator, $return);
-        }
-
-        return $return;
-    }
-
-    /**
      * Convert a word to its epicene form.
      *
      * @param string $word Word to convert
@@ -130,88 +89,37 @@ class Converter
      */
     public function convertWord($word)
     {
-        $return = [];
-        foreach ($this->convertWordObject(S::create($word)) as $word) {
-            $return[] = (string) $word;
+        switch ($word) {
+            case 'le':
+                return ['la.le'];
+            case 'les':
+            case 'des':
+            case 'ces':
+                return [$word];
+            case 'ce':
+                return ['ce.tte'];
+            case 'cet':
+                return ['cet.te'];
+            case 'ceux':
+                return ['ceux.elles'];
+            case 'tout':
+                return ['tout.e'];
+            case 'tous':
+                return ['tou.te.s'];
         }
+
+        $w = new Word(S::create($word), $this->lexicon, $this->separator);
+        $separator = rawurlencode($this->separator);
+        if ($this->enableCache && !$this->overwriteCache && $this->cache->is_cached($word.$separator)) {
+            return json_decode($this->cache->get_cache($word.$separator));
+        }
+        $return = $w->convert();
+        $return = array_map('strval', $return);
+        if ($this->enableCache) {
+            $this->cache->set_cache($word.$separator, json_encode($return));
+        }
+
         return $return;
     }
 
-    /**
-     * Update words position in string after a word has been replaced.
-     *
-     * @param array  $words   Words in string
-     * @param int    $i       Index of the word we're currently processing
-     * @param string $newWord Converted word
-     * @param string $oldWord Word to be replace
-     *
-     * @return array Words in string with updated position
-     */
-    private function updateWordsPosition($words, $i, $newWord, $oldWord)
-    {
-        foreach ($words as $j => $word) {
-            if ($j > $i) {
-                $words[$j]['pos'] += strlen($newWord) - strlen($oldWord);
-            }
-        }
-
-        return $words;
-    }
-
-    /**
-     * Convert words in a string to their epicene form.
-     *
-     * @param string $string String to parse
-     *
-     * @return string String with converted words
-     */
-    public function convert($string)
-    {
-        $s = S::create($string);
-        $words = [];
-        foreach (str_word_count($s, 2, $this->separator.$this->diacritics) as $i => $word) {
-            $word = S::create($word, 'UTF-8');
-            $pos = $i;
-            if ($word->endsWith($this->separator)) {
-                $word = $word->removeRight($this->separator);
-            }
-            if ($word->startsWith("l'") || $word->startsWith("L'")) {
-                $word = $word->removeLeft("l'")->removeLeft("L'");
-                $pos = +2;
-            }
-            $words[] = [
-                'word' => $word,
-                'pos'  => $pos,
-            ];
-        }
-        foreach ($words as $i => &$word) {
-            if (!in_array($word['word'], $this->articles)) {
-                try {
-                    $newWord = $this->convertWordObject($word['word'])[0];
-                } catch (\Exception $e) {
-                    $newWord = S::create($word['word']);
-                }
-                if ($newWord != $word['word']) {
-                    $s = S::create(substr_replace($s, $newWord, $word['pos'], strlen($word['word'])));
-                    $words = $this->updateWordsPosition($words, $i, $newWord, $word['word']);
-                    if (isset($words[$i - 1]) && in_array($words[$i - 1]['word'], $this->articles)) {
-                        $newWord = $this->convertWordObject($words[$i - 1]['word']);
-                        if ($newWord != $words[$i - 1]['word']) {
-                            $s = S::create(
-                                substr_replace(
-                                    $s,
-                                    $newWord,
-                                    $words[$i - 1]['pos'],
-                                    strlen($words[$i - 1]['word'])
-                                )
-                            );
-                            $words = $this->updateWordsPosition($words, $i, $newWord, $words[$i - 1]['word']);
-                        }
-                    }
-                }
-            }
-        }
-
-        return (string) $s;
-    }
 }
