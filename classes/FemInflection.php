@@ -21,7 +21,8 @@ class FemInflection extends Inflection
     public $mascInflection;
 
     /**
-     * FemInflection constructor
+     * FemInflection constructor.
+     *
      * @param Inflection $inflection     Feminine inflection to extend
      * @param Inflection $mascInflection Corrresponding masculine inflection
      */
