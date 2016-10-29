@@ -15,7 +15,7 @@ abstract class BaseTest extends \PHPUnit_Framework_TestCase
      * @var string[]
      */
     protected static $skip = [
-        'diplomé', 'diplomés', 'local', 'locaux', 'chef', 'chefs', 'chercheur',
+        'diplomé', 'diplomés', 'chef', 'chefs', 'chercheur',
         'ingénieur', 'entrepreneur', 'chercheurs', 'ingénieurs', 'entrepreneurs',
         'commis', 'sénior', 'séniors', 'social',
     ];
