@@ -15,61 +15,10 @@ abstract class BaseTest extends \PHPUnit_Framework_TestCase
      * @var string[]
      */
     protected static $skip = [
-        'diplomé', 'diplomés', 'local', 'locaux', 'chef', 'chefs', 'chercheur',
+        'chef', 'chefs', 'chercheur',
         'ingénieur', 'entrepreneur', 'chercheurs', 'ingénieurs', 'entrepreneurs',
-        'commis', 'sénior', 'séniors', 'social',
+        'sénior', 'séniors',
     ];
-
-    /**
-     * Return a list of sentences to use for tests.
-     *
-     * @return array[]
-     */
-    public function sentenceProvider()
-    {
-        return [
-            [
-                "Devenez formateur, c'est bien d'être formateur.",
-                "Devenez formateur.rice, c'est bien d'être formateur.rice.",
-            ],
-            [
-                "Devenez formateur, c'est bien d'être formateur.rice",
-                "Devenez formateur.rice, c'est bien d'être formateur.rice",
-            ],
-            [
-                "Devenez formateur, c'est bien d'être formateur/tuteur",
-                "Devenez formateur.rice, c'est bien d'être formateur.rice/tuteur.rice",
-            ],
-            [
-                'teurgoule et tuteurat',
-                'teurgoule et tuteurat',
-            ],
-            [
-                'Étudiants et professeurs',
-                'Étudiant.e.s et professeur.e.s',
-            ],
-            [
-                "l'étudiant et le professeur",
-                "l'étudiant.e et la.le professeur.e",
-            ],
-            [
-                'le professeur, le professeur et le professeur',
-                'la.le professeur.e, la.le professeur.e et la.le professeur.e',
-            ],
-            [
-                "L'étudiant et le professeur",
-                "L'étudiant.e et la.le professeur.e",
-            ],
-            [
-                'un étudiant et un meuble',
-                'un.e étudiant.e et un meuble',
-            ],
-            [
-                'cet étudiant',
-                'cet.te étudiant.e',
-            ],
-        ];
-    }
 
     /**
      * Return a list of words to use for tests.
@@ -82,6 +31,7 @@ abstract class BaseTest extends \PHPUnit_Framework_TestCase
             ['le', 'la.le'],
             ['un', 'un.e'],
             ['ce', 'ce.tte'],
+            ['cet', 'cet.te'],
             //
             ['les', 'les'],
             ['des', 'des'],
@@ -128,7 +78,7 @@ abstract class BaseTest extends \PHPUnit_Framework_TestCase
             ['chargé', 'chargé.e'],
             ['délégué', 'délégué.e'],
             ['député', 'député.e'],
-            ['diplomé', 'diplomé.e'],
+            ['diplômé', 'diplômé.e'],
             ['retraité', 'retraité.e'],
             //
             ['administrés', 'administré.e.s'],
@@ -137,7 +87,7 @@ abstract class BaseTest extends \PHPUnit_Framework_TestCase
             ['chargés', 'chargé.e.s'],
             ['délégués', 'délégué.e.s'],
             ['députés', 'député.e.s'],
-            ['diplomés', 'diplomé.e.s'],
+            ['diplômés', 'diplômé.e.s'],
             ['retraités', 'retraité.e.s'],
 
             ['élu', 'élu.e'],
@@ -311,6 +261,10 @@ abstract class BaseTest extends \PHPUnit_Framework_TestCase
             ['commis', 'commis.e.s'],
             ['séniors', 'sénior.e.s'],
             ['nombreux', 'nombreux.ses'],
+
+            ['bénévole', 'bénévole'],
+            //
+            ['bénévoles', 'bénévoles'],
         ];
     }
 

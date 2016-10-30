@@ -12,8 +12,8 @@ $converter = new Converter('.', false);
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <title>Epíkoinos, convertisseur et générateur d'écriture épicène</title>
         <meta name="description" content="Ce convertisseur d'écriture épicène permet de convertir un mot masculin en écriture épicène" />
-
         <link rel="stylesheet" href="bower_components/furtive/css/furtive.min.css" />
+        <link rel="manifest" href="manifest.json" />
         <!-- Tu veux contribuer ? Ça se passe ici : https://github.com/Rudloff/epikoinos -->
     </head>
     <body class="p1 bg--white measure">
@@ -27,7 +27,7 @@ $converter = new Converter('.', false);
             recommandations du Haut Conseil à l'égalité entre les femmes et les hommes</a>.
         </p>
         <form class="py1">
-            <label for="query">Mot(s) à convertir</label>
+            <label for="query">Mot à convertir</label>
             <input type="text" name="query" id="query"
             <?php
             if (isset($_GET['query'])) {
@@ -43,7 +43,7 @@ $converter = new Converter('.', false);
             <div class="brdr--light-gray p1">
             <?php
             try {
-                echo $converter->convertWord($_GET['query']);
+                echo implode(' ou ', $converter->convertWord($_GET['query']));
             } catch (\Exception $e) {
                 echo '<span class="fnt--red">Mot inconnu&nbsp;: '.$_GET['query'].'</span>';
             } ?>

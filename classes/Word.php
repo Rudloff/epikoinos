@@ -29,30 +29,16 @@ class Word
     /**
      * Masculine inflection.
      *
-     * @var \Dicollecte\Inflection
+     * @var \Dicollecte\Inflection[]
      */
-    private $mascInflection;
+    private $mascInflections;
 
     /**
-     * Feminine inflection.
+     * Feminine inflections.
      *
-     * @var \Dicollecte\Inflection
+     * @var FemInflection[]
      */
-    private $femInflection;
-
-    /**
-     * Word prefix (common to masculine and feminine forms).
-     *
-     * @var S
-     */
-    private $prefix;
-
-    /**
-     * Word suffix (added by conversion).
-     *
-     * @var S
-     */
-    private $suffix;
+    private $femInflections;
 
     /**
      * Separator used in epicene form.
@@ -60,13 +46,6 @@ class Word
      * @var S
      */
     private $separator;
-
-    /**
-     * Plural suffix (generally "s").
-     *
-     * @var S
-     */
-    private $plural;
 
     /**
      * Word constructor.
@@ -80,117 +59,56 @@ class Word
         $this->string = $string;
         $this->separator = $separator;
         $this->lexicon = $lexicon;
-        $this->mascInflection = $this->getMascInflection();
-        $this->femInflection = $this->getFemInflection();
-        $this->plural = $this->getPlural();
-        $this->prefix = $this->getPrefix();
-        $this->suffix = $this->getSuffix();
+        $this->mascInflections = $this->getMascInflections();
+        $this->femInflections = $this->getFemInflections();
     }
 
     /**
-     * Get masculine inflection.
+     * Get masculine inflections.
      *
-     * @return \Dicollecte\Inflection Masculine inflection
+     * @return \Dicollecte\Inflection[] Masculine inflections
      */
-    private function getMascInflection()
+    private function getMascInflections()
     {
         $inflections = $this->lexicon->getByInflection($this->string);
         if (empty($inflections)) {
             throw new \Exception("Can't find this inflection");
         }
+        $mascInflections = [];
         foreach ($inflections as $inflection) {
             if ($inflection->inflection == $this->string->toLowerCase()
                 && $inflection->hasTag('mas')
             ) {
-                $mascInflection = $inflection;
-                break;
+                $mascInflections[] = $inflection;
             }
         }
-        if (isset($mascInflection)) {
-            return $mascInflection;
-        }
+
+        return $mascInflections;
     }
 
     /**
      * Get feminine inflection.
      *
-     * @return \Dicollecte\Inflection Feminine inflection
+     * @return FemInflection Feminine inflection
      */
-    private function getFemInflection()
+    private function getFemInflections()
     {
-        if (isset($this->mascInflection)) {
-            foreach ($this->lexicon->getByLemma($this->mascInflection->lemma) as $inflection) {
-                if (($this->mascInflection->hasTag('inv') ||
-                        $this->mascInflection->hasTag('pl') && $inflection->hasTag('pl')
-                        || $this->mascInflection->hasTag('sg') && $inflection->hasTag('sg'))
-                    && ($this->mascInflection->hasTag('adj') && $inflection->hasTag('adj')
-                        || $this->mascInflection->hasTag('nom') && $inflection->hasTag('nom'))
+        $femInflections = [];
+        foreach ($this->mascInflections as $mascInflection) {
+            foreach ($this->lexicon->getByLemma($mascInflection->lemma) as $inflection) {
+                if (($mascInflection->hasTag('inv') ||
+                        $mascInflection->hasTag('pl') && $inflection->hasTag('pl')
+                        || $mascInflection->hasTag('sg') && $inflection->hasTag('sg'))
+                    && ($mascInflection->hasTag('adj') && $inflection->hasTag('adj')
+                        || $mascInflection->hasTag('nom') && $inflection->hasTag('nom'))
                     && $inflection->hasTag('fem')
                 ) {
-                    $femInflection = $inflection;
-                    break;
+                    $femInflections[] = new FemInflection($inflection, $mascInflection);
                 }
             }
-            if (isset($femInflection)) {
-                return $femInflection;
-            }
         }
-    }
 
-    /**
-     * Get prefix.
-     *
-     * @return S Prefix
-     */
-    private function getPrefix()
-    {
-        if (isset($this->femInflection)) {
-            return $this->string->toLowerCase()->longestCommonPrefix($this->femInflection->inflection);
-        }
-    }
-
-    /**
-     * Get plural suffix.
-     *
-     * @return S Plural suffix
-     */
-    private function getPlural()
-    {
-        if (isset($this->femInflection)) {
-            return $this->string->longestCommonSuffix($this->femInflection->inflection);
-        }
-    }
-
-    /**
-     * Get suffix.
-     *
-     * @return S Suffix
-     */
-    private function getSuffix()
-    {
-        if (isset($this->femInflection)) {
-            $suffix = S::create($this->femInflection->inflection)->removeLeft($this->prefix);
-            switch ($suffix) {
-                case 'se':
-                    $suffix = S::create('euse');
-                    break;
-            }
-            if ($this->mascInflection->hasTag('pl')) {
-                if ($this->plural->length() > 0) {
-                    $suffix = $suffix->removeRight((string) $this->plural)->ensureRight($this->separator.$this->plural);
-                }
-                switch ($suffix) {
-                    case 'les':
-                        $suffix = S::create('ales');
-                        break;
-                    case 'se.s':
-                        $suffix = S::create('euse.s');
-                        break;
-                }
-            }
-
-            return $suffix;
-        }
+        return $femInflections;
     }
 
     /**
@@ -200,15 +118,36 @@ class Word
      */
     public function convert()
     {
-        if (isset($this->mascInflection) && isset($this->femInflection)) {
-            $return = $this->string;
-            if ($this->plural->length() > 0) {
-                $return = $return->removeRight((string) $this->plural);
+        if (!empty($this->femInflections)) {
+            $return = [];
+            foreach ($this->femInflections as $femInflection) {
+                if (isset($femInflection->mascInflection)) {
+                    $word = $this->string;
+                    $plural = $femInflection->getPlural();
+                    $suffix = $femInflection->getSuffix();
+                    if ($plural->length() > 0) {
+                        $suffix = $suffix->removeRight((string) $plural)->ensureRight($this->separator.$plural);
+                        if ($femInflection->mascInflection->hasTag('pl')) {
+                            $word = $word->removeRight((string) $plural);
+                        }
+                    }
+                    if ($femInflection->mascInflection->hasTag('pl')) {
+                        switch ($suffix) {
+                            case 'les':
+                                $suffix = S::create('ales');
+                                break;
+                            case 'se.s':
+                                $suffix = S::create('euse.s');
+                                break;
+                        }
+                    }
+                    $return[] = $word->ensureRight($this->separator.$suffix);
+                }
             }
 
-            return $return->ensureRight($this->separator.$this->suffix);
+            return array_unique($return);
         } else {
-            return $this->string;
+            return [$this->string];
         }
     }
 }

@@ -49,7 +49,7 @@ class WordTest extends BaseTest
             $this->markTestIncomplete();
         }
         $w = new Word(S::create($word), $this->lexicon, $this->separator);
-        $this->assertEquals(
+        $this->assertContains(
             $result,
             $w->convert()
         );
