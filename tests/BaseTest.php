@@ -15,7 +15,7 @@ abstract class BaseTest extends \PHPUnit_Framework_TestCase
      * @var string[]
      */
     protected static $skip = [
-        'diplomé', 'diplomés', 'chef', 'chefs', 'chercheur',
+        'chef', 'chefs', 'chercheur',
         'ingénieur', 'entrepreneur', 'chercheurs', 'ingénieurs', 'entrepreneurs',
         'sénior', 'séniors',
     ];
@@ -78,7 +78,7 @@ abstract class BaseTest extends \PHPUnit_Framework_TestCase
             ['chargé', 'chargé.e'],
             ['délégué', 'délégué.e'],
             ['député', 'député.e'],
-            ['diplomé', 'diplomé.e'],
+            ['diplômé', 'diplômé.e'],
             ['retraité', 'retraité.e'],
             //
             ['administrés', 'administré.e.s'],
@@ -87,7 +87,7 @@ abstract class BaseTest extends \PHPUnit_Framework_TestCase
             ['chargés', 'chargé.e.s'],
             ['délégués', 'délégué.e.s'],
             ['députés', 'député.e.s'],
-            ['diplomés', 'diplomé.e.s'],
+            ['diplômés', 'diplômé.e.s'],
             ['retraités', 'retraité.e.s'],
 
             ['élu', 'élu.e'],
