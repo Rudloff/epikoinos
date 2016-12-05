@@ -2,6 +2,7 @@
 /**
  * Word class.
  */
+
 namespace Epíkoinos;
 
 use Dicollecte\Lexicon;

@@ -2,6 +2,7 @@
 /**
  * WordTest class.
  */
+
 namespace Epíkoinos\Tests;
 
 use Dicollecte\Lexicon;
