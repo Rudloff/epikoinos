@@ -2,6 +2,7 @@
 /**
  * ConverterTest class.
  */
+
 namespace Epíkoinos\Tests;
 
 use Epíkoinos\Converter;

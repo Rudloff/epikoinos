@@ -2,6 +2,7 @@
 /**
  * FemInflection class.
  */
+
 namespace Epíkoinos;
 
 use Dicollecte\Inflection;

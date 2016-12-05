@@ -2,6 +2,7 @@
 /**
  * BaseTest class.
  */
+
 namespace Epíkoinos\Tests;
 
 /**
