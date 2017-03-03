@@ -15,7 +15,7 @@ $converter = new Converter();
 #### Convert a word
 
 ```php
-$converter->convertWord('étudiante'); //["étudiant.e"]
+$converter->convertWord('étudiant'); //["étudiant.e"]
 ```
 
 Note that it will always return an array (as there might be several possible conversions).
@@ -24,7 +24,7 @@ Note that it will always return an array (as there might be several possible con
 
 ```php
 $converter = new Converter('-');
-$converter->convertWord('étudiante'); //["étudiant-e"]
+$converter->convertWord('étudiant'); //["étudiant-e"]
 ```
 
 #### Documentation
