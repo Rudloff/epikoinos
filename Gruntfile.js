@@ -32,7 +32,8 @@ module.exports = function (grunt) {
         phpcs: {
             options: {
                 standard: 'PSR2',
-                bin: 'vendor/bin/phpcs'
+                bin: 'vendor/bin/phpcs',
+                warningSeverity: 0
             },
             php: {
                 src: ['classes/*.php', '*.php']

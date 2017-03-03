@@ -2,6 +2,7 @@
 /**
  * Converter class.
  */
+
 namespace Epíkoinos;
 
 use Dicollecte\Lexicon;

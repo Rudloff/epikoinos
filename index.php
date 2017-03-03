@@ -38,7 +38,7 @@ $converter = new Converter('.', false);
             <input type="submit" value="Convertir" />
         </form>
         <?php
-        if (isset($_GET['query']) && !empty($_GET['query'])) {
+        if (isset($_GET['query']) && !empty($_GET['query'])) :
             ?>
             <div class="brdr--light-gray p1">
             <?php
@@ -49,8 +49,7 @@ $converter = new Converter('.', false);
             } ?>
             </div>
             <?php
-
-        }
+        endif;
         ?>
     </body>
 </html>
