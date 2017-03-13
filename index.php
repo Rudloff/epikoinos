@@ -3,7 +3,7 @@ require_once __DIR__.'/vendor/autoload.php';
 use Epíkoinos\Converter;
 
 setlocale(LC_CTYPE, 'fr_FR.utf8');
-$converter = new Converter('.', false);
+$converter = new Converter('.');
 ?>
 <!DOCTYPE HTML>
 <html lang="fr">
