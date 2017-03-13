@@ -93,11 +93,11 @@ class Converter
                 return ['tou.te.s'];
         }
 
-        $w = new Word(S::create($word), $this->lexicon, $this->separator);
         $separator = rawurlencode($this->separator);
         if ($this->enableCache && !$this->overwriteCache && $this->cache->is_cached($word.$separator)) {
             return json_decode($this->cache->get_cache($word.$separator));
         }
+        $w = new Word(S::create($word), $this->lexicon, $this->separator);
         $return = $w->convert();
         $return = array_map('strval', $return);
         if ($this->enableCache) {
