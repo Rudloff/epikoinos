@@ -66,13 +66,13 @@ class Converter
     }
 
     /**
-     * Convert a word to its epicene form.
+     * Check if the word can be converted with a simple switch() rule.
      *
      * @param string $word Word to convert
      *
      * @return string[] Array of converted word possibilities
      */
-    public function convertWord($word)
+    private function getSimpleResult($word)
     {
         switch ($word) {
             case 'le':
@@ -91,6 +91,23 @@ class Converter
                 return ['tout.e'];
             case 'tous':
                 return ['tou.te.s'];
+        }
+
+        return [];
+    }
+
+    /**
+     * Convert a word to its epicene form.
+     *
+     * @param string $word Word to convert
+     *
+     * @return string[] Array of converted word possibilities
+     */
+    public function convertWord($word)
+    {
+        $simpleResult = $this->getSimpleResult($word);
+        if (!empty($simpleResult)) {
+            return $simpleResult;
         }
 
         $separator = rawurlencode($this->separator);
