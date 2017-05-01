@@ -3,7 +3,7 @@
   "description": "Convert French words to their epicene form",
   "license": "GPL-3.0",
   "require": {
-    "danielstjules/stringy": "~2.3.1",
+    "danielstjules/stringy": "~3.0.1",
     "rudloff/dicollecte-lexicon": "~0.1.1",
     "gilbitron/php-simplecache": "~1.4.1"
   },
