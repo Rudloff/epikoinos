@@ -113,6 +113,38 @@ class Word
     }
 
     /**
+     * Convert feminine inflection to its epicene form.
+     *
+     * @param FemInflection $femInflection Feminine inflection
+     *
+     * @return S
+     */
+    private function getConvertedInflection(FemInflection $femInflection)
+    {
+        $word = $this->string;
+        $plural = $femInflection->getPlural();
+        $suffix = $femInflection->getSuffix();
+        if ($plural->length() > 0) {
+            $suffix = $suffix->removeRight((string) $plural)->ensureRight($this->separator.$plural);
+            if ($femInflection->mascInflection->hasTag('pl')) {
+                $word = $word->removeRight((string) $plural);
+            }
+        }
+        if ($femInflection->mascInflection->hasTag('pl')) {
+            switch ($suffix) {
+                case 'les':
+                    $suffix = S::create('ales');
+                    break;
+                case 'se.s':
+                    $suffix = S::create('euse.s');
+                    break;
+            }
+        }
+
+        return $word->ensureRight($this->separator.$suffix);
+    }
+
+    /**
      * Convert word to its epicene form.
      *
      * @return S Epicene form
@@ -123,26 +155,7 @@ class Word
             $return = [];
             foreach ($this->femInflections as $femInflection) {
                 if (isset($femInflection->mascInflection)) {
-                    $word = $this->string;
-                    $plural = $femInflection->getPlural();
-                    $suffix = $femInflection->getSuffix();
-                    if ($plural->length() > 0) {
-                        $suffix = $suffix->removeRight((string) $plural)->ensureRight($this->separator.$plural);
-                        if ($femInflection->mascInflection->hasTag('pl')) {
-                            $word = $word->removeRight((string) $plural);
-                        }
-                    }
-                    if ($femInflection->mascInflection->hasTag('pl')) {
-                        switch ($suffix) {
-                            case 'les':
-                                $suffix = S::create('ales');
-                                break;
-                            case 'se.s':
-                                $suffix = S::create('euse.s');
-                                break;
-                        }
-                    }
-                    $return[] = $word->ensureRight($this->separator.$suffix);
+                    $return[] = $this->getConvertedInflection($femInflection);
                 }
             }
 
