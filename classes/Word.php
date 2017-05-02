@@ -90,7 +90,7 @@ class Word
     /**
      * Get feminine inflection.
      *
-     * @return FemInflection Feminine inflection
+     * @return FemInflection[] Feminine inflections
      */
     private function getFemInflections()
     {
