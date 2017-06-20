@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "b0902695c4997a39e8cad33e4cb0ae3f",
-    "content-hash": "4219bd5aafd8f262ecea420d2d91f4b7",
+    "hash": "5b99d803944d9004d829ca7c3c9d0720",
+    "content-hash": "fdeef380aabd58f974d378e33ff0a406",
     "packages": [
         {
             "name": "danielstjules/stringy",
@@ -1580,16 +1580,16 @@
         },
         {
             "name": "symfony/var-dumper",
-            "version": "v3.2.9",
+            "version": "v3.3.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/var-dumper.git",
-                "reference": "eda0d0891a0b60a25015f7b85ea8040b51d72e1e"
+                "reference": "347c4247a3e40018810b476fcd5dec36d46d08dc"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/var-dumper/zipball/eda0d0891a0b60a25015f7b85ea8040b51d72e1e",
-                "reference": "eda0d0891a0b60a25015f7b85ea8040b51d72e1e",
+                "url": "https://api.github.com/repos/symfony/var-dumper/zipball/347c4247a3e40018810b476fcd5dec36d46d08dc",
+                "reference": "347c4247a3e40018810b476fcd5dec36d46d08dc",
                 "shasum": ""
             },
             "require": {
@@ -1601,7 +1601,7 @@
             },
             "require-dev": {
                 "ext-iconv": "*",
-                "twig/twig": "~1.20|~2.0"
+                "twig/twig": "~1.34|~2.4"
             },
             "suggest": {
                 "ext-iconv": "To convert non-UTF-8 strings to UTF-8 (or symfony/polyfill-iconv in case ext-iconv cannot be used).",
@@ -1610,7 +1610,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "3.2-dev"
+                    "dev-master": "3.3-dev"
                 }
             },
             "autoload": {
@@ -1644,7 +1644,7 @@
                 "debug",
                 "dump"
             ],
-            "time": "2017-05-15 12:02:31"
+            "time": "2017-06-02 09:10:29"
         },
         {
             "name": "symfony/yaml",
