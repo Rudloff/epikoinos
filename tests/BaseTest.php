@@ -5,10 +5,12 @@
 
 namespace Epíkoinos\Tests;
 
+use PHPUnit\Framework\TestCase;
+
 /**
  * Abstract class used to handle providers used by several tests.
  */
-abstract class BaseTest extends \PHPUnit_Framework_TestCase
+abstract class BaseTest extends TestCase
 {
     /**
      * List of words to skip because we know they don't work yet.
