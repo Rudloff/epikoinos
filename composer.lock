@@ -4,21 +4,21 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "de6576323f2c3f563aefee2b767844b3",
-    "content-hash": "bfb965b910cb235099691185f2371abe",
+    "hash": "9c94cf9923d0cdb7b7775cbe774e91aa",
+    "content-hash": "cea4dca65f3256037ee2ccd6c498962f",
     "packages": [
         {
             "name": "danielstjules/stringy",
-            "version": "3.0.1",
+            "version": "3.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/danielstjules/Stringy.git",
-                "reference": "2288363663d94ce11c9ca555f7c760e9f799bb74"
+                "reference": "df24ab62d2d8213bbbe88cc36fc35a4503b4bd7e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/danielstjules/Stringy/zipball/2288363663d94ce11c9ca555f7c760e9f799bb74",
-                "reference": "2288363663d94ce11c9ca555f7c760e9f799bb74",
+                "url": "https://api.github.com/repos/danielstjules/Stringy/zipball/df24ab62d2d8213bbbe88cc36fc35a4503b4bd7e",
+                "reference": "df24ab62d2d8213bbbe88cc36fc35a4503b4bd7e",
                 "shasum": ""
             },
             "require": {
@@ -61,7 +61,7 @@
                 "utility",
                 "utils"
             ],
-            "time": "2017-04-12 15:20:39"
+            "time": "2017-06-12 01:10:27"
         },
         {
             "name": "gilbitron/php-simplecache",
