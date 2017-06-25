@@ -24,6 +24,7 @@ abstract class BaseTest extends TestCase
 
     /**
      * Return a list of words to use for tests.
+     * Based on page 34 of http://www.haut-conseil-egalite.gouv.fr/IMG/pdf/hcefh__guide_pratique_com_sans_stereo-_vf-_2015_11_05.pdf
      *
      * @return array[]
      */
