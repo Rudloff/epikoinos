@@ -9,7 +9,7 @@
   },
   "require-dev": {
     "symfony/var-dumper": "~3.3.2",
-    "dicollecte/lexique": "~6.0.2",
+    "dicollecte/lexique": "~6.1.0",
     "phpunit/phpunit": "~6.2.2",
     "squizlabs/php_codesniffer": "~3.0.1"
   },
@@ -18,9 +18,9 @@
       "type": "package",
       "package": {
         "name": "dicollecte/lexique",
-        "version": "6.0.2",
+        "version": "6.1",
         "dist": {
-          "url": "http://www.dicollecte.org/download/fr/lexique-dicollecte-fr-v6.0.2.zip",
+          "url": "https://www.dicollecte.org/download/fr/lexique-dicollecte-fr-v6.1.zip",
           "type": "zip"
         }
       }

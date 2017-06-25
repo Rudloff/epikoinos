@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "9c94cf9923d0cdb7b7775cbe774e91aa",
-    "content-hash": "cea4dca65f3256037ee2ccd6c498962f",
+    "hash": "6be670d257833dd8f7b561353987dc67",
+    "content-hash": "e81b1bf5928ae3467a1ceef92911b962",
     "packages": [
         {
             "name": "danielstjules/stringy",
@@ -310,10 +310,10 @@
     "packages-dev": [
         {
             "name": "dicollecte/lexique",
-            "version": "6.0.2",
+            "version": "6.1",
             "dist": {
                 "type": "zip",
-                "url": "http://www.dicollecte.org/download/fr/lexique-dicollecte-fr-v6.0.2.zip",
+                "url": "https://www.dicollecte.org/download/fr/lexique-dicollecte-fr-v6.1.zip",
                 "reference": null,
                 "shasum": null
             },
@@ -1282,16 +1282,16 @@
         },
         {
             "name": "sebastian/environment",
-            "version": "3.0.3",
+            "version": "3.0.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/environment.git",
-                "reference": "02b6b2c7aefe2cdb1185b8dbf8718b0bcedf3ab3"
+                "reference": "74776f8dbc081cab9287c2a601c0c1d842568744"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/environment/zipball/02b6b2c7aefe2cdb1185b8dbf8718b0bcedf3ab3",
-                "reference": "02b6b2c7aefe2cdb1185b8dbf8718b0bcedf3ab3",
+                "url": "https://api.github.com/repos/sebastianbergmann/environment/zipball/74776f8dbc081cab9287c2a601c0c1d842568744",
+                "reference": "74776f8dbc081cab9287c2a601c0c1d842568744",
                 "shasum": ""
             },
             "require": {
@@ -1328,7 +1328,7 @@
                 "environment",
                 "hhvm"
             ],
-            "time": "2017-05-18 10:10:00"
+            "time": "2017-06-20 16:25:05"
         },
         {
             "name": "sebastian/exporter",
