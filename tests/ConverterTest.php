@@ -20,20 +20,32 @@ class ConverterTest extends BaseTest
     public function testCache()
     {
         $converter = new Converter('foo', true, true);
-        $this->assertEquals(['formateurfoorice'], $converter->convertWord('formateur'));
+        $result = $converter->convertWord('formateur');
+        $this->assertEquals('formateurfoorice', $result['formateurfoorice']['epicene']);
+
         $converter = new Converter('foo', true, false);
-        $this->assertEquals(['formateurfoorice'], $converter->convertWord('formateur'));
+        $result = $converter->convertWord('formateur');
+        $this->assertEquals('formateurfoorice', $result['formateurfoorice']['epicene']);
+
         $converter = new Converter('bar', true, true);
-        $this->assertEquals(['formateurbarrice'], $converter->convertWord('formateur'));
+        $result = $converter->convertWord('formateur');
+        $this->assertEquals('formateurbarrice', $result['formateurbarrice']['epicene']);
+
         $converter = new Converter('bar', true, false);
-        $this->assertEquals(['formateurbarrice'], $converter->convertWord('formateur'));
+        $result = $converter->convertWord('formateur');
+        $this->assertEquals('formateurbarrice', $result['formateurbarrice']['epicene']);
 
         $converter = new Converter('éà');
-        $this->assertEquals(['formateuréàrice'], $converter->convertWord('formateur'));
+        $result = $converter->convertWord('formateur');
+        $this->assertEquals('formateuréàrice', $result['formateuréàrice']['epicene']);
+
         $converter = new Converter('·');
-        $this->assertEquals(['formateur·rice'], $converter->convertWord('formateur'));
+        $result = $converter->convertWord('formateur');
+        $this->assertEquals('formateur·rice', $result['formateur·rice']['epicene']);
+
         $converter = new Converter(' ');
-        $this->assertEquals(['formateur rice'], $converter->convertWord('formateur'));
+        $result = $converter->convertWord('formateur');
+        $this->assertEquals('formateur rice', $result['formateur rice']['epicene']);
     }
 
     /**
@@ -44,7 +56,8 @@ class ConverterTest extends BaseTest
     public function testSeparator()
     {
         $converter = new Converter('-', false);
-        $this->assertEquals(['formateur-rice'], $converter->convertWord('formateur'));
+        $result = $converter->convertWord('formateur');
+        $this->assertEquals('formateur-rice', $result['formateur-rice']['epicene']);
     }
 
     /**
@@ -62,10 +75,7 @@ class ConverterTest extends BaseTest
             $this->markTestIncomplete();
         }
         $converter = new Converter('.', false);
-        $this->assertContains(
-            $result,
-            $converter->convertWord($word)
-        );
+        $this->assertArraySubset([$result=>['epicene'=>$result]], $converter->convertWord($word));
     }
 
     /**

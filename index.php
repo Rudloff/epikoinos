@@ -43,7 +43,14 @@ $converter = new Converter('.');
             <div class="brdr--light-gray p1">
             <?php
             try {
-                echo implode(' ou ', $converter->convertWord($_GET['query']));
+                $i = 0;
+                foreach ($converter->convertWord($_GET['query']) as $word) {
+                    if ($i > 0) {
+                        echo ' ou ';
+                    }
+                    echo $word['epicene'];
+                    $i++;
+                }
             } catch (\Exception $e) {
                 echo '<span class="fnt--red">Mot inconnu&nbsp;: '.$_GET['query'].'</span>';
             } ?>

@@ -76,21 +76,49 @@ class Converter
     {
         switch ($word) {
             case 'le':
-                return ['la.le'];
+                return ['la.le'=> [
+                    'masculine'=> 'le',
+                    'feminine' => 'la',
+                    'epicene'  => 'la.le',
+                ]];
             case 'les':
             case 'des':
             case 'ces':
-                return [$word];
+                return [$word=> [
+                    'masculine'=> $word,
+                    'feminine' => $word,
+                    'epicene'  => $word,
+                ]];
             case 'ce':
-                return ['ce.tte'];
+                return ['ce.tte'=> [
+                    'masculine'=> 'ce',
+                    'feminine' => 'cette',
+                    'epicene'  => 'ce.tte',
+                ]];
             case 'cet':
-                return ['cet.te'];
+                return ['cet.te'=> [
+                    'masculine'=> 'cet',
+                    'feminine' => 'cette',
+                    'epicene'  => 'cet.te',
+                ]];
             case 'ceux':
-                return ['ceux.elles'];
+                return ['ceux.elles'=> [
+                    'masculine'=> 'ceux',
+                    'feminine' => 'celles',
+                    'epicene'  => 'ceux.elles',
+                ]];
             case 'tout':
-                return ['tout.e'];
+                return ['tout.e'=> [
+                    'masculine'=> 'tout',
+                    'feminine' => 'toute',
+                    'epicene'  => 'tout.e',
+                ]];
             case 'tous':
-                return ['tou.te.s'];
+                return ['tou.te.s'=> [
+                    'masculine'=> 'tous',
+                    'feminine' => 'toutes',
+                    'epicene'  => 'tou.te.s',
+                ]];
         }
 
         return [];
@@ -101,7 +129,7 @@ class Converter
      *
      * @param string $word Word to convert
      *
-     * @return string[] Array of converted word possibilities
+     * @return array[] Array of converted word possibilities
      */
     public function convertWord($word)
     {
@@ -112,11 +140,10 @@ class Converter
 
         $separator = rawurlencode($this->separator);
         if ($this->enableCache && !$this->overwriteCache && $this->cache->is_cached($word.$separator)) {
-            return json_decode($this->cache->get_cache($word.$separator));
+            return json_decode($this->cache->get_cache($word.$separator), true);
         }
         $w = new Word(S::create($word), $this->lexicon, $this->separator);
         $return = $w->convert();
-        $return = array_map('strval', $return);
         if ($this->enableCache) {
             $this->cache->set_cache($word.$separator, json_encode($return));
         }

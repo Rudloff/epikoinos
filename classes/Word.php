@@ -147,7 +147,7 @@ class Word
     /**
      * Convert word to its epicene form.
      *
-     * @return S Epicene form
+     * @return string[] Array containing masculine, feminine and epicene forms
      */
     public function convert()
     {
@@ -155,13 +155,22 @@ class Word
             $return = [];
             foreach ($this->femInflections as $femInflection) {
                 if (isset($femInflection->mascInflection)) {
-                    $return[] = $this->getConvertedInflection($femInflection);
+                    $convertedWord = (string) $this->getConvertedInflection($femInflection);
+                    $return[$convertedWord] = [
+                        'feminine'  => $femInflection->inflection,
+                        'masculine' => $femInflection->mascInflection->inflection,
+                        'epicene'   => $convertedWord,
+                    ];
                 }
             }
 
-            return array_unique($return);
+            return array_unique($return, SORT_REGULAR);
         } else {
-            return [$this->string];
+            return [(string) $this->string=> [
+                'feminine'  => (string) $this->string,
+                'masculine' => (string) $this->string,
+                'epicene'   => (string) $this->string,
+            ]];
         }
     }
 }
