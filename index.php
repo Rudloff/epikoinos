@@ -48,7 +48,7 @@ $converter = new Converter('.');
                     if ($i > 0) {
                         echo ' ou ';
                     }
-                    echo $word['epicene'];
+                    echo sprintf('<span aria-label="%s et %s">%s</span>', $word['feminine'], $word['masculine'], $word['epicene']);
                     $i++;
                 }
             } catch (\Exception $e) {
