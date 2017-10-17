@@ -2,14 +2,12 @@
 language: php
 php:
     - 7
-before_install:
-    - npm install -g npm@3
 install:
     - composer install
 after_success:
     - bash <(curl -s https://codecov.io/bash)
 before_deploy:
-    - npm install
+    - yarn install
     - ./node_modules/.bin/grunt doc
 deploy:
     provider: surge

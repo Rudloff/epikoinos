@@ -12,7 +12,7 @@ $converter = new Converter('.');
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <title>Epíkoinos, convertisseur et générateur d'écriture épicène</title>
         <meta name="description" content="Ce convertisseur d'écriture épicène permet de convertir un mot masculin en écriture épicène" />
-        <link rel="stylesheet" href="bower_components/furtive/css/furtive.min.css" />
+        <link rel="stylesheet" href="node_modules/furtive/css/furtive.min.css" />
         <link rel="manifest" href="manifest.json" />
         <!-- Tu veux contribuer ? Ça se passe ici : https://github.com/Rudloff/epikoinos -->
     </head>
