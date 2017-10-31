@@ -75,7 +75,7 @@ class ConverterTest extends BaseTest
             $this->markTestIncomplete();
         }
         $converter = new Converter('.', false);
-        $this->assertArraySubset([$result=>['epicene'=>$result]], $converter->convertWord($word));
+        $this->assertArraySubset([$result => ['epicene' => $result]], $converter->convertWord($word));
     }
 
     /**

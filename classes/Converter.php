@@ -76,48 +76,48 @@ class Converter
     {
         switch ($word) {
             case 'le':
-                return ['la.le'=> [
-                    'masculine'=> 'le',
-                    'feminine' => 'la',
-                    'epicene'  => 'la.le',
+                return ['la.le' => [
+                    'masculine' => 'le',
+                    'feminine'  => 'la',
+                    'epicene'   => 'la.le',
                 ]];
             case 'les':
             case 'des':
             case 'ces':
-                return [$word=> [
-                    'masculine'=> $word,
-                    'feminine' => $word,
-                    'epicene'  => $word,
+                return [$word => [
+                    'masculine' => $word,
+                    'feminine'  => $word,
+                    'epicene'   => $word,
                 ]];
             case 'ce':
-                return ['ce.tte'=> [
-                    'masculine'=> 'ce',
-                    'feminine' => 'cette',
-                    'epicene'  => 'ce.tte',
+                return ['ce.tte' => [
+                    'masculine' => 'ce',
+                    'feminine'  => 'cette',
+                    'epicene'   => 'ce.tte',
                 ]];
             case 'cet':
-                return ['cet.te'=> [
-                    'masculine'=> 'cet',
-                    'feminine' => 'cette',
-                    'epicene'  => 'cet.te',
+                return ['cet.te' => [
+                    'masculine' => 'cet',
+                    'feminine'  => 'cette',
+                    'epicene'   => 'cet.te',
                 ]];
             case 'ceux':
-                return ['ceux.elles'=> [
-                    'masculine'=> 'ceux',
-                    'feminine' => 'celles',
-                    'epicene'  => 'ceux.elles',
+                return ['ceux.elles' => [
+                    'masculine' => 'ceux',
+                    'feminine'  => 'celles',
+                    'epicene'   => 'ceux.elles',
                 ]];
             case 'tout':
-                return ['tout.e'=> [
-                    'masculine'=> 'tout',
-                    'feminine' => 'toute',
-                    'epicene'  => 'tout.e',
+                return ['tout.e' => [
+                    'masculine' => 'tout',
+                    'feminine'  => 'toute',
+                    'epicene'   => 'tout.e',
                 ]];
             case 'tous':
-                return ['tou.te.s'=> [
-                    'masculine'=> 'tous',
-                    'feminine' => 'toutes',
-                    'epicene'  => 'tou.te.s',
+                return ['tou.te.s' => [
+                    'masculine' => 'tous',
+                    'feminine'  => 'toutes',
+                    'epicene'   => 'tou.te.s',
                 ]];
         }
 

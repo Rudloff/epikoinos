@@ -166,7 +166,7 @@ class Word
 
             return array_unique($return, SORT_REGULAR);
         } else {
-            return [(string) $this->string=> [
+            return [(string) $this->string => [
                 'feminine'  => (string) $this->string,
                 'masculine' => (string) $this->string,
                 'epicene'   => (string) $this->string,
