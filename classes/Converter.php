@@ -133,6 +133,7 @@ class Converter
      */
     public function convertWord($word)
     {
+        $word = trim($word);
         $simpleResult = $this->getSimpleResult($word);
         if (!empty($simpleResult)) {
             return $simpleResult;

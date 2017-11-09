@@ -61,6 +61,18 @@ class ConverterTest extends BaseTest
     }
 
     /**
+     * Test that words are correctly trimmed.
+     *
+     * @return void
+     */
+    public function testTrim()
+    {
+        $converter = new Converter('-', false);
+        $result = $converter->convertWord('formateur ');
+        $this->assertEquals('formateur-rice', $result['formateur-rice']['epicene']);
+    }
+
+    /**
      * Test the convertWord() function.
      *
      * @param string $word   Word to convert
