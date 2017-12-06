@@ -27,7 +27,7 @@ $converter = new Converter('.');
             recommandations du Haut Conseil à l'égalité entre les femmes et les hommes</a>.
         </p>
         <form class="py1">
-            <label for="query">Mot à convertir</label>
+            <label for="query">Mot(s) à convertir</label>
             <input type="text" name="query" id="query"
             <?php
             if (isset($_GET['query'])) {
@@ -42,18 +42,8 @@ $converter = new Converter('.');
             ?>
             <div class="brdr--light-gray p1">
             <?php
-            try {
-                $i = 0;
-                foreach ($converter->convertWord($_GET['query']) as $word) {
-                    if ($i > 0) {
-                        echo ' ou ';
-                    }
-                    echo sprintf('<span aria-label="%s et %s">%s</span>', $word['feminine'], $word['masculine'], $word['epicene']);
-                    $i++;
-                }
-            } catch (\Exception $e) {
-                echo '<span class="fnt--red">Mot inconnu&nbsp;: '.$_GET['query'].'</span>';
-            } ?>
+                echo $converter->convert($_GET['query']);
+            ?>
             </div>
             <?php
         endif;

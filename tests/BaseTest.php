@@ -23,6 +23,57 @@ abstract class BaseTest extends TestCase
     ];
 
     /**
+     * Return a list of sentences to use for tests.
+     *
+     * @return array[]
+     */
+    public function sentenceProvider()
+    {
+        return [
+            [
+                "Devenez formateur, c'est bien d'être formateur.",
+                "Devenez formateur.rice, c'est bien d'être formateur.rice.",
+            ],
+            [
+                "Devenez formateur, c'est bien d'être formateur.rice",
+                "Devenez formateur.rice, c'est bien d'être formateur.rice",
+            ],
+            [
+                "Devenez formateur, c'est bien d'être formateur/tuteur",
+                "Devenez formateur.rice, c'est bien d'être formateur.rice/tuteur.rice",
+            ],
+            [
+                'teurgoule et tuteurat',
+                'teurgoule et tuteurat',
+            ],
+            [
+                'Étudiants et professeurs',
+                'Étudiant.e.s et professeur.e.s',
+            ],
+            [
+                "l'étudiant et le professeur",
+                "l'étudiant.e et la.le professeur.e",
+            ],
+            [
+                'le professeur, le professeur et le professeur',
+                'la.le professeur.e, la.le professeur.e et la.le professeur.e',
+            ],
+            [
+                "L'étudiant et le professeur",
+                "L'étudiant.e et la.le professeur.e",
+            ],
+            [
+                'un étudiant et un meuble',
+                'un.e étudiant.e et un meuble',
+            ],
+            [
+                'cet étudiant',
+                'cet.te étudiant.e',
+            ],
+        ];
+    }
+
+    /**
      * Return a list of words to use for tests.
      *
      * @return array[]

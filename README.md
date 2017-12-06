@@ -12,13 +12,19 @@ use Epíkoinos\Converter;
 $converter = new Converter();
 ```
 
-#### Convert a word
+#### Convert a single word
 
 ```php
 $converter->convertWord('étudiant'); //['étudiant.e' => ['feminine' => 'étudiante', 'masculine' => 'étudiant', 'epicene' => 'étudiant.e']]
 ```
 
 Note that it will always return an array (as there might be several possible conversions).
+
+#### Convert a text
+
+```php
+$converter->convert('Étudiants et professeurs'); //Étudiant.e.s et professeur.e.s
+```
 
 #### Use a custom delimiter
 

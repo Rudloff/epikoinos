@@ -13,6 +13,24 @@ use Epíkoinos\Converter;
 class ConverterTest extends BaseTest
 {
     /**
+     * Test convert() function.
+     *
+     * @param string $sentence Sentence to convert
+     * @param string $result   Expected result
+     *
+     * @return void
+     * @dataProvider sentenceProvider
+     */
+    public function testConvert($sentence, $result)
+    {
+        $converter = new Converter('.', false);
+        $this->assertEquals(
+            $result,
+            $converter->convert($sentence)
+        );
+    }
+
+    /**
      * Test the cache system.
      *
      * @return void
@@ -70,6 +88,10 @@ class ConverterTest extends BaseTest
         $converter = new Converter('-', false);
         $result = $converter->convertWord('formateur ');
         $this->assertEquals('formateur-rice', $result['formateur-rice']['epicene']);
+        $this->assertEquals(
+            "Devenez formateur-rice, c'est bien d'être formateur-rice",
+            $converter->convert("Devenez formateur, c'est bien d'être formateur")
+        );
     }
 
     /**
