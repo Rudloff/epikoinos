@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "96e66e10fdd07b4897dafe003ffd390e",
+    "content-hash": "8e4669281f83233675772f81046d6694",
     "packages": [
         {
             "name": "danielstjules/stringy",
@@ -1738,16 +1738,16 @@
         },
         {
             "name": "symfony/var-dumper",
-            "version": "v3.3.14",
+            "version": "v3.4.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/var-dumper.git",
-                "reference": "f193230a7fd5051910de4e8238139921f3a40af8"
+                "reference": "ec650a975a8e04e0c114d35eab732981243db3a2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/var-dumper/zipball/f193230a7fd5051910de4e8238139921f3a40af8",
-                "reference": "f193230a7fd5051910de4e8238139921f3a40af8",
+                "url": "https://api.github.com/repos/symfony/var-dumper/zipball/ec650a975a8e04e0c114d35eab732981243db3a2",
+                "reference": "ec650a975a8e04e0c114d35eab732981243db3a2",
                 "shasum": ""
             },
             "require": {
@@ -1763,12 +1763,13 @@
             },
             "suggest": {
                 "ext-iconv": "To convert non-UTF-8 strings to UTF-8 (or symfony/polyfill-iconv in case ext-iconv cannot be used).",
+                "ext-intl": "To show region name in time zone dump",
                 "ext-symfony_debug": ""
             },
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "3.3-dev"
+                    "dev-master": "3.4-dev"
                 }
             },
             "autoload": {
@@ -1802,7 +1803,7 @@
                 "debug",
                 "dump"
             ],
-            "time": "2017-11-30T09:28:49+00:00"
+            "time": "2017-11-30T14:59:23+00:00"
         },
         {
             "name": "theseer/tokenizer",
