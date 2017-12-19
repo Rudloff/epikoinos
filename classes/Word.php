@@ -67,6 +67,8 @@ class Word
     /**
      * Get masculine inflections.
      *
+     * @throws \Exception If the inflection was not found in the lexicon
+     *
      * @return \Dicollecte\Inflection[] Masculine inflections
      */
     private function getMascInflections()
