@@ -70,7 +70,7 @@ class Converter
      *
      * @param string $word Word to convert
      *
-     * @return string[] Array of converted word possibilities
+     * @return array Array of converted word possibilities
      */
     private function getSimpleResult($word)
     {

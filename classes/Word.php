@@ -149,7 +149,7 @@ class Word
     /**
      * Convert word to its epicene form.
      *
-     * @return string[] Array containing masculine, feminine and epicene forms
+     * @return array Array containing masculine, feminine and epicene forms
      */
     public function convert()
     {
