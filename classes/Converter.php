@@ -50,6 +50,44 @@ class Converter
     private $overwriteCache = false;
 
     /**
+     * List of predefined results.
+     *
+     * @var array
+     */
+    private $simpleResults = [
+        'le' => ['la.le' => [
+            'masculine' => 'le',
+            'feminine'  => 'la',
+            'epicene'   => 'la.le',
+        ]],
+        'ce' => ['ce.tte' => [
+            'masculine' => 'ce',
+            'feminine'  => 'cette',
+            'epicene'   => 'ce.tte',
+        ]],
+        'cet' => ['cet.te' => [
+            'masculine' => 'cet',
+            'feminine'  => 'cette',
+            'epicene'   => 'cet.te',
+        ]],
+        'ceux' => ['ceux.elles' => [
+            'masculine' => 'ceux',
+            'feminine'  => 'celles',
+            'epicene'   => 'ceux.elles',
+        ]],
+        'tout' => ['tout.e' => [
+            'masculine' => 'tout',
+            'feminine'  => 'toute',
+            'epicene'   => 'tout.e',
+        ]],
+        'tous' => ['tou.te.s' => [
+            'masculine' => 'tous',
+            'feminine'  => 'toutes',
+            'epicene'   => 'tou.te.s',
+        ]],
+    ];
+
+    /**
      * Converter constructor.
      *
      * @param string $separator      Separator character to use in epicene forms
@@ -66,7 +104,7 @@ class Converter
     }
 
     /**
-     * Check if the word can be converted with a simple switch() rule.
+     * Check if the word can be converted with a simple rule.
      *
      * @param string $word Word to convert
      *
@@ -75,12 +113,6 @@ class Converter
     private function getSimpleResult($word)
     {
         switch ($word) {
-            case 'le':
-                return ['la.le' => [
-                    'masculine' => 'le',
-                    'feminine'  => 'la',
-                    'epicene'   => 'la.le',
-                ]];
             case 'les':
             case 'des':
             case 'ces':
@@ -89,39 +121,12 @@ class Converter
                     'feminine'  => $word,
                     'epicene'   => $word,
                 ]];
-            case 'ce':
-                return ['ce.tte' => [
-                    'masculine' => 'ce',
-                    'feminine'  => 'cette',
-                    'epicene'   => 'ce.tte',
-                ]];
-            case 'cet':
-                return ['cet.te' => [
-                    'masculine' => 'cet',
-                    'feminine'  => 'cette',
-                    'epicene'   => 'cet.te',
-                ]];
-            case 'ceux':
-                return ['ceux.elles' => [
-                    'masculine' => 'ceux',
-                    'feminine'  => 'celles',
-                    'epicene'   => 'ceux.elles',
-                ]];
-            case 'tout':
-                return ['tout.e' => [
-                    'masculine' => 'tout',
-                    'feminine'  => 'toute',
-                    'epicene'   => 'tout.e',
-                ]];
-            case 'tous':
-                return ['tou.te.s' => [
-                    'masculine' => 'tous',
-                    'feminine'  => 'toutes',
-                    'epicene'   => 'tou.te.s',
-                ]];
         }
-
-        return [];
+        if (isset($this->simpleResults[$word])) {
+            return $this->simpleResults[$word];
+        } else {
+            return [];
+        }
     }
 
     /**
