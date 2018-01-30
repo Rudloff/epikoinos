@@ -14,6 +14,7 @@ $converter = new Converter('.');
         <meta name="description" content="Ce convertisseur d'écriture épicène permet de convertir un mot masculin en écriture épicène" />
         <link rel="stylesheet" href="node_modules/furtive/css/furtive.min.css" />
         <link rel="manifest" href="manifest.json" />
+        <link rel="canonical" href="https://epikoinos.netlib.re/" />
         <!-- Tu veux contribuer ? Ça se passe ici : https://github.com/Rudloff/epikoinos -->
     </head>
     <body class="p1 bg--white measure">
