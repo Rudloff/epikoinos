@@ -1,5 +1,6 @@
 {
   "name": "Epíkoinos",
+  "short_name": "Epíkoinos",
   "start_url": "./",
   "display": "standalone"
 }
