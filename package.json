@@ -1,7 +1,7 @@
 {
   "name": "epikoinos",
   "description": "Convert French words to their epicene form",
-  "version": "0.3.2",
+  "version": "0.3.3",
   "author": "Pierre Rudloff",
   "bugs": "https://github.com/Rudloff/epikoinos/issues",
   "devDependencies": {
