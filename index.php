@@ -52,7 +52,7 @@ $converter = new Converter('.');
                     echo sprintf('<span aria-label="%s et %s">%s</span>', $word['feminine'], $word['masculine'], $word['epicene']);
                     $i++;
                 }
-            } catch (\Exception $e) {
+            } catch (Exception $e) {
                 echo '<span class="fnt--red">Mot inconnu&nbsp;: '.$_GET['query'].'</span>';
             } ?>
             </div>

@@ -7,7 +7,7 @@ namespace Epíkoinos;
 
 use Dicollecte\Lexicon;
 use Gilbitron\Util\SimpleCache;
-use Stringy\Stringy as S;
+use Stringy\Stringy;
 
 /**
  * Class used to convert words.
@@ -17,7 +17,7 @@ class Converter
     /**
      * Separator character to use in epicene forms.
      *
-     * @var S
+     * @var Stringy
      */
     private $separator = '.';
 
@@ -96,7 +96,7 @@ class Converter
      */
     public function __construct($separator = '.', $enableCache = true, $overwriteCache = false)
     {
-        $this->separator = S::create($separator);
+        $this->separator = Stringy::create($separator);
         $this->lexicon = new Lexicon(__DIR__.'/../lexique-dicollecte-names.csv');
         $this->cache = new SimpleCache();
         $this->enableCache = $enableCache;
@@ -148,7 +148,7 @@ class Converter
         if ($this->enableCache && !$this->overwriteCache && $this->cache->is_cached($word.$separator)) {
             return json_decode($this->cache->get_cache($word.$separator), true);
         }
-        $w = new Word(S::create($word), $this->lexicon, $this->separator);
+        $w = new Word(Stringy::create($word), $this->lexicon, $this->separator);
         $return = $w->convert();
         if ($this->enableCache) {
             $this->cache->set_cache($word.$separator, json_encode($return));

@@ -5,8 +5,10 @@
 
 namespace Epíkoinos;
 
+use Dicollecte\Inflection;
 use Dicollecte\Lexicon;
-use Stringy\Stringy as S;
+use Exception;
+use Stringy\Stringy;
 
 /**
  * Class used to handle words and their inflections.
@@ -16,7 +18,7 @@ class Word
     /**
      * Base word string.
      *
-     * @var S
+     * @var Stringy
      */
     public $string;
 
@@ -30,7 +32,7 @@ class Word
     /**
      * Masculine inflection.
      *
-     * @var \Dicollecte\Inflection[]
+     * @var Inflection[]
      */
     private $mascInflections;
 
@@ -44,18 +46,18 @@ class Word
     /**
      * Separator used in epicene form.
      *
-     * @var S
+     * @var Stringy
      */
     private $separator;
 
     /**
      * Word constructor.
      *
-     * @param S       $string    Base word string
+     * @param Stringy $string    Base word string
      * @param Lexicon $lexicon   Lexicon used to look for inflections
-     * @param S       $separator Separator used in epicene form
+     * @param Stringy $separator Separator used in epicene form
      */
-    public function __construct(S $string, Lexicon $lexicon, S $separator)
+    public function __construct(Stringy $string, Lexicon $lexicon, Stringy $separator)
     {
         $this->string = $string;
         $this->separator = $separator;
@@ -67,15 +69,15 @@ class Word
     /**
      * Get masculine inflections.
      *
-     * @throws \Exception If the inflection was not found in the lexicon
+     * @throws Exception If the inflection was not found in the lexicon
      *
-     * @return \Dicollecte\Inflection[] Masculine inflections
+     * @return Inflection[] Masculine inflections
      */
     private function getMascInflections()
     {
         $inflections = $this->lexicon->getByInflection($this->string);
         if (empty($inflections)) {
-            throw new \Exception("Can't find this inflection");
+            throw new Exception("Can't find this inflection");
         }
         $mascInflections = [];
         foreach ($inflections as $inflection) {
@@ -119,7 +121,7 @@ class Word
      *
      * @param FemInflection $femInflection Feminine inflection
      *
-     * @return S
+     * @return Stringy
      */
     private function getConvertedInflection(FemInflection $femInflection)
     {
@@ -135,10 +137,10 @@ class Word
         if ($femInflection->mascInflection->hasTag('pl')) {
             switch ($suffix) {
                 case 'les':
-                    $suffix = S::create('ales');
+                    $suffix = Stringy::create('ales');
                     break;
                 case 'se.s':
-                    $suffix = S::create('euse.s');
+                    $suffix = Stringy::create('euse.s');
                     break;
             }
         }
