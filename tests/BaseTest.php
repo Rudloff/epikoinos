@@ -5,10 +5,12 @@
 
 namespace Epíkoinos\Tests;
 
+use PHPUnit\Framework\TestCase;
+
 /**
  * Abstract class used to handle providers used by several tests.
  */
-abstract class BaseTest extends \PHPUnit_Framework_TestCase
+abstract class BaseTest extends TestCase
 {
     /**
      * List of words to skip because we know they don't work yet.
@@ -17,14 +19,15 @@ abstract class BaseTest extends \PHPUnit_Framework_TestCase
      */
     protected static $skip = [
         'chef', 'chefs', 'chercheur',
-        'ingénieur', 'entrepreneur', 'chercheurs', 'ingénieurs', 'entrepreneurs',
-        'sénior', 'séniors',
+        'entrepreneur', 'chercheurs', 'entrepreneurs',
     ];
 
     /**
      * Return a list of words to use for tests.
      *
      * @return array[]
+     *
+     * @link http://www.haut-conseil-egalite.gouv.fr/IMG/pdf/hcefh__guide_pratique_com_sans_stereo-_vf-_2015_11_05.pdf Test words are taken from page 34 of this document
      */
     public function wordProvider()
     {

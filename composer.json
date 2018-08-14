@@ -3,15 +3,15 @@
   "description": "Convert French words to their epicene form",
   "license": "GPL-3.0",
   "require": {
-    "danielstjules/stringy": "~2.3.1",
+    "danielstjules/stringy": "~3.1.0",
     "rudloff/dicollecte-lexicon": "~0.1.1",
     "gilbitron/php-simplecache": "~1.4.1"
   },
   "require-dev": {
-    "symfony/var-dumper": "~3.0.0",
+    "symfony/var-dumper": "~3.4.1",
     "dicollecte/lexique": "~6.2.0",
-    "phpunit/phpunit": "~5.4.8",
-    "squizlabs/php_codesniffer": "~2.7.0",
+    "phpunit/phpunit": "~6.5.3",
+    "squizlabs/php_codesniffer": "~3.1.1",
     "doctrine/instantiator": "~1.0.5"
   },
   "repositories": [

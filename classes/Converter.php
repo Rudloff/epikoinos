@@ -7,7 +7,7 @@ namespace Epíkoinos;
 
 use Dicollecte\Lexicon;
 use Gilbitron\Util\SimpleCache;
-use Stringy\Stringy as S;
+use Stringy\Stringy;
 
 /**
  * Class used to convert words.
@@ -17,7 +17,7 @@ class Converter
     /**
      * Separator character to use in epicene forms.
      *
-     * @var S
+     * @var Stringy
      */
     private $separator = '.';
 
@@ -50,6 +50,44 @@ class Converter
     private $overwriteCache = false;
 
     /**
+     * List of predefined results.
+     *
+     * @var array
+     */
+    private $simpleResults = [
+        'le' => ['la.le' => [
+            'masculine' => 'le',
+            'feminine'  => 'la',
+            'epicene'   => 'la.le',
+        ]],
+        'ce' => ['ce.tte' => [
+            'masculine' => 'ce',
+            'feminine'  => 'cette',
+            'epicene'   => 'ce.tte',
+        ]],
+        'cet' => ['cet.te' => [
+            'masculine' => 'cet',
+            'feminine'  => 'cette',
+            'epicene'   => 'cet.te',
+        ]],
+        'ceux' => ['ceux.elles' => [
+            'masculine' => 'ceux',
+            'feminine'  => 'celles',
+            'epicene'   => 'ceux.elles',
+        ]],
+        'tout' => ['tout.e' => [
+            'masculine' => 'tout',
+            'feminine'  => 'toute',
+            'epicene'   => 'tout.e',
+        ]],
+        'tous' => ['tou.te.s' => [
+            'masculine' => 'tous',
+            'feminine'  => 'toutes',
+            'epicene'   => 'tou.te.s',
+        ]],
+    ];
+
+    /**
      * Converter constructor.
      *
      * @param string $separator      Separator character to use in epicene forms
@@ -58,7 +96,7 @@ class Converter
      */
     public function __construct($separator = '.', $enableCache = true, $overwriteCache = false)
     {
-        $this->separator = S::create($separator);
+        $this->separator = Stringy::create($separator);
         $this->lexicon = new Lexicon(__DIR__.'/../lexique-dicollecte-names.csv');
         $this->cache = new SimpleCache();
         $this->enableCache = $enableCache;
@@ -66,40 +104,52 @@ class Converter
     }
 
     /**
+     * Check if the word can be converted with a simple rule.
+     *
+     * @param string $word Word to convert
+     *
+     * @return array Array of converted word possibilities
+     */
+    private function getSimpleResult($word)
+    {
+        switch ($word) {
+            case 'les':
+            case 'des':
+            case 'ces':
+                return [$word => [
+                    'masculine' => $word,
+                    'feminine'  => $word,
+                    'epicene'   => $word,
+                ]];
+        }
+        if (isset($this->simpleResults[$word])) {
+            return $this->simpleResults[$word];
+        } else {
+            return [];
+        }
+    }
+
+    /**
      * Convert a word to its epicene form.
      *
      * @param string $word Word to convert
      *
-     * @return string[] Array of converted word possibilities
+     * @return array[] Array of converted word possibilities
      */
     public function convertWord($word)
     {
-        switch ($word) {
-            case 'le':
-                return ['la.le'];
-            case 'les':
-            case 'des':
-            case 'ces':
-                return [$word];
-            case 'ce':
-                return ['ce.tte'];
-            case 'cet':
-                return ['cet.te'];
-            case 'ceux':
-                return ['ceux.elles'];
-            case 'tout':
-                return ['tout.e'];
-            case 'tous':
-                return ['tou.te.s'];
+        $word = trim($word);
+        $simpleResult = $this->getSimpleResult($word);
+        if (!empty($simpleResult)) {
+            return $simpleResult;
         }
 
         $separator = rawurlencode($this->separator);
         if ($this->enableCache && !$this->overwriteCache && $this->cache->is_cached($word.$separator)) {
-            return json_decode($this->cache->get_cache($word.$separator));
+            return json_decode($this->cache->get_cache($word.$separator), true);
         }
-        $w = new Word(S::create($word), $this->lexicon, $this->separator);
+        $w = new Word(Stringy::create($word), $this->lexicon, $this->separator);
         $return = $w->convert();
-        $return = array_map('strval', $return);
         if ($this->enableCache) {
             $this->cache->set_cache($word.$separator, json_encode($return));
         }

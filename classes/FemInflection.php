@@ -6,7 +6,7 @@
 namespace Epíkoinos;
 
 use Dicollecte\Inflection;
-use Stringy\Stringy as S;
+use Stringy\Stringy;
 
 /**
  * Class used to manage feminine inflections.
@@ -38,11 +38,11 @@ class FemInflection extends Inflection
     /**
      * Get prefix.
      *
-     * @return S Prefix
+     * @return Stringy Prefix
      */
     private function getPrefix()
     {
-        $string = new S($this->mascInflection->inflection);
+        $string = new Stringy($this->mascInflection->inflection);
 
         return $string->toLowerCase()->longestCommonPrefix($this->inflection);
     }
@@ -50,11 +50,11 @@ class FemInflection extends Inflection
     /**
      * Get plural suffix.
      *
-     * @return S Plural suffix
+     * @return Stringy Plural suffix
      */
     public function getPlural()
     {
-        $string = new S($this->mascInflection->inflection);
+        $string = new Stringy($this->mascInflection->inflection);
 
         return $string->longestCommonSuffix($this->inflection);
     }
@@ -62,14 +62,14 @@ class FemInflection extends Inflection
     /**
      * Get suffix.
      *
-     * @return S Suffix
+     * @return Stringy Suffix
      */
     public function getSuffix()
     {
-        $suffix = S::create($this->inflection)->removeLeft($this->getPrefix());
+        $suffix = Stringy::create($this->inflection)->removeLeft($this->getPrefix());
         switch ($suffix) {
             case 'se':
-                $suffix = S::create('euse');
+                $suffix = Stringy::create('euse');
                 break;
         }
 

@@ -5,8 +5,10 @@
 
 namespace Epíkoinos;
 
+use Dicollecte\Inflection;
 use Dicollecte\Lexicon;
-use Stringy\Stringy as S;
+use Exception;
+use Stringy\Stringy;
 
 /**
  * Class used to handle words and their inflections.
@@ -16,7 +18,7 @@ class Word
     /**
      * Base word string.
      *
-     * @var S
+     * @var Stringy
      */
     public $string;
 
@@ -30,7 +32,7 @@ class Word
     /**
      * Masculine inflection.
      *
-     * @var \Dicollecte\Inflection[]
+     * @var Inflection[]
      */
     private $mascInflections;
 
@@ -44,18 +46,18 @@ class Word
     /**
      * Separator used in epicene form.
      *
-     * @var S
+     * @var Stringy
      */
     private $separator;
 
     /**
      * Word constructor.
      *
-     * @param S       $string    Base word string
+     * @param Stringy $string    Base word string
      * @param Lexicon $lexicon   Lexicon used to look for inflections
-     * @param S       $separator Separator used in epicene form
+     * @param Stringy $separator Separator used in epicene form
      */
-    public function __construct(S $string, Lexicon $lexicon, S $separator)
+    public function __construct(Stringy $string, Lexicon $lexicon, Stringy $separator)
     {
         $this->string = $string;
         $this->separator = $separator;
@@ -67,13 +69,15 @@ class Word
     /**
      * Get masculine inflections.
      *
-     * @return \Dicollecte\Inflection[] Masculine inflections
+     * @throws Exception If the inflection was not found in the lexicon
+     *
+     * @return Inflection[] Masculine inflections
      */
     private function getMascInflections()
     {
         $inflections = $this->lexicon->getByInflection($this->string);
         if (empty($inflections)) {
-            throw new \Exception("Can't find this inflection");
+            throw new Exception("Can't find this inflection");
         }
         $mascInflections = [];
         foreach ($inflections as $inflection) {
@@ -90,7 +94,7 @@ class Word
     /**
      * Get feminine inflection.
      *
-     * @return FemInflection Feminine inflection
+     * @return FemInflection[] Feminine inflections
      */
     private function getFemInflections()
     {
@@ -113,9 +117,41 @@ class Word
     }
 
     /**
+     * Convert feminine inflection to its epicene form.
+     *
+     * @param FemInflection $femInflection Feminine inflection
+     *
+     * @return Stringy
+     */
+    private function getConvertedInflection(FemInflection $femInflection)
+    {
+        $word = $this->string;
+        $plural = $femInflection->getPlural();
+        $suffix = $femInflection->getSuffix();
+        if ($plural->length() > 0) {
+            $suffix = $suffix->removeRight((string) $plural)->ensureRight($this->separator.$plural);
+            if ($femInflection->mascInflection->hasTag('pl')) {
+                $word = $word->removeRight((string) $plural);
+            }
+        }
+        if ($femInflection->mascInflection->hasTag('pl')) {
+            switch ($suffix) {
+                case 'les':
+                    $suffix = Stringy::create('ales');
+                    break;
+                case 'se.s':
+                    $suffix = Stringy::create('euse.s');
+                    break;
+            }
+        }
+
+        return $word->ensureRight($this->separator.$suffix);
+    }
+
+    /**
      * Convert word to its epicene form.
      *
-     * @return S Epicene form
+     * @return array Array containing masculine, feminine and epicene forms
      */
     public function convert()
     {
@@ -123,32 +159,22 @@ class Word
             $return = [];
             foreach ($this->femInflections as $femInflection) {
                 if (isset($femInflection->mascInflection)) {
-                    $word = $this->string;
-                    $plural = $femInflection->getPlural();
-                    $suffix = $femInflection->getSuffix();
-                    if ($plural->length() > 0) {
-                        $suffix = $suffix->removeRight((string) $plural)->ensureRight($this->separator.$plural);
-                        if ($femInflection->mascInflection->hasTag('pl')) {
-                            $word = $word->removeRight((string) $plural);
-                        }
-                    }
-                    if ($femInflection->mascInflection->hasTag('pl')) {
-                        switch ($suffix) {
-                            case 'les':
-                                $suffix = S::create('ales');
-                                break;
-                            case 'se.s':
-                                $suffix = S::create('euse.s');
-                                break;
-                        }
-                    }
-                    $return[] = $word->ensureRight($this->separator.$suffix);
+                    $convertedWord = (string) $this->getConvertedInflection($femInflection);
+                    $return[$convertedWord] = [
+                        'feminine'  => $femInflection->inflection,
+                        'masculine' => $femInflection->mascInflection->inflection,
+                        'epicene'   => $convertedWord,
+                    ];
                 }
             }
 
-            return array_unique($return);
+            return array_unique($return, SORT_REGULAR);
         } else {
-            return [$this->string];
+            return [(string) $this->string => [
+                'feminine'  => (string) $this->string,
+                'masculine' => (string) $this->string,
+                'epicene'   => (string) $this->string,
+            ]];
         }
     }
 }

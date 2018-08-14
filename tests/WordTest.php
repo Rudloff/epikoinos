@@ -50,9 +50,6 @@ class WordTest extends BaseTest
             $this->markTestIncomplete();
         }
         $w = new Word(S::create($word), $this->lexicon, $this->separator);
-        $this->assertContains(
-            $result,
-            $w->convert()
-        );
+        $this->assertArraySubset([$result => ['epicene' => $result]], $w->convert());
     }
 }
