@@ -66,6 +66,7 @@ module.exports = function (grunt) {
             prod: {
                 deployTo: '/var/www/epikoinos/',
                 servers: 'pierre@dev.rudloff.pro',
+                postUpdateCmd: 'yarn install --prod',
                 composer: {
                     noDev: true
                 }
