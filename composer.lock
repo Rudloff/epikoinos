@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "8e4669281f83233675772f81046d6694",
+    "content-hash": "a8114b046627df94b0b2133bf751b1c2",
     "packages": [
         {
             "name": "danielstjules/stringy",
@@ -309,10 +309,10 @@
     "packages-dev": [
         {
             "name": "dicollecte/lexique",
-            "version": "6.2",
+            "version": "6.3",
             "dist": {
                 "type": "zip",
-                "url": "https://www.dicollecte.org/download/fr/lexique-dicollecte-fr-v6.2.zip",
+                "url": "https://www.dicollecte.org/download/fr/lexique-dicollecte-fr-v6.3.zip",
                 "reference": null,
                 "shasum": null
             },
