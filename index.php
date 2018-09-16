@@ -29,7 +29,7 @@ $converter = new Converter('.');
         </p>
         <form class="py1">
             <label for="query">Mot à convertir</label>
-            <input type="text" name="query" id="query"
+            <input type="text" name="query" id="query" autofocus
             <?php
             if (isset($_GET['query'])) {
                 echo 'value="'.$_GET['query'].'"';
