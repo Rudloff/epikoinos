@@ -19,7 +19,7 @@ class Converter
      *
      * @var Stringy
      */
-    private $separator = '.';
+    private $separator;
 
     /**
      * Lexicon used to find word inflections.

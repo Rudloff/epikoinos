@@ -29,9 +29,7 @@ class FemInflection extends Inflection
      */
     public function __construct(Inflection $inflection, Inflection $mascInflection)
     {
-        $this->inflection = $inflection->inflection;
-        $this->lemma = $inflection->lemma;
-        $this->tags = $inflection->tags;
+        parent::__construct(0, $inflection->inflection, $inflection->lemma, $inflection->tags);
         $this->mascInflection = $mascInflection;
     }
 
