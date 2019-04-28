@@ -29,7 +29,7 @@ $converter->convertWord('étudiant'); //['étudiant-e' => ['feminine' => 'étudi
 
 #### Documentation
 
-The complete library documentation is available at [epikoinos.surge.sh](https://epikoinos.surge.sh/namespaces/Ep%C3%ADkoinos.html).
+The complete library documentation is available at [epikoinos.netlib.re/docs/](https://epikoinos.netlib.re/docs/namespaces/Ep%C3%ADkoinos.html).
 
 ### As a web app
 
