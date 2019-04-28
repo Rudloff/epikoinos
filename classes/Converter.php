@@ -19,7 +19,7 @@ class Converter
      *
      * @var Stringy
      */
-    private $separator = '.';
+    private $separator;
 
     /**
      * Lexicon used to find word inflections.
@@ -108,7 +108,7 @@ class Converter
      *
      * @param string $word Word to convert
      *
-     * @return array Array of converted word possibilities
+     * @return array[] Array of converted word possibilities
      */
     private function getSimpleResult($word)
     {

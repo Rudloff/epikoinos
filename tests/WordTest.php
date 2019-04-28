@@ -15,6 +15,20 @@ use Stringy\Stringy as S;
 class WordTest extends BaseTest
 {
     /**
+     * Separator used in tests.
+     *
+     * @var S
+     */
+    private $separator;
+
+    /**
+     * Lexicon object used in tests.
+     *
+     * @var Lexicon
+     */
+    private $lexicon;
+
+    /**
      * List of words to skip because we know they're not relevant here.
      *
      * @var string[]
