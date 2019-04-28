@@ -6,16 +6,3 @@ install:
     - composer install
 after_success:
     - bash <(curl -s https://codecov.io/bash)
-before_deploy:
-    - yarn install
-    - yarn grunt doc
-deploy:
-    provider: surge
-    project: ./docs/
-    domain: epikoinos.surge.sh
-    skip_cleanup: true
-env:
-    global:
-        - SURGE_LOGIN=contact@rudloff.pro
-        - secure:
-              "1LL9WoIGFh5HAc8P+CsAAb1kdN6E/r9QBiM0aBnoQOnrM0ij/aunuEkI9+0IqfqC+iJJZW+Z3wsTGGjZQ8JLEnzygq3icQtihxeE6YGYx6sIScUrz83R+st3RO0kJZI7qMFMrll4H7KmxD9j1y7rpwf9M0cJdL2FwdzoPSakU8qezj0WfxZI0SUmvIeR+02Ax7NlmzUSKiZe/9K405pgj5bnCSQx8IKYyunRQTQ4AN9T07JP9d8QSEvJMpKvgPWaGOJHxzEvcIZuijVMCiTMrBV48yV5NOCp40+4Y8ALlOI0e/vqcSbdjUR8s50BWK+8yWX77T5Ys1cpfbJ2Mo7X7CbLMJr09VB9qDesCLVTXfmRr8A9FvlDrq5PSnzkV4S+P0ZUNhv6FjI8I/CGLnVLapHfdmwfpv3N1uFtpKWxLhkJ7vLtVF7T9e3G58Bf2+bCaqzk8NQXRNHFUYZBxM34pap9m0xXzIVYPaCzRl75HhWnqEI6fd+y4dF0rD+/lvplONC8pD0tc1yxGvy8OVErWMEHfwMcALhyHO/8j6qvjeSZs43XNWX5PT2OOnN86ztkSmM76xs0y6CwbyylP7HeZocQ+/IuLLinonX1OBtCHR5qmTLTsAFSeLhlavyJ4bzD4/hmRg7xYouqw5qcxia1j6uKAeXmzv9SQstwHmx6D/8="
