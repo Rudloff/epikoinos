@@ -53,9 +53,10 @@ class Word
     /**
      * Word constructor.
      *
-     * @param Stringy $string    Base word string
-     * @param Lexicon $lexicon   Lexicon used to look for inflections
+     * @param Stringy $string Base word string
+     * @param Lexicon $lexicon Lexicon used to look for inflections
      * @param Stringy $separator Separator used in epicene form
+     * @throws Exception
      */
     public function __construct(Stringy $string, Lexicon $lexicon, Stringy $separator)
     {
@@ -69,9 +70,9 @@ class Word
     /**
      * Get masculine inflections.
      *
+     * @return Inflection[] Masculine inflections
      * @throws Exception If the inflection was not found in the lexicon
      *
-     * @return Inflection[] Masculine inflections
      */
     private function getMascInflections()
     {
@@ -129,9 +130,9 @@ class Word
         $plural = $femInflection->getPlural();
         $suffix = $femInflection->getSuffix();
         if ($plural->length() > 0) {
-            $suffix = $suffix->removeRight((string) $plural)->ensureRight($this->separator.$plural);
+            $suffix = $suffix->removeRight((string)$plural)->ensureRight($this->separator . $plural);
             if ($femInflection->mascInflection->hasTag('pl')) {
-                $word = $word->removeRight((string) $plural);
+                $word = $word->removeRight((string)$plural);
             }
         }
         if ($femInflection->mascInflection->hasTag('pl')) {
@@ -145,7 +146,7 @@ class Word
             }
         }
 
-        return $word->ensureRight($this->separator.$suffix);
+        return $word->ensureRight($this->separator . $suffix);
     }
 
     /**
@@ -159,21 +160,21 @@ class Word
             $return = [];
             foreach ($this->femInflections as $femInflection) {
                 if (isset($femInflection->mascInflection)) {
-                    $convertedWord = (string) $this->getConvertedInflection($femInflection);
+                    $convertedWord = (string)$this->getConvertedInflection($femInflection);
                     $return[$convertedWord] = [
-                        'feminine'  => $femInflection->inflection,
+                        'feminine' => $femInflection->inflection,
                         'masculine' => $femInflection->mascInflection->inflection,
-                        'epicene'   => $convertedWord,
+                        'epicene' => $convertedWord,
                     ];
                 }
             }
 
             return array_unique($return, SORT_REGULAR);
         } else {
-            return [(string) $this->string => [
-                'feminine'  => (string) $this->string,
-                'masculine' => (string) $this->string,
-                'epicene'   => (string) $this->string,
+            return [(string)$this->string => [
+                'feminine' => (string)$this->string,
+                'masculine' => (string)$this->string,
+                'epicene' => (string)$this->string,
             ]];
         }
     }

@@ -7,7 +7,8 @@ namespace Epikoinos\Tests;
 
 use Dicollecte\Lexicon;
 use Epikoinos\Word;
-use Stringy\Stringy as S;
+use Exception;
+use Stringy\Stringy;
 
 /**
  * Class used to test the Word class.
@@ -17,7 +18,7 @@ class WordTest extends BaseTest
     /**
      * Separator used in tests.
      *
-     * @var S
+     * @var Stringy
      */
     private $separator;
 
@@ -42,18 +43,19 @@ class WordTest extends BaseTest
      */
     protected function setUp()
     {
-        $this->separator = S::create('.');
-        $this->lexicon = new Lexicon(__DIR__.'/../lexique-dicollecte-names.csv');
+        $this->separator = Stringy::create('.');
+        $this->lexicon = new Lexicon(__DIR__ . '/../lexique-dicollecte-names.csv');
     }
 
     /**
      * Test the convert() function.
      *
-     * @param string $word   Word to convert
+     * @param string $word Word to convert
      * @param string $result Expected result
      *
      * @return void
      * @dataProvider wordProvider
+     * @throws Exception
      */
     public function testConvert($word, $result)
     {
@@ -63,7 +65,7 @@ class WordTest extends BaseTest
         if (in_array($word, parent::$skip)) {
             $this->markTestIncomplete();
         }
-        $w = new Word(S::create($word), $this->lexicon, $this->separator);
+        $w = new Word(Stringy::create($word), $this->lexicon, $this->separator);
         $this->assertArraySubset([$result => ['epicene' => $result]], $w->convert());
     }
 }

@@ -27,7 +27,8 @@ abstract class BaseTest extends TestCase
      *
      * @return array[]
      *
-     * @link http://www.haut-conseil-egalite.gouv.fr/IMG/pdf/hcefh__guide_pratique_com_sans_stereo-_vf-_2015_11_05.pdf Test words are taken from page 34 of this document
+     * @link http://www.haut-conseil-egalite.gouv.fr/IMG/pdf/hcefh__guide_pratique_com_sans_stereo-_vf-_2015_11_05.pdf
+     *       Test words are taken from page 34 of this document
      */
     public function wordProvider()
     {

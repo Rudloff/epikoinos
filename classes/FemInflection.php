@@ -24,7 +24,7 @@ class FemInflection extends Inflection
     /**
      * FemInflection constructor.
      *
-     * @param Inflection $inflection     Feminine inflection to extend
+     * @param Inflection $inflection Feminine inflection to extend
      * @param Inflection $mascInflection Corrresponding masculine inflection
      */
     public function __construct(Inflection $inflection, Inflection $mascInflection)

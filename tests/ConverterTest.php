@@ -6,6 +6,7 @@
 namespace Epikoinos\Tests;
 
 use Epikoinos\Converter;
+use Exception;
 
 /**
  * Class used to test the Converter class.
@@ -75,7 +76,7 @@ class ConverterTest extends BaseTest
     /**
      * Test the convertWord() function.
      *
-     * @param string $word   Word to convert
+     * @param string $word Word to convert
      * @param string $result Expected result
      *
      * @return void
@@ -96,11 +97,12 @@ class ConverterTest extends BaseTest
      * @param string $word Word to convert
      *
      * @return void
-     * @expectedException Exception
+     *
      * @dataProvider wordProviderError
      */
     public function testConvertWordError($word)
     {
+        $this->expectException(Exception::class);
         $converter = new Converter('.', false);
         $converter->convertWord($word);
     }

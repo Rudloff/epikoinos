@@ -6,6 +6,7 @@
 namespace Epikoinos;
 
 use Dicollecte\Lexicon;
+use Exception;
 use Gilbitron\Util\SimpleCache;
 use Stringy\Stringy;
 
@@ -40,14 +41,14 @@ class Converter
      *
      * @var bool
      */
-    private $enableCache = true;
+    private $enableCache;
 
     /**
      * Force refreshing of cache?
      *
      * @var bool
      */
-    private $overwriteCache = false;
+    private $overwriteCache;
 
     /**
      * List of predefined results.
@@ -57,47 +58,47 @@ class Converter
     private $simpleResults = [
         'le' => ['la.le' => [
             'masculine' => 'le',
-            'feminine'  => 'la',
-            'epicene'   => 'la.le',
+            'feminine' => 'la',
+            'epicene' => 'la.le',
         ]],
         'ce' => ['ce.tte' => [
             'masculine' => 'ce',
-            'feminine'  => 'cette',
-            'epicene'   => 'ce.tte',
+            'feminine' => 'cette',
+            'epicene' => 'ce.tte',
         ]],
         'cet' => ['cet.te' => [
             'masculine' => 'cet',
-            'feminine'  => 'cette',
-            'epicene'   => 'cet.te',
+            'feminine' => 'cette',
+            'epicene' => 'cet.te',
         ]],
         'ceux' => ['ceux.elles' => [
             'masculine' => 'ceux',
-            'feminine'  => 'celles',
-            'epicene'   => 'ceux.elles',
+            'feminine' => 'celles',
+            'epicene' => 'ceux.elles',
         ]],
         'tout' => ['tout.e' => [
             'masculine' => 'tout',
-            'feminine'  => 'toute',
-            'epicene'   => 'tout.e',
+            'feminine' => 'toute',
+            'epicene' => 'tout.e',
         ]],
         'tous' => ['tou.te.s' => [
             'masculine' => 'tous',
-            'feminine'  => 'toutes',
-            'epicene'   => 'tou.te.s',
+            'feminine' => 'toutes',
+            'epicene' => 'tou.te.s',
         ]],
     ];
 
     /**
      * Converter constructor.
      *
-     * @param string $separator      Separator character to use in epicene forms
-     * @param bool   $enableCache    Enable cache?
-     * @param bool   $overwriteCache Force refreshing of cache?
+     * @param string $separator Separator character to use in epicene forms
+     * @param bool $enableCache Enable cache?
+     * @param bool $overwriteCache Force refreshing of cache?
      */
     public function __construct($separator = '.', $enableCache = true, $overwriteCache = false)
     {
         $this->separator = Stringy::create($separator);
-        $this->lexicon = new Lexicon(__DIR__.'/../lexique-dicollecte-names.csv');
+        $this->lexicon = new Lexicon(__DIR__ . '/../lexique-dicollecte-names.csv');
         $this->cache = new SimpleCache();
         $this->enableCache = $enableCache;
         $this->overwriteCache = $overwriteCache;
@@ -118,8 +119,8 @@ class Converter
             case 'ces':
                 return [$word => [
                     'masculine' => $word,
-                    'feminine'  => $word,
-                    'epicene'   => $word,
+                    'feminine' => $word,
+                    'epicene' => $word,
                 ]];
         }
         if (isset($this->simpleResults[$word])) {
@@ -135,6 +136,7 @@ class Converter
      * @param string $word Word to convert
      *
      * @return array[] Array of converted word possibilities
+     * @throws Exception
      */
     public function convertWord($word)
     {
@@ -145,13 +147,13 @@ class Converter
         }
 
         $separator = rawurlencode($this->separator);
-        if ($this->enableCache && !$this->overwriteCache && $this->cache->is_cached($word.$separator)) {
-            return json_decode($this->cache->get_cache($word.$separator), true);
+        if ($this->enableCache && !$this->overwriteCache && $this->cache->is_cached($word . $separator)) {
+            return json_decode($this->cache->get_cache($word . $separator), true);
         }
         $w = new Word(Stringy::create($word), $this->lexicon, $this->separator);
         $return = $w->convert();
         if ($this->enableCache) {
-            $this->cache->set_cache($word.$separator, json_encode($return));
+            $this->cache->set_cache($word . $separator, json_encode($return));
         }
 
         return $return;
