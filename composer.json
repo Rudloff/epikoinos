@@ -11,7 +11,7 @@
     "symfony/var-dumper": "~3.4.1",
     "dicollecte/lexique": "~6.4.0",
     "phpunit/phpunit": "~6.5.3",
-    "squizlabs/php_codesniffer": "~3.1.1",
+    "squizlabs/php_codesniffer": "^3.5",
     "doctrine/instantiator": "~1.0.5"
   },
   "repositories": [
