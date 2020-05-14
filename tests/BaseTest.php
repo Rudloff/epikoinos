@@ -3,7 +3,7 @@
  * BaseTest class.
  */
 
-namespace Epíkoinos\Tests;
+namespace Epikoinos\Tests;
 
 use PHPUnit\Framework\TestCase;
 

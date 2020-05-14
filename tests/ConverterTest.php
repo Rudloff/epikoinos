@@ -3,9 +3,9 @@
  * ConverterTest class.
  */
 
-namespace Epíkoinos\Tests;
+namespace Epikoinos\Tests;
 
-use Epíkoinos\Converter;
+use Epikoinos\Converter;
 
 /**
  * Class used to test the Converter class.

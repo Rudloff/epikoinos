@@ -3,7 +3,7 @@
  * Word class.
  */
 
-namespace Epíkoinos;
+namespace Epikoinos;
 
 use Dicollecte\Inflection;
 use Dicollecte\Lexicon;

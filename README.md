@@ -8,7 +8,7 @@ Convert French words to their epicene form
 
 ```php
 require_once __DIR__.'/vendor/autoload.php';
-use Epíkoinos\Converter;
+use Epikoinos\Converter;
 $converter = new Converter();
 ```
 
@@ -23,6 +23,7 @@ Note that it will always return an array (as there might be several possible con
 #### Use a custom delimiter
 
 ```php
+use Epikoinos\Converter;
 $converter = new Converter('-');
 $converter->convertWord('étudiant'); //['étudiant-e' => ['feminine' => 'étudiante', 'masculine' => 'étudiant', 'epicene' => 'étudiant-e']]
 ```

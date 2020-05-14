@@ -3,7 +3,7 @@
  * FemInflection class.
  */
 
-namespace Epíkoinos;
+namespace Epikoinos;
 
 use Dicollecte\Inflection;
 use Stringy\Stringy;

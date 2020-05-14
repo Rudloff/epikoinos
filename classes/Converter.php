@@ -3,7 +3,7 @@
  * Converter class.
  */
 
-namespace Epíkoinos;
+namespace Epikoinos;
 
 use Dicollecte\Lexicon;
 use Gilbitron\Util\SimpleCache;

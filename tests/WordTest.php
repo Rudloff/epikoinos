@@ -3,10 +3,10 @@
  * WordTest class.
  */
 
-namespace Epíkoinos\Tests;
+namespace Epikoinos\Tests;
 
 use Dicollecte\Lexicon;
-use Epíkoinos\Word;
+use Epikoinos\Word;
 use Stringy\Stringy as S;
 
 /**
