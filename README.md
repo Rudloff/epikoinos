@@ -15,6 +15,8 @@ $converter = new Converter();
 #### Convert a word
 
 ```php
+use Epikoinos\Converter;
+$converter = new Converter();
 $converter->convertWord('étudiant'); //['étudiant.e' => ['feminine' => 'étudiante', 'masculine' => 'étudiant', 'epicene' => 'étudiant.e']]
 ```
 
